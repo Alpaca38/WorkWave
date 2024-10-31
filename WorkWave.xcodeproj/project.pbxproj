@@ -12,6 +12,10 @@
 		D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116522CD39B05000C1BC3 /* Assets.xcassets */; };
 		D1E116562CD39B05000C1BC3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116552CD39B05000C1BC3 /* Preview Assets.xcassets */; };
 		D1E1165D2CD39B58000C1BC3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D1E1165C2CD39B58000C1BC3 /* .gitignore */; };
+		D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */; };
+		D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116622CD3A579000C1BC3 /* HomeView.swift */; };
+		D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116642CD3A91E000C1BC3 /* WWFont.swift */; };
+		D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116672CD3AB04000C1BC3 /* FontModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,9 @@
 		D1E116522CD39B05000C1BC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1E116552CD39B05000C1BC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D1E1165C2CD39B58000C1BC3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D1E116622CD3A579000C1BC3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D1E116642CD3A91E000C1BC3 /* WWFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWFont.swift; sourceTree = "<group>"; };
+		D1E116672CD3AB04000C1BC3 /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,9 +62,11 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116692CD3ADE1000C1BC3 /* Resources */,
+				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
+				D1E116612CD3A495000C1BC3 /* Home */,
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
 				D1E116502CD39B04000C1BC3 /* ContentView.swift */,
-				D1E116522CD39B05000C1BC3 /* Assets.xcassets */,
 				D1E116542CD39B05000C1BC3 /* Preview Content */,
 			);
 			path = WorkWave;
@@ -68,6 +78,31 @@
 				D1E116552CD39B05000C1BC3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D1E116612CD3A495000C1BC3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D1E116662CD3AAFD000C1BC3 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116672CD3AB04000C1BC3 /* FontModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		D1E116692CD3ADE1000C1BC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116522CD39B05000C1BC3 /* Assets.xcassets */,
+				D1E116642CD3A91E000C1BC3 /* WWFont.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +121,9 @@
 			dependencies = (
 			);
 			name = WorkWave;
+			packageProductDependencies = (
+				D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */,
+			);
 			productName = WorkWave;
 			productReference = D1E1164B2CD39B04000C1BC3 /* WorkWave.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +152,9 @@
 				Base,
 			);
 			mainGroup = D1E116422CD39B04000C1BC3;
+			packageReferences = (
+				D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = D1E1164C2CD39B04000C1BC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
+				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
+				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
 			);
@@ -358,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D1E116432CD39B04000C1BC3 /* Project object */;
 }
