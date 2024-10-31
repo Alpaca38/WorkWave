@@ -9,13 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Image(.homeActive)
+                            .renderingMode(.template)
+                        Text("홈")
+                    }
+                
+                DMView()
+                    .tabItem {
+                        Image(.messageActive)
+                            .renderingMode(.template)
+                        Text("DM")
+                    }
+                
+                SearchView()
+                    .tabItem {
+                        Image(.profileActive)
+                            .renderingMode(.template)
+                        Text("검색")
+                    }
+                
+                SettingView()
+                    .tabItem {
+                        Image(.settingActive)
+                            .renderingMode(.template)
+                        Text("설정")
+                    }
+            }
+            .tint(.black)
         }
-        .padding()
     }
 }
 //
