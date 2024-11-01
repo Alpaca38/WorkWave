@@ -19,6 +19,8 @@
 		D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1166B2CD3AEA4000C1BC3 /* DMView.swift */; };
 		D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1166F2CD3AF87000C1BC3 /* SearchView.swift */; };
 		D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116712CD3AF9D000C1BC3 /* SettingView.swift */; };
+		D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116732CD3B312000C1BC3 /* OnboardingView.swift */; };
+		D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		D1E1166B2CD3AEA4000C1BC3 /* DMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMView.swift; sourceTree = "<group>"; };
 		D1E1166F2CD3AF87000C1BC3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D1E116712CD3AF9D000C1BC3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		D1E116732CD3B312000C1BC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116752CD3B424000C1BC3 /* CustomComponents */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
 				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
 				D1E116612CD3A495000C1BC3 /* Home */,
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
+				D1E116732CD3B312000C1BC3 /* OnboardingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -136,6 +142,14 @@
 				D1E116712CD3AF9D000C1BC3 /* SettingView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		D1E116752CD3B424000C1BC3 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */,
+			);
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +232,8 @@
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
+				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
+				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,

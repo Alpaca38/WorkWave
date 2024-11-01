@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct HomeView: View {
     
     var body: some View {
-        Text("Home")
+        OnboardingView()
     }
 }
