@@ -22,6 +22,8 @@ struct SignUp {
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case exitButtonTapped
+        case signupButtonTapped
+        case emailCheckButtonTapped
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -33,6 +35,10 @@ struct SignUp {
             case .binding:
                 return .none
             case .exitButtonTapped:
+                return .none
+            case .signupButtonTapped:
+                return .none
+            case .emailCheckButtonTapped:
                 return .none
             }
         }
