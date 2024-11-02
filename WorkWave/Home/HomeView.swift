@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct HomeView: View {
     
     var body: some View {
-        OnboardingView()
+        OnboardingView(store: Store(initialState: Onboarding.State()) {
+            Onboarding()
+        })
     }
 }

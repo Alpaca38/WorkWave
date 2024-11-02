@@ -21,6 +21,8 @@
 		D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116712CD3AF9D000C1BC3 /* SettingView.swift */; };
 		D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116732CD3B312000C1BC3 /* OnboardingView.swift */; };
 		D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */; };
+		D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1167B2CD66D86000C1BC3 /* Onboarding.swift */; };
+		D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1167D2CD67219000C1BC3 /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D1E116712CD3AF9D000C1BC3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D1E116732CD3B312000C1BC3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		D1E1167B2CD66D86000C1BC3 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		D1E1167D2CD67219000C1BC3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
 				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
 				D1E116612CD3A495000C1BC3 /* Home */,
+				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
 				D1E1166A2CD3AE90000C1BC3 /* DM */,
 				D1E1166D2CD3AF67000C1BC3 /* Search */,
 				D1E1166E2CD3AF78000C1BC3 /* Setting */,
@@ -99,6 +104,7 @@
 			children = (
 				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
 				D1E116732CD3B312000C1BC3 /* OnboardingView.swift */,
+				D1E1167B2CD66D86000C1BC3 /* Onboarding.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -150,6 +156,14 @@
 				D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */,
 			);
 			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		D1E1167A2CD66D5F000C1BC3 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				D1E1167D2CD67219000C1BC3 /* SignUpView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +247,9 @@
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
+				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
+				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
@@ -380,7 +396,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +430,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -9,6 +9,8 @@ import SwiftUI
 import ComposableArchitecture
 
 struct OnboardingView: View {
+    @Bindable var store: StoreOf<Onboarding>
+    
     var body: some View {
         VStack {
             Text("WorkWave와 함께 어디서든 팀을 만들어보세요")
@@ -21,9 +23,12 @@ struct OnboardingView: View {
             Spacer()
             
             CustomButton(title: "시작하기", font: .bodyBold, titleColor: .white, tintColor: .brandGreen) {
-                print("asdf")
+                store.send(.setSheet(isPresented: true))
             }
         }
         .padding()
+        .sheet(isPresented: $store.isSheetPresented.sending(\.setSheet), content: {
+            SignUpView()
+        })
     }
 }
