@@ -13,26 +13,56 @@ struct SignUpView: View {
     
     var body: some View {
         NavigationStack {
-            VStack() {
-                ZStack {
+            ZStack {
+                HStack {
+                    Image(.close)
+                        .asButton {
+                            store.send(.exitButtonTapped)
+                        }
+                    Spacer()
+                }
+                Text("회원가입")
+                    .applyFont(font: .title1)
+            }
+            .padding(.horizontal)
+            .padding(.top, 16)
+            .padding(.bottom, 8)
+            .background(.secondaryBackground)
+            
+            VStack(spacing: 0) {
+                VStack(alignment: .leading) {
+                    Text("이메일")
+                        .applyFont(font: .title2)
                     HStack {
-                        Image(.close)
-                            .asButton {
-                                store.send(.exitButtonTapped)
-                            }
-                        Spacer()
+                        TextField("이메일을 입력하세요", text: $store.email)
+                            .padding(10) // 텍스트 필드 내부 여백
+                            .frame(height: 44)
+                            .background(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .applyFont(font: .bodyRegular)
+                        
+                        CustomButton(title: "중복 확인", font: .title2, titleColor: .white, tintColor: .inactive) {
+                            // 중복확인
+                        }
+                        .frame(width: 100)
                     }
-                    Text("회원가입")
-                        .applyFont(font: .title1)
+                    .frame(maxWidth: .infinity)
                 }
                 .padding()
                 
-                Form {
-                    Text("asdf")
-                }
+                CustomTextField(title: "닉네임", placeholder: "닉네임을 입력하세요", text: $store.nickname)
+                CustomTextField(title: "연락처", placeholder: "전화번호를 입력하세요", text: $store.nickname)
+                CustomTextField(title: "비밀번호", placeholder: "비밀번호를 입력하세요", text: $store.nickname)
+                CustomTextField(title: "비밀번호 확인", placeholder: "비밀번호를 한 번 더 입력하세요", text: $store.nickname)
                 
                 Spacer()
+                
+                CustomButton(title: "가입하기", font: .title2, titleColor: .white, tintColor: .inactive) {
+                    // 가입하기
+                }
+                .padding()
             }
+            .background(.primaryBackground)
         }
     }
 }

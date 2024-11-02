@@ -32,6 +32,5 @@ struct CustomButton: View {
         }
         .buttonStyle(BorderedProminentButtonStyle())
         .tint(tintColor)
-        .padding()
     }
 }

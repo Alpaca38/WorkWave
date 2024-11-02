@@ -26,6 +26,7 @@
 		D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116802CD68512000C1BC3 /* WWTabView.swift */; };
 		D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116822CD685C2000C1BC3 /* SignUp.swift */; };
 		D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */; };
+		D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116872CD69C76000C1BC3 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D1E116802CD68512000C1BC3 /* WWTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWTabView.swift; sourceTree = "<group>"; };
 		D1E116822CD685C2000C1BC3 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
+		D1E116872CD69C76000C1BC3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */,
+				D1E116872CD69C76000C1BC3 /* CustomTextField.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
+				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
