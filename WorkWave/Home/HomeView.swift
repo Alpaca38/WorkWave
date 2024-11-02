@@ -11,8 +11,6 @@ import ComposableArchitecture
 struct HomeView: View {
     
     var body: some View {
-        OnboardingView(store: Store(initialState: Onboarding.State()) {
-            Onboarding()
-        })
+        Text("Home")
     }
 }

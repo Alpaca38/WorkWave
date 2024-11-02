@@ -9,9 +9,30 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpView: View {
+    @Bindable var store: StoreOf<SignUp>
+    
     var body: some View {
         NavigationStack {
-            Text("SignUp")
+            VStack() {
+                ZStack {
+                    HStack {
+                        Image(.close)
+                            .asButton {
+                                store.send(.exitButtonTapped)
+                            }
+                        Spacer()
+                    }
+                    Text("회원가입")
+                        .applyFont(font: .title1)
+                }
+                .padding()
+                
+                Form {
+                    Text("asdf")
+                }
+                
+                Spacer()
+            }
         }
     }
 }
