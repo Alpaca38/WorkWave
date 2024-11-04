@@ -26,8 +26,6 @@ struct SignUp {
         case emailCheckButtonTapped
     }
     
-    @Dependency(\.dismiss) var dismiss
-    
     var body: some Reducer<State, Action> {
         BindingReducer()
         Reduce { state, action in

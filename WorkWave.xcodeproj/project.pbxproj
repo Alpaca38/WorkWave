@@ -28,6 +28,8 @@
 		D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */; };
 		D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116872CD69C76000C1BC3 /* CustomTextField.swift */; };
 		D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116892CD6AE57000C1BC3 /* SheetHeaderView.swift */; };
+		D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1168C2CD84FDD000C1BC3 /* AuthView.swift */; };
+		D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1168E2CD84FFA000C1BC3 /* Auth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,9 @@
 		D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
 		D1E116872CD69C76000C1BC3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D1E116892CD6AE57000C1BC3 /* SheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetHeaderView.swift; sourceTree = "<group>"; };
+		D1E1168C2CD84FDD000C1BC3 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		D1E1168E2CD84FFA000C1BC3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkWave.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,8 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */,
+				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1167F2CD684F6000C1BC3 /* TabView */,
 				D1E116752CD3B424000C1BC3 /* CustomComponents */,
@@ -197,6 +204,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		D1E1168B2CD84FD7000C1BC3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D1E1168C2CD84FDD000C1BC3 /* AuthView.swift */,
+				D1E1168E2CD84FFA000C1BC3 /* Auth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -279,9 +295,11 @@
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
+				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
+				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
@@ -421,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WorkWave/WorkWave.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WorkWave/Preview Content\"";
@@ -455,6 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WorkWave/WorkWave.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WorkWave/Preview Content\"";

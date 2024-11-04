@@ -28,11 +28,13 @@ struct OnboardingView: View {
                 }
             }
             .padding()
+            .background(.primaryBackground)
             .sheet(isPresented: $store.isSheetPresented.sending(\.setSheet)) {
-                if let store = store.scope(state: \.optionalSignUp, action: \.optionalSignUp) {
-                    SignUpView(store: store)
-                        .presentationDragIndicator(.visible)
-                }
+                AuthView(store: Store(initialState: Auth.State()) {
+                    Auth()
+                })
+                .presentationDragIndicator(.visible)
+                .presentationDetents([.fraction(0.3)])
             }
         }
     }
