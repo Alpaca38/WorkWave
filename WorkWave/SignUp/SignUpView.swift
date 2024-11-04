@@ -22,10 +22,11 @@ struct SignUpView: View {
                 
                 Spacer()
                 
-                CustomButton(title: "가입하기", font: .title2, titleColor: .white, tintColor: .inactive) {
+                CustomButton(title: "가입하기", font: .title2, titleColor: .white, tintColor: store.signupButtonValid ? .brandGreen : .inactive) {
                     store.send(.signupButtonTapped)
                 }
                 .padding()
+                .disabled(!store.signupButtonValid)
             }
             .background(.primaryBackground)
         }
@@ -38,9 +39,13 @@ struct SignUpView: View {
                 .padding()
                 
                 CustomTextField(title: "닉네임", placeholder: "닉네임을 입력하세요", text: $store.nickname)
-                CustomTextField(title: "연락처", placeholder: "전화번호를 입력하세요", text: $store.nickname)
-                CustomTextField(title: "비밀번호", placeholder: "비밀번호를 입력하세요", text: $store.nickname)
-                CustomTextField(title: "비밀번호 확인", placeholder: "비밀번호를 한 번 더 입력하세요", text: $store.nickname)
+                    .foregroundStyle(store.invalidFieldTitles.contains("닉네임") ? .red : .black)
+                CustomTextField(title: "연락처", placeholder: "전화번호를 입력하세요", text: $store.phone)
+                    .foregroundStyle(store.invalidFieldTitles.contains("연락처") ? .red : .black)
+                CustomTextField(title: "비밀번호", placeholder: "비밀번호를 입력하세요", text: $store.password)
+                    .foregroundStyle(store.invalidFieldTitles.contains("비밀번호") ? .red : .black)
+                CustomTextField(title: "비밀번호 확인", placeholder: "비밀번호를 한 번 더 입력하세요", text: $store.confirmPassword)
+                    .foregroundStyle(store.invalidFieldTitles.contains("비밀번호 확인") ? .red : .black)
             }
         }
     }
@@ -49,6 +54,7 @@ struct SignUpView: View {
         VStack(alignment: .leading) {
             Text("이메일")
                 .applyFont(font: .title2)
+                .foregroundStyle(store.invalidFieldTitles.contains("이메일") ? .red : .black)
             HStack {
                 TextField("이메일을 입력하세요", text: $store.email)
                     .padding(10) // 텍스트 필드 내부 여백
@@ -57,10 +63,11 @@ struct SignUpView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .applyFont(font: .bodyRegular)
                 
-                CustomButton(title: "중복 확인", font: .title2, titleColor: .white, tintColor: .inactive) {
-                    store.send(.exitButtonTapped)
+                CustomButton(title: "중복 확인", font: .title2, titleColor: .white, tintColor: store.email.isEmpty ? .inactive : .brandGreen) {
+                    store.send(.emailCheckButtonTapped)
                 }
                 .frame(width: 100)
+                .disabled(store.email.isEmpty)
             }
             .frame(maxWidth: .infinity)
         }
