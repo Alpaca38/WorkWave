@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct SignUpView: View {
     @Bindable var store: StoreOf<SignUp>
+    @FocusState var focusedField: SignUp.State.Field?
     
     var body: some View {
         NavigationStack {
@@ -29,6 +30,7 @@ struct SignUpView: View {
                 .disabled(!store.signupButtonValid)
             }
             .background(.primaryBackground)
+            .bind($store.focusedField, to: $focusedField)
         }
     }
     
@@ -40,12 +42,19 @@ struct SignUpView: View {
                 
                 CustomTextField(title: "닉네임", placeholder: "닉네임을 입력하세요", text: $store.nickname)
                     .foregroundStyle(store.invalidFieldTitles.contains("닉네임") ? .red : .black)
+                    .focused($focusedField, equals: .nickname)
+                
                 CustomTextField(title: "연락처", placeholder: "전화번호를 입력하세요", text: $store.phone)
                     .foregroundStyle(store.invalidFieldTitles.contains("연락처") ? .red : .black)
+                    .focused($focusedField, equals: .phone)
+                
                 CustomTextField(title: "비밀번호", placeholder: "비밀번호를 입력하세요", text: $store.password)
                     .foregroundStyle(store.invalidFieldTitles.contains("비밀번호") ? .red : .black)
+                    .focused($focusedField, equals: .password)
+                
                 CustomTextField(title: "비밀번호 확인", placeholder: "비밀번호를 한 번 더 입력하세요", text: $store.confirmPassword)
                     .foregroundStyle(store.invalidFieldTitles.contains("비밀번호 확인") ? .red : .black)
+                    .focused($focusedField, equals: .confirmpassword)
             }
         }
     }
@@ -62,6 +71,7 @@ struct SignUpView: View {
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .applyFont(font: .bodyRegular)
+                    .focused($focusedField, equals: .email)
                 
                 CustomButton(title: "중복 확인", font: .title2, titleColor: .white, tintColor: store.email.isEmpty ? .inactive : .brandGreen) {
                     store.send(.emailCheckButtonTapped)

@@ -17,13 +17,20 @@ struct SignUp {
         var phone = ""
         var password = ""
         var confirmPassword = ""
+        
         var isEmailValid = false
         var isNicknameValid = false
         var isPhoneValid = false
         var isPasswordValid = false
         var isEmailDuplicateValid = false
         var signupButtonValid = false
+        
         var invalidFieldTitles: Set<String> = []
+        var focusedField: Field?
+        
+        enum Field: Hashable {
+            case email, nickname, phone, password, confirmpassword
+        }
     }
     
     enum Action: BindableAction {
@@ -49,6 +56,7 @@ struct SignUp {
             case .exitButtonTapped:
                 return .none
             case .signupButtonTapped:
+                // validation update
                 state.isEmailValid = isValidEmail(state.email)
                 state.isNicknameValid = isValidNickname(state.nickname)
                 
@@ -56,7 +64,21 @@ struct SignUp {
                 state.isPhoneValid = isValidPhone(cleanedPhone)
                 state.isPasswordValid = isValidPassword(state.password)
                 
+                // invalidFieldTitles update
                 state.invalidFieldTitles = getInvalidFieldTitles(state)
+                
+                // focus update
+                if !state.isEmailValid {
+                    state.focusedField = .email
+                } else if !state.isNicknameValid {
+                    state.focusedField = .nickname
+                } else if !state.isPhoneValid {
+                    state.focusedField = .phone
+                } else if !state.isPasswordValid {
+                    state.focusedField = .password
+                } else {
+                    state.focusedField = .confirmpassword
+                }
                 return .none
             case .emailCheckButtonTapped:
                 return .none
@@ -93,7 +115,7 @@ private extension SignUp {
         return !state.email.isEmpty && !state.nickname.isEmpty && !state.password.isEmpty && !state.confirmPassword.isEmpty
     }
     
-    private func getInvalidFieldTitles(_ state: State) -> Set<String> {
+    func getInvalidFieldTitles(_ state: State) -> Set<String> {
         var invalidFieldTitles: Set<String> = [] // 초기화
         if !state.isEmailValid {
             invalidFieldTitles.insert("이메일")
@@ -101,7 +123,7 @@ private extension SignUp {
         if !state.isNicknameValid {
             invalidFieldTitles.insert("닉네임")
         }
-        if state.phone.isEmpty || !state.isPhoneValid {
+        if !state.isPhoneValid {
             invalidFieldTitles.insert("연락처")
         }
         if !state.isPasswordValid {
