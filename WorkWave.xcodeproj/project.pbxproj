@@ -30,6 +30,16 @@
 		D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116892CD6AE57000C1BC3 /* SheetHeaderView.swift */; };
 		D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1168C2CD84FDD000C1BC3 /* AuthView.swift */; };
 		D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1168E2CD84FFA000C1BC3 /* Auth.swift */; };
+		D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116922CD9C2A5000C1BC3 /* UserClient.swift */; };
+		D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116952CD9C314000C1BC3 /* ValidationEmailRequest.swift */; };
+		D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116972CD9C345000C1BC3 /* APIKey.swift */; };
+		D1E1169B2CD9D90A000C1BC3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D1E1169A2CD9D90A000C1BC3 /* Alamofire */; };
+		D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1169C2CD9D928000C1BC3 /* TargetType.swift */; };
+		D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1169E2CD9DA92000C1BC3 /* Header.swift */; };
+		D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A22CD9DBCA000C1BC3 /* UserRouter.swift */; };
+		D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A42CD9DE3E000C1BC3 /* NetworkManager.swift */; };
+		D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */; };
+		D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +67,16 @@
 		D1E1168C2CD84FDD000C1BC3 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		D1E1168E2CD84FFA000C1BC3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorkWave.entitlements; sourceTree = "<group>"; };
+		D1E116922CD9C2A5000C1BC3 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		D1E116952CD9C314000C1BC3 /* ValidationEmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationEmailRequest.swift; sourceTree = "<group>"; };
+		D1E116972CD9C345000C1BC3 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		D1E1169C2CD9D928000C1BC3 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		D1E1169E2CD9DA92000C1BC3 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		D1E116A22CD9DBCA000C1BC3 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		D1E116A42CD9DE3E000C1BC3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkManager.swift; sourceTree = "<group>"; };
+		D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		D1E116AA2CDB8E7B000C1BC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */,
+				D1E1169B2CD9D90A000C1BC3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,9 +112,11 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116AA2CDB8E7B000C1BC3 /* Info.plist */,
 				D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */,
 				D1E116752CD3B424000C1BC3 /* CustomComponents */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
+				D1E116912CD9C28A000C1BC3 /* Dependencies */,
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
@@ -106,6 +129,7 @@
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
 				D1E116502CD39B04000C1BC3 /* ContentView.swift */,
 				D1E116542CD39B05000C1BC3 /* Preview Content */,
+				D1E116972CD9C345000C1BC3 /* APIKey.swift */,
 			);
 			path = WorkWave;
 			sourceTree = "<group>";
@@ -181,6 +205,7 @@
 		D1E1167A2CD66D5F000C1BC3 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116942CD9C2DC000C1BC3 /* RequestModel */,
 				D1E1167D2CD67219000C1BC3 /* SignUpView.swift */,
 				D1E116822CD685C2000C1BC3 /* SignUp.swift */,
 			);
@@ -213,6 +238,44 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		D1E116912CD9C28A000C1BC3 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116A12CD9DBB7000C1BC3 /* User */,
+				D1E116A02CD9DAB0000C1BC3 /* Network */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		D1E116942CD9C2DC000C1BC3 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116952CD9C314000C1BC3 /* ValidationEmailRequest.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		D1E116A02CD9DAB0000C1BC3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D1E1169C2CD9D928000C1BC3 /* TargetType.swift */,
+				D1E1169E2CD9DA92000C1BC3 /* Header.swift */,
+				D1E116A42CD9DE3E000C1BC3 /* NetworkManager.swift */,
+				D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */,
+				D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D1E116A12CD9DBB7000C1BC3 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116922CD9C2A5000C1BC3 /* UserClient.swift */,
+				D1E116A22CD9DBCA000C1BC3 /* UserRouter.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,6 +294,7 @@
 			name = WorkWave;
 			packageProductDependencies = (
 				D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */,
+				D1E1169A2CD9D90A000C1BC3 /* Alamofire */,
 			);
 			productName = WorkWave;
 			productReference = D1E1164B2CD39B04000C1BC3 /* WorkWave.app */;
@@ -262,6 +326,7 @@
 			mainGroup = D1E116422CD39B04000C1BC3;
 			packageReferences = (
 				D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = D1E1164C2CD39B04000C1BC3 /* Products */;
 			projectDirPath = "";
@@ -292,10 +357,13 @@
 			files = (
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
+				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
+				D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
+				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
@@ -303,12 +371,18 @@
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
+				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
+				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
+				D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */,
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
+				D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
+				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
+				D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +520,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkWave/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -481,6 +556,7 @@
 				DEVELOPMENT_TEAM = 3R8ZWR4KRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkWave/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -536,6 +612,14 @@
 				minimumVersion = 1.15.2;
 			};
 		};
+		D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -543,6 +627,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		D1E1169A2CD9D90A000C1BC3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

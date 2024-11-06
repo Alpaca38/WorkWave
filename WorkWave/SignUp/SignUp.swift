@@ -17,6 +17,7 @@ struct SignUp {
         var phone = ""
         var password = ""
         var confirmPassword = ""
+        var toastMessage = ""
         
         var isEmailValid = false
         var isNicknameValid = false
@@ -39,9 +40,12 @@ struct SignUp {
         case signupButtonTapped
         case emailCheckButtonTapped
         case formatPhoneNumber(String)
+        case emailCheckResponse(Result<Void, ErrorResponse>)
     }
     
-    var body: some Reducer<State, Action> {
+    @Dependency(\.userClient) var userClient
+    
+    var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {
@@ -81,9 +85,33 @@ struct SignUp {
                 }
                 return .none
             case .emailCheckButtonTapped:
-                return .none
+                let request = ValidationEmailRequest(email: state.email)
+                return .run { send in
+                    do {
+                        try await userClient.checkEmailValid(request)
+                        await send(.emailCheckResponse(.success(())))
+                    } catch let error as ErrorResponse {
+                        await send(.emailCheckResponse(.failure(error)))
+                    } catch {
+                        throw error
+                    }
+                }
             case let .formatPhoneNumber(phone):
                 state.phone = formatPhoneNumber(phone)
+                return .none
+            case .emailCheckResponse(.success):
+                state.toastMessage = "사용 가능한 이메일입니다."
+                state.isEmailDuplicateValid = true
+                return .none
+            case let .emailCheckResponse(.failure(error)):
+                switch error.errorCode {
+                case "E11":
+                    state.toastMessage = "이메일 형식이 올바르지 않습니다."
+                case "E12":
+                    state.toastMessage = "중복된 이메일입니다."
+                default:
+                    state.toastMessage = "이메일 확인 중 오류가 발생했습니다."
+                }
                 return .none
             }
         }
