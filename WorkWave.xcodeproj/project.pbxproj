@@ -116,7 +116,7 @@
 				D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */,
 				D1E116752CD3B424000C1BC3 /* CustomComponents */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
-				D1E116912CD9C28A000C1BC3 /* Dependencies */,
+				D1E116912CD9C28A000C1BC3 /* Dependency */,
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
@@ -238,13 +238,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		D1E116912CD9C28A000C1BC3 /* Dependencies */ = {
+		D1E116912CD9C28A000C1BC3 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
 				D1E116A12CD9DBB7000C1BC3 /* User */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
 			);
-			path = Dependencies;
+			path = Dependency;
 			sourceTree = "<group>";
 		};
 		D1E116942CD9C2DC000C1BC3 /* RequestModel */ = {
