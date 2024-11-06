@@ -40,6 +40,7 @@
 		D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A42CD9DE3E000C1BC3 /* NetworkManager.swift */; };
 		D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */; };
 		D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */; };
+		D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkManager.swift; sourceTree = "<group>"; };
 		D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		D1E116AA2CDB8E7B000C1BC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */,
 				D1E116872CD69C76000C1BC3 /* CustomTextField.swift */,
 				D1E116892CD6AE57000C1BC3 /* SheetHeaderView.swift */,
+				D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
+				D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,

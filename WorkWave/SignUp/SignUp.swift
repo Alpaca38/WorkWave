@@ -18,6 +18,7 @@ struct SignUp {
         var password = ""
         var confirmPassword = ""
         var toastMessage = ""
+        var isToastPresented = false
         
         var isEmailValid = false
         var isNicknameValid = false
@@ -102,6 +103,7 @@ struct SignUp {
             case .emailCheckResponse(.success):
                 state.toastMessage = "사용 가능한 이메일입니다."
                 state.isEmailDuplicateValid = true
+                state.isToastPresented = true
                 return .none
             case let .emailCheckResponse(.failure(error)):
                 switch error.errorCode {
@@ -112,6 +114,8 @@ struct SignUp {
                 default:
                     state.toastMessage = "이메일 확인 중 오류가 발생했습니다."
                 }
+                state.isEmailDuplicateValid = false
+                state.isToastPresented = true
                 return .none
             }
         }
