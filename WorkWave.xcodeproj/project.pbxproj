@@ -41,6 +41,12 @@
 		D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */; };
 		D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */; };
 		D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */; };
+		D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116AD2CDC7D11000C1BC3 /* SignupRequest.swift */; };
+		D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116B02CDC7FA4000C1BC3 /* SignupDTO.swift */; };
+		D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */; };
+		D1E116B52CDCA329000C1BC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */; };
+		D1E116B82CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D1E116B72CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		D1E116BA2CDCA59E000C1BC3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +85,10 @@
 		D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		D1E116AA2CDB8E7B000C1BC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		D1E116AD2CDC7D11000C1BC3 /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		D1E116B02CDC7FA4000C1BC3 /* SignupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
+		D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppDelegate.swift; sourceTree = "<group>"; };
+		D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +96,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E116BA2CDCA59E000C1BC3 /* FirebaseMessaging in Frameworks */,
 				D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */,
+				D1E116B82CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				D1E1169B2CD9D90A000C1BC3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +126,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */,
 				D1E116AA2CDB8E7B000C1BC3 /* Info.plist */,
 				D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */,
 				D1E116752CD3B424000C1BC3 /* CustomComponents */,
@@ -130,6 +143,7 @@
 				D1E1166E2CD3AF78000C1BC3 /* Setting */,
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
 				D1E116502CD39B04000C1BC3 /* ContentView.swift */,
+				D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */,
 				D1E116542CD39B05000C1BC3 /* Preview Content */,
 				D1E116972CD9C345000C1BC3 /* APIKey.swift */,
 			);
@@ -208,6 +222,7 @@
 		D1E1167A2CD66D5F000C1BC3 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116AF2CDC7F96000C1BC3 /* ResponseModel */,
 				D1E116942CD9C2DC000C1BC3 /* RequestModel */,
 				D1E1167D2CD67219000C1BC3 /* SignUpView.swift */,
 				D1E116822CD685C2000C1BC3 /* SignUp.swift */,
@@ -254,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E116952CD9C314000C1BC3 /* ValidationEmailRequest.swift */,
+				D1E116AD2CDC7D11000C1BC3 /* SignupRequest.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -279,6 +295,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		D1E116AF2CDC7F96000C1BC3 /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116B02CDC7FA4000C1BC3 /* SignupDTO.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +322,8 @@
 			packageProductDependencies = (
 				D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */,
 				D1E1169A2CD9D90A000C1BC3 /* Alamofire */,
+				D1E116B72CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */,
 			);
 			productName = WorkWave;
 			productReference = D1E1164B2CD39B04000C1BC3 /* WorkWave.app */;
@@ -330,6 +356,7 @@
 			packageReferences = (
 				D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D1E1164C2CD39B04000C1BC3 /* Products */;
 			projectDirPath = "";
@@ -346,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E116562CD39B05000C1BC3 /* Preview Assets.xcassets in Resources */,
+				D1E116B52CDCA329000C1BC3 /* GoogleService-Info.plist in Resources */,
 				D1E1165D2CD39B58000C1BC3 /* .gitignore in Resources */,
 				D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */,
 			);
@@ -361,12 +389,15 @@
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
+				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
+				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
+				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
@@ -624,6 +655,14 @@
 				minimumVersion = 5.10.1;
 			};
 		};
+		D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -636,6 +675,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		D1E116B72CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

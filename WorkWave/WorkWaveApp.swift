@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct WorkWaveApp: App {
+    @UIApplicationDelegateAdaptor(CustomAppDelegate.self) private var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

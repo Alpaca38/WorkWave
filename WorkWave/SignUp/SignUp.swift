@@ -42,6 +42,7 @@ struct SignUp {
         case formatPhoneNumber(String)
         case emailCheckResponse(Result<Void, ErrorResponse>)
         case emailInvalidResponse
+        case signupResponse(Result<SignupDTO, ErrorResponse>)
     }
     
     @Dependency(\.userClient) var userClient
@@ -73,18 +74,34 @@ struct SignUp {
                 state.invalidFieldTitles = getInvalidFieldTitles(state)
                 
                 // focus update
-                if !state.isEmailValid {
+                if !state.isEmailDuplicateValid {
+                    state.toast = ToastState(toastMessage: "이메일 중복 확인을 진행해주세요.", isToastPresented: true)
+                } else if !state.isEmailValid {
                     state.focusedField = .email
                 } else if !state.isNicknameValid {
                     state.focusedField = .nickname
+                    state.toast = ToastState(toastMessage: "닉네임은 1글자 이상 30글자 이내로 부탁드려요.", isToastPresented: true)
                 } else if !state.isPhoneValid {
                     state.focusedField = .phone
+                    state.toast = ToastState(toastMessage: "잘못된 전화번호 형식입니다.", isToastPresented: true)
                 } else if !state.isPasswordValid {
                     state.focusedField = .password
+                    state.toast = ToastState(toastMessage: "비밀번호는 최소 8자 이상, 하나 이상의 대소문자/숫자/특수 문자를 설정해주세요.", isToastPresented: true)
                 } else {
                     state.focusedField = .confirmpassword
+                    state.toast = ToastState(toastMessage: "작성하신 비밀번호가 일치하지 않습니다.", isToastPresented: true)
                 }
-                return .none
+                
+                let request = SignupRequest(email: state.email, password: state.password, nickname: state.nickname, phone: state.phone, deviceToken: "")
+                return .run { send in
+                    do {
+                        await send(.signupResponse(.success(try await userClient.signup(request))))
+                    } catch let error as ErrorResponse {
+                        await send(.signupResponse(.failure(error)))
+                    } catch {
+                        throw error
+                    }
+                }
             case .emailCheckButtonTapped:
                 let request = ValidationEmailRequest(email: state.email)
                 return .run { [valid = state.isEmailValid] send in
@@ -120,6 +137,12 @@ struct SignUp {
                 return .none
             case .emailInvalidResponse:
                 state.toast = ToastState(toastMessage: "이메일 형식이 올바르지 않습니다.", isToastPresented: true)
+                return .none
+            case let .signupResponse(.success(success)):
+                print("**", success)
+                return .none
+            case let .signupResponse(.failure(error)):
+                print("*", error)
                 return .none
             }
         }

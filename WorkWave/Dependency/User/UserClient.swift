@@ -11,6 +11,7 @@ import ComposableArchitecture
 @DependencyClient
 struct UserClient {
     var checkEmailValid: @Sendable (ValidationEmailRequest) async throws -> Void
+    var signup: @Sendable (SignupRequest) async throws -> SignupDTO
 }
 
 extension UserClient: DependencyKey {
@@ -19,6 +20,13 @@ extension UserClient: DependencyKey {
         checkEmailValid: { request in
             do {
                 let _ = try await DefaultNetworkManager.shared.fetchVoid(api: UserRouter.checkEmailValid(query: request))
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        },
+        signup: { request in
+            do {
+                return try await DefaultNetworkManager.shared.fetch(api: UserRouter.signup(query: request), responseType: SignupDTO.self)
             } catch let error as ErrorResponse {
                 throw error
             }
