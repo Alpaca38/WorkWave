@@ -10,13 +10,14 @@ import ComposableArchitecture
 
 @DependencyClient
 struct UserClient {
+    var networkManager: NetworkManager
     var checkEmailValid: @Sendable (ValidationEmailRequest) async throws -> Void
     var signup: @Sendable (SignupRequest) async throws -> SignupDTO
 }
 
 extension UserClient: DependencyKey {
-    
     static let liveValue = Self(
+        networkManager: DefaultNetworkManager.shared,
         checkEmailValid: { request in
             do {
                 let _ = try await DefaultNetworkManager.shared.fetchVoid(api: UserRouter.checkEmailValid(query: request))
