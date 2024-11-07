@@ -41,6 +41,7 @@ struct SignUp {
         case emailCheckButtonTapped
         case formatPhoneNumber(String)
         case emailCheckResponse(Result<Void, ErrorResponse>)
+        case emailInvalidResponse
     }
     
     @Dependency(\.userClient) var userClient
@@ -86,8 +87,11 @@ struct SignUp {
                 return .none
             case .emailCheckButtonTapped:
                 let request = ValidationEmailRequest(email: state.email)
-                return .run { send in
+                return .run { [valid = state.isEmailValid] send in
                     do {
+                        guard valid else {
+                            return await send(.emailInvalidResponse)
+                        }
                         try await userClient.checkEmailValid(request)
                         await send(.emailCheckResponse(.success(())))
                     } catch let error as ErrorResponse {
@@ -113,6 +117,9 @@ struct SignUp {
                     state.toast = ToastState(toastMessage: "이메일 확인 중 오류가 발생했습니다.", isToastPresented: true)
                 }
                 state.isEmailDuplicateValid = false
+                return .none
+            case .emailInvalidResponse:
+                state.toast = ToastState(toastMessage: "이메일 형식이 올바르지 않습니다.", isToastPresented: true)
                 return .none
             }
         }
