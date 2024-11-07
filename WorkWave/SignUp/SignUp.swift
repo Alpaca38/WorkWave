@@ -10,6 +10,9 @@ import ComposableArchitecture
 
 @Reducer
 struct SignUp {
+    let jwtKeyChain: JWTKeyChainProtocol
+    let deviceTokenKeyChain: DeviceTokenKeyChainProtocol
+    
     @ObservableState
     struct State: Equatable {
         var email = ""
@@ -92,12 +95,12 @@ struct SignUp {
                     state.focusedField = .password
                     state.toast = ToastState(toastMessage: "비밀번호는 최소 8자 이상, 하나 이상의 대소문자/숫자/특수 문자를 설정해주세요.", isToastPresented: true)
                     return .none
-                } else if state.password == state.confirmPassword {
+                } else if state.password != state.confirmPassword {
                     state.focusedField = .confirmpassword
                     state.toast = ToastState(toastMessage: "작성하신 비밀번호가 일치하지 않습니다.", isToastPresented: true)
                     return .none
                 } else {
-                    let request = SignupRequest(email: state.email, password: state.password, nickname: state.nickname, phone: state.phone, deviceToken: "")
+                    let request = SignupRequest(email: state.email, password: state.password, nickname: state.nickname, phone: state.phone, deviceToken: deviceTokenKeyChain.deviceToken ?? "")
                     return .run { send in
                         do {
                             await send(.signupResponse(.success(try await userClient.signup(request))))
@@ -111,6 +114,7 @@ struct SignUp {
                 
                 
             case .emailCheckButtonTapped:
+                state.isEmailValid = isValidEmail(state.email)
                 let request = ValidationEmailRequest(email: state.email)
                 return .run { [valid = state.isEmailValid] send in
                     do {

@@ -12,6 +12,8 @@ import FirebaseMessaging
 
 class CustomAppDelegate: NSObject, UIApplicationDelegate, ObservableObject {
     
+    var deviceKeyChain: DeviceTokenKeyChainProtocol?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
@@ -57,6 +59,7 @@ extension CustomAppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // 토큰 갱신 모니터링
         print("Firebase registration token: \(String(describing: fcmToken))")
+        deviceKeyChain?.deviceToken = fcmToken
         
         let dataDict: [String: String] = ["token": fcmToken ?? ""]
         NotificationCenter.default.post(

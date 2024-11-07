@@ -47,6 +47,11 @@
 		D1E116B52CDCA329000C1BC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */; };
 		D1E116B82CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = D1E116B72CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		D1E116BA2CDCA59E000C1BC3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */; };
+		D1E116BD2CDCEC9D000C1BC3 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = D1E116BC2CDCEC9D000C1BC3 /* KeychainAccess */; };
+		D1E116C02CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116BF2CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift */; };
+		D1E116C22CDCEEA3000C1BC3 /* JWTKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C12CDCEEA3000C1BC3 /* JWTKeyChain.swift */; };
+		D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C52CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift */; };
+		D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +94,10 @@
 		D1E116B02CDC7FA4000C1BC3 /* SignupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
 		D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppDelegate.swift; sourceTree = "<group>"; };
 		D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1E116BF2CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTKeyChainProtocol.swift; sourceTree = "<group>"; };
+		D1E116C12CDCEEA3000C1BC3 /* JWTKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTKeyChain.swift; sourceTree = "<group>"; };
+		D1E116C52CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenKeyChain.swift; sourceTree = "<group>"; };
+		D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenKeyChainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +109,7 @@
 				D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */,
 				D1E116B82CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				D1E1169B2CD9D90A000C1BC3 /* Alamofire in Frameworks */,
+				D1E116BD2CDCEC9D000C1BC3 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E116A12CD9DBB7000C1BC3 /* User */,
+				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
 			);
 			path = Dependency;
@@ -303,6 +314,17 @@
 			path = ResponseModel;
 			sourceTree = "<group>";
 		};
+		D1E116BE2CDCED2C000C1BC3 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116BF2CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift */,
+				D1E116C12CDCEEA3000C1BC3 /* JWTKeyChain.swift */,
+				D1E116C52CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift */,
+				D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,6 +346,7 @@
 				D1E1169A2CD9D90A000C1BC3 /* Alamofire */,
 				D1E116B72CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */,
+				D1E116BC2CDCEC9D000C1BC3 /* KeychainAccess */,
 			);
 			productName = WorkWave;
 			productReference = D1E1164B2CD39B04000C1BC3 /* WorkWave.app */;
@@ -357,6 +380,7 @@
 				D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				D1E116992CD9D90A000C1BC3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D1E116BB2CDCEC9D000C1BC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = D1E1164C2CD39B04000C1BC3 /* Products */;
 			projectDirPath = "";
@@ -390,6 +414,9 @@
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
 				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
+				D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */,
+				D1E116C02CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift in Sources */,
+				D1E116C22CDCEEA3000C1BC3 /* JWTKeyChain.swift in Sources */,
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */,
@@ -416,6 +443,7 @@
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
+				D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */,
 				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
 				D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */,
 			);
@@ -663,6 +691,14 @@
 				minimumVersion = 11.4.0;
 			};
 		};
+		D1E116BB2CDCEC9D000C1BC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -685,6 +721,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		D1E116BC2CDCEC9D000C1BC3 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E116BB2CDCEC9D000C1BC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

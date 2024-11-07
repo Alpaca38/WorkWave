@@ -14,6 +14,9 @@ struct WorkWaveApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    appDelegate.deviceKeyChain = DeviceTokenKeyChain()
+                }
         }
     }
 }
