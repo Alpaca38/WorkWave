@@ -31,7 +31,7 @@ struct SignUpView: View {
             }
             .background(.primaryBackground)
             .bind($store.focusedField, to: $focusedField)
-            .toast(message: store.toastMessage, isPresented: $store.isToastPresented)
+            .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
         }
     }
     

@@ -17,8 +17,7 @@ struct SignUp {
         var phone = ""
         var password = ""
         var confirmPassword = ""
-        var toastMessage = ""
-        var isToastPresented = false
+        var toast: ToastState = ToastState(toastMessage: "", isToastPresented: false)
         
         var isEmailValid = false
         var isNicknameValid = false
@@ -101,24 +100,29 @@ struct SignUp {
                 state.phone = formatPhoneNumber(phone)
                 return .none
             case .emailCheckResponse(.success):
-                state.toastMessage = "사용 가능한 이메일입니다."
+                state.toast = ToastState(toastMessage: "사용 가능한 이메일입니다.", isToastPresented: true)
                 state.isEmailDuplicateValid = true
-                state.isToastPresented = true
                 return .none
             case let .emailCheckResponse(.failure(error)):
                 switch error.errorCode {
                 case "E11":
-                    state.toastMessage = "이메일 형식이 올바르지 않습니다."
+                    state.toast = ToastState(toastMessage: "이메일 형식이 올바르지 않습니다.", isToastPresented: true)
                 case "E12":
-                    state.toastMessage = "중복된 이메일입니다."
+                    state.toast = ToastState(toastMessage: "중복된 이메일입니다.", isToastPresented: true)
                 default:
-                    state.toastMessage = "이메일 확인 중 오류가 발생했습니다."
+                    state.toast = ToastState(toastMessage: "이메일 확인 중 오류가 발생했습니다.", isToastPresented: true)
                 }
                 state.isEmailDuplicateValid = false
-                state.isToastPresented = true
                 return .none
             }
         }
+    }
+}
+
+extension SignUp {
+    struct ToastState: Equatable {
+        var toastMessage: String
+        var isToastPresented: Bool
     }
 }
 
