@@ -16,6 +16,7 @@ struct OnboardingView: View {
             VStack {
                 Text("WorkWave와 함께 어디서든 팀을 만들어보세요")
                     .applyFont(font: .title1)
+                    .multilineTextAlignment(.center)
                 
                 Spacer()
                 

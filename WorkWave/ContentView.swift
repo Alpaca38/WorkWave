@@ -10,8 +10,11 @@ import ComposableArchitecture
 
 struct ContentView: View {
     var body: some View {
-        OnboardingView(store: Store(initialState: Onboarding.State()) {
-            Onboarding()
+//        OnboardingView(store: Store(initialState: Onboarding.State()) {
+//            Onboarding()
+//        })
+        WorkspaceInitialView(store: Store(initialState: WorkspaceInitial.State()) {
+            WorkspaceInitial()
         })
     }
 }

@@ -18,7 +18,9 @@ final class DefaultNetworkManager: NetworkManager {
         }
         
         return try await withCheckedThrowingContinuation { continuation in
-            request.responseDecodable(of: responseType) { response in
+            request
+                .validate(statusCode: 200...200)
+                .responseDecodable(of: responseType) { response in
                 switch response.result {
                 case .success(let data):
                     continuation.resume(returning: data)

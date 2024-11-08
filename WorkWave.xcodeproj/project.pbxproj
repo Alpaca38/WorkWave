@@ -52,6 +52,8 @@
 		D1E116C22CDCEEA3000C1BC3 /* JWTKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C12CDCEEA3000C1BC3 /* JWTKeyChain.swift */; };
 		D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C52CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift */; };
 		D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */; };
+		D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116CA2CDE581E000C1BC3 /* WorkspaceInitialView.swift */; };
+		D1E116CE2CDE58AD000C1BC3 /* WorkspaceInitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		D1E116C12CDCEEA3000C1BC3 /* JWTKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTKeyChain.swift; sourceTree = "<group>"; };
 		D1E116C52CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenKeyChain.swift; sourceTree = "<group>"; };
 		D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenKeyChainProtocol.swift; sourceTree = "<group>"; };
+		D1E116CA2CDE581E000C1BC3 /* WorkspaceInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceInitialView.swift; sourceTree = "<group>"; };
+		D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceInitial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +149,8 @@
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
-				D1E1167F2CD684F6000C1BC3 /* TabView */,
 				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
-				D1E116612CD3A495000C1BC3 /* Home */,
-				D1E1166A2CD3AE90000C1BC3 /* DM */,
-				D1E1166D2CD3AF67000C1BC3 /* Search */,
-				D1E1166E2CD3AF78000C1BC3 /* Setting */,
+				D1E116C92CDE5750000C1BC3 /* WorkSpace */,
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
 				D1E116502CD39B04000C1BC3 /* ContentView.swift */,
 				D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */,
@@ -244,6 +244,10 @@
 			isa = PBXGroup;
 			children = (
 				D1E116802CD68512000C1BC3 /* WWTabView.swift */,
+				D1E116612CD3A495000C1BC3 /* Home */,
+				D1E1166A2CD3AE90000C1BC3 /* DM */,
+				D1E1166D2CD3AF67000C1BC3 /* Search */,
+				D1E1166E2CD3AF78000C1BC3 /* Setting */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -323,6 +327,24 @@
 				D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */,
 			);
 			path = KeyChain;
+			sourceTree = "<group>";
+		};
+		D1E116C92CDE5750000C1BC3 /* WorkSpace */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116CC2CDE5889000C1BC3 /* Initial */,
+				D1E1167F2CD684F6000C1BC3 /* TabView */,
+			);
+			path = WorkSpace;
+			sourceTree = "<group>";
+		};
+		D1E116CC2CDE5889000C1BC3 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116CA2CDE581E000C1BC3 /* WorkspaceInitialView.swift */,
+				D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */,
+			);
+			path = Initial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +451,7 @@
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
+				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
@@ -445,6 +468,7 @@
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
 				D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */,
 				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
+				D1E116CE2CDE58AD000C1BC3 /* WorkspaceInitial.swift in Sources */,
 				D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
