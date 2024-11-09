@@ -12,10 +12,11 @@ import ComposableArchitecture
 struct WorkspaceInitial {
     @ObservableState
     struct State: Equatable {
-        
+        var isSheetPresented = false
     }
     
     enum Action {
         case exitButtonTapped
+        case addWorkspaceButtonTapped
     }
 }
