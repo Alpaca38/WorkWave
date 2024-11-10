@@ -152,9 +152,17 @@ struct SignUp {
                 return .none
             case let .signupResponse(.success(success)):
                 print("**", success)
+                // workspaceview로 이동 닉네임 저장?
                 return .none
             case let .signupResponse(.failure(error)):
-                print("*", error)
+                switch error.errorCode {
+                case "E11":
+                    state.toast = ToastState(toastMessage: "이메일 형식이 올바르지 않습니다.", isToastPresented: true)
+                case "E12":
+                    state.toast = ToastState(toastMessage: "이미 가입된 회원입니다. 로그인을 진행해주세요.", isToastPresented: true)
+                default:
+                    state.toast = ToastState(toastMessage: "에러가 발생했어요. 잠시 후 다시 시도해주세요.", isToastPresented: true)
+                }
                 return .none
             }
         }
