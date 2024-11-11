@@ -54,6 +54,9 @@
 		D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */; };
 		D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116CA2CDE581E000C1BC3 /* WorkspaceInitialView.swift */; };
 		D1E116CE2CDE58AD000C1BC3 /* WorkspaceInitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */; };
+		D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D02CE2515F000C1BC3 /* UserDefault.swift */; };
+		D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D22CE25180000C1BC3 /* UserDefaultManager.swift */; };
+		D1E116D52CE251AE000C1BC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D42CE251AE000C1BC3 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +105,9 @@
 		D1E116C72CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenKeyChainProtocol.swift; sourceTree = "<group>"; };
 		D1E116CA2CDE581E000C1BC3 /* WorkspaceInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceInitialView.swift; sourceTree = "<group>"; };
 		D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceInitial.swift; sourceTree = "<group>"; };
+		D1E116D02CE2515F000C1BC3 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		D1E116D22CE25180000C1BC3 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		D1E116D42CE251AE000C1BC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +279,7 @@
 		D1E116912CD9C28A000C1BC3 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116CF2CE25151000C1BC3 /* UserDefaults */,
 				D1E116A12CD9DBB7000C1BC3 /* User */,
 				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
@@ -345,6 +352,16 @@
 				D1E116CD2CDE58AD000C1BC3 /* WorkspaceInitial.swift */,
 			);
 			path = Initial;
+			sourceTree = "<group>";
+		};
+		D1E116CF2CE25151000C1BC3 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116D02CE2515F000C1BC3 /* UserDefault.swift */,
+				D1E116D22CE25180000C1BC3 /* UserDefaultManager.swift */,
+				D1E116D42CE251AE000C1BC3 /* User.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +451,7 @@
 			files = (
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
+				D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
 				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
 				D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */,
@@ -449,6 +467,7 @@
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
+				D1E116D52CE251AE000C1BC3 /* User.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
@@ -465,6 +484,7 @@
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
+				D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
 				D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */,
 				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
