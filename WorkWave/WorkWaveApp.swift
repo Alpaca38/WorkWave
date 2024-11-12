@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct WorkWaveApp: App {
@@ -14,9 +15,9 @@ struct WorkWaveApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .onAppear {
-                    appDelegate.deviceKeyChain = DeviceTokenKeyChain()
-                }
+            .onAppear {
+                appDelegate.deviceKeyChain = DeviceTokenKeyChain()
+            }
         }
     }
 }

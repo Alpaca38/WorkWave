@@ -11,6 +11,6 @@ struct SignupRequest: Encodable {
     var email: String
     var password: String
     var nickname: String
-    var phone: String
+    var phone: String?
     var deviceToken: String
 }

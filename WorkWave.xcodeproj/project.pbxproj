@@ -57,6 +57,8 @@
 		D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D02CE2515F000C1BC3 /* UserDefault.swift */; };
 		D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D22CE25180000C1BC3 /* UserDefaultManager.swift */; };
 		D1E116D52CE251AE000C1BC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D42CE251AE000C1BC3 /* User.swift */; };
+		D1E116DB2CE35424000C1BC3 /* WorkspaceAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */; };
+		D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		D1E116D02CE2515F000C1BC3 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		D1E116D22CE25180000C1BC3 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		D1E116D42CE251AE000C1BC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAddView.swift; sourceTree = "<group>"; };
+		D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAdd.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +343,7 @@
 		D1E116C92CDE5750000C1BC3 /* WorkSpace */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116D92CE3540D000C1BC3 /* Add */,
 				D1E116CC2CDE5889000C1BC3 /* Initial */,
 				D1E1167F2CD684F6000C1BC3 /* TabView */,
 			);
@@ -362,6 +367,15 @@
 				D1E116D42CE251AE000C1BC3 /* User.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		D1E116D92CE3540D000C1BC3 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */,
+				D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -465,6 +479,7 @@
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
+				D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E116D52CE251AE000C1BC3 /* User.swift in Sources */,
@@ -473,6 +488,7 @@
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
+				D1E116DB2CE35424000C1BC3 /* WorkspaceAddView.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,

@@ -9,13 +9,14 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ContentView: View {
-    var body: some View {
-//        OnboardingView(store: Store(initialState: Onboarding.State()) {
-//            Onboarding()
-//        })
-        WorkspaceInitialView(store: Store(initialState: WorkspaceInitial.State()) {
-            WorkspaceInitial()
-        })
+    var body: some View {      
+        if UserDefaultsManager.isSignedUp {
+            WWTabView()
+        } else {
+            OnboardingView(store: Store(initialState: Onboarding.State()) {
+                Onboarding()
+            })
+        }
     }
 }
 //

@@ -8,7 +8,8 @@
 import Foundation
 
 struct SignupDTO: Decodable {
-    let userID, email, nickname, profileImage: String
+    let userID, email, nickname: String
+    let profileImage: String?
     let phone, provider: String?
     let createdAt: String
     let token: Token

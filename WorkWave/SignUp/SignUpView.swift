@@ -32,6 +32,12 @@ struct SignUpView: View {
             .background(.primaryBackground)
             .bind($store.focusedField, to: $focusedField)
             .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
+            .fullScreenCover(isPresented: $store.isWorkInitSheetPresented.sending(\.setSheet), content: {
+                if let store = store.scope(state: \.optionalWorkInit, action: \.optionalWorkInit) {
+                    WorkspaceInitialView(store: store)
+                        .presentationDetents([.large])
+                }
+            })
         }
     }
     

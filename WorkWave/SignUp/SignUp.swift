@@ -35,6 +35,9 @@ struct SignUp {
         enum Field: Hashable {
             case email, nickname, phone, password, confirmpassword
         }
+        
+        var isWorkInitSheetPresented = false
+        var optionalWorkInit: WorkspaceInitial.State?
     }
     
     enum Action: BindableAction {
@@ -46,6 +49,9 @@ struct SignUp {
         case emailCheckResponse(Result<Void, ErrorResponse>)
         case emailInvalidResponse
         case signupResponse(Result<SignupDTO, ErrorResponse>)
+        
+        case setSheet(isPresented: Bool)
+        case optionalWorkInit(WorkspaceInitial.Action)
     }
     
     @Dependency(\.userClient) var userClient
@@ -101,17 +107,17 @@ struct SignUp {
                     return .none
                 } else {
                     let request = SignupRequest(email: state.email, password: state.password, nickname: state.nickname, phone: state.phone, deviceToken: deviceTokenKeyChain.deviceToken ?? "")
+                    print(request)
                     return .run { send in
                         do {
-                            await send(.signupResponse(.success(try await userClient.signup(request))))
+                            await send(.signupResponse(.success(try     await userClient.signup(request))))
                         } catch let error as ErrorResponse {
                             await send(.signupResponse(.failure(error)))
                         } catch {
-                            throw error
+                            print(error)
                         }
                     }
                 }
-                
                 
             case .emailCheckButtonTapped:
                 state.isEmailValid = isValidEmail(state.email)
@@ -152,8 +158,11 @@ struct SignUp {
                 return .none
             case let .signupResponse(.success(success)):
                 print("**", success)
-                // workspaceview로 이동 닉네임 저장?
-                return .none
+                return .run { send in
+                    UserDefaultsManager.user = User(nickname: success.nickname, email: success.email, phoneNumber: success.phone)
+                    jwtKeyChain.handleLoginSuccess(accessToken: success.token.accessToken, refreshToken: success.token.refreshToken)
+                    await send(.setSheet(isPresented: true))
+                }
             case let .signupResponse(.failure(error)):
                 switch error.errorCode {
                 case "E11":
@@ -164,7 +173,20 @@ struct SignUp {
                     state.toast = ToastState(toastMessage: "에러가 발생했어요. 잠시 후 다시 시도해주세요.", isToastPresented: true)
                 }
                 return .none
+            case .setSheet(isPresented: true):
+                state.isWorkInitSheetPresented = true
+                state.optionalWorkInit = WorkspaceInitial.State()
+                return .none
+            case .setSheet(isPresented: false):
+                state.isWorkInitSheetPresented = false
+                state.optionalWorkInit = nil
+                return .none
+            case .optionalWorkInit:
+                return .none
             }
+        }
+        .ifLet(\.optionalWorkInit, action: \.optionalWorkInit) {
+            WorkspaceInitial()
         }
     }
 }
