@@ -59,6 +59,8 @@
 		D1E116D52CE251AE000C1BC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116D42CE251AE000C1BC3 /* User.swift */; };
 		D1E116DB2CE35424000C1BC3 /* WorkspaceAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */; };
 		D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */; };
+		D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */; };
+		D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E92CE4F56D000C1BC3 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,8 @@
 		D1E116D42CE251AE000C1BC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAddView.swift; sourceTree = "<group>"; };
 		D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAdd.swift; sourceTree = "<group>"; };
+		D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		D1E116E92CE4F56D000C1BC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
+				D1E116E82CE4F553000C1BC3 /* Login */,
 				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
 				D1E116C92CDE5750000C1BC3 /* WorkSpace */,
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
@@ -378,6 +383,23 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
+		D1E116E82CE4F553000C1BC3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116EB2CE4F571000C1BC3 /* RequestModel */,
+				D1E116E92CE4F56D000C1BC3 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D1E116EB2CE4F571000C1BC3 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +488,7 @@
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */,
+				D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
 				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
 				D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */,
@@ -506,6 +529,7 @@
 				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
 				D1E116CE2CDE58AD000C1BC3 /* WorkspaceInitial.swift in Sources */,
 				D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */,
+				D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

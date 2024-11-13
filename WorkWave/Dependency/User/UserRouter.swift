@@ -11,6 +11,7 @@ import Alamofire
 enum UserRouter {
     case checkEmailValid(query: ValidationEmailRequest)
     case signup(query: SignupRequest)
+    case login(query: LoginRequest)
 }
 
 extension UserRouter: TargetType {
@@ -24,6 +25,8 @@ extension UserRouter: TargetType {
                 .post
         case .signup:
                 .post
+        case .login:
+                .post
         }
     }
     
@@ -33,12 +36,14 @@ extension UserRouter: TargetType {
             "/v1/users/validation/email"
         case .signup:
             "/v1/users/join"
+        case .login:
+            "/v1/users/login"
         }
     }
     
     var header: [String : String] {
         switch self {
-        case .checkEmailValid, .signup:
+        case .checkEmailValid, .signup, .login:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey
@@ -52,7 +57,7 @@ extension UserRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .checkEmailValid, .signup:
+        case .checkEmailValid, .signup, .login:
             nil
         }
     }
@@ -63,6 +68,8 @@ extension UserRouter: TargetType {
         case .checkEmailValid(let query):
             return try? encoder.encode(query)
         case .signup(let query):
+            return try? encoder.encode(query)
+        case .login(let query):
             return try? encoder.encode(query)
         }
     }

@@ -13,21 +13,29 @@ struct UserClient {
     var networkManager: NetworkManager
     var checkEmailValid: @Sendable (ValidationEmailRequest) async throws -> Void
     var signup: @Sendable (SignupRequest) async throws -> SignupDTO
+    var login: @Sendable (LoginRequest) async throws -> SignupDTO
 }
 
 extension UserClient: DependencyKey {
     static let liveValue = Self(
         networkManager: DefaultNetworkManager.shared,
-        checkEmailValid: { request in
+        checkEmailValid: { [networkManager = DefaultNetworkManager.shared] request in
             do {
-                let _ = try await DefaultNetworkManager.shared.fetchVoid(api: UserRouter.checkEmailValid(query: request))
+                let _ = try await networkManager.fetchVoid(api: UserRouter.checkEmailValid(query: request))
             } catch let error as ErrorResponse {
                 throw error
             }
         },
-        signup: { request in
+        signup: { [networkManager = DefaultNetworkManager.shared] request in
             do {
-                return try await DefaultNetworkManager.shared.fetch(api: UserRouter.signup(query: request), responseType: SignupDTO.self)
+                return try await networkManager.fetch(api: UserRouter.signup(query: request), responseType: SignupDTO.self)
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        },
+        login: { [networkManager = DefaultNetworkManager.shared] request in
+            do {
+                return try await networkManager.fetch(api: UserRouter.login(query: request), responseType: SignupDTO.self)
             } catch let error as ErrorResponse {
                 throw error
             }
