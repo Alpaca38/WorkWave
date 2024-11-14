@@ -61,6 +61,7 @@
 		D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */; };
 		D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */; };
 		D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E92CE4F56D000C1BC3 /* LoginView.swift */; };
+		D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116EC2CE4F5C2000C1BC3 /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAdd.swift; sourceTree = "<group>"; };
 		D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		D1E116E92CE4F56D000C1BC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D1E116EC2CE4F5C2000C1BC3 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +390,7 @@
 			children = (
 				D1E116EB2CE4F571000C1BC3 /* RequestModel */,
 				D1E116E92CE4F56D000C1BC3 /* LoginView.swift */,
+				D1E116EC2CE4F5C2000C1BC3 /* Login.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
+				D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */,
 				D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,

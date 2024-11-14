@@ -22,23 +22,29 @@ struct AuthView: View {
             }
             
             CustomButton(image: Image(.email), title: "이메일로 계속하기", font: .title2, titleColor: .white, tintColor: .brandGreen) {
-                // email 로그인
+                store.send(.setLoginSheet(isPresented: true))
             }
             
             signupView
         }
         .padding()
         .padding(.top, 24)
-        .sheet(isPresented: $store.isSheetPresented.sending(\.setSheet)) {
+        .sheet(isPresented: $store.isSingUpSheetPresented.sending(\.setSignUpSheet)) {
             if let store = store.scope(state: \.optionalSignup, action: \.optionalSignup) {
                 SignUpView(store: store)
+                    .presentationDragIndicator(.visible)
+            }
+        }
+        .sheet(isPresented: $store.isLoginSheetPresented.sending(\.setLoginSheet)) {
+            if let store = store.scope(state: \.optionalLogin, action: \.optionalLogin) {
+                LoginView(store: store)
                     .presentationDragIndicator(.visible)
             }
         }
     }
     
     var signupView: some View {
-        Button(action: { store.send(.setSheet(isPresented: true)) }) {
+        Button(action: { store.send(.setSignUpSheet(isPresented: true)) }) {
             HStack(spacing: 4) {
                 Text("또는")
                     .foregroundStyle(.black)
