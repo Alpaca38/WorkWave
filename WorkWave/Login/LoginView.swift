@@ -26,19 +26,29 @@ struct LoginView: View {
                 store.send(.loginButtonTapped)
             }
             .padding()
+            .disabled(!store.loginButtonValid)
             
         }
         .background(.primaryBackground)
-        
+        .bind($store.focusedField, to: $focusedField)
+        .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
+        .fullScreenCover(isPresented: $store.isWorkInitSheetPresented.sending(\.setSheet), content: {
+            if let store = store.scope(state: \.optionalWorkInit, action: \.optionalWorkInit) {
+                WorkspaceInitialView(store: store)
+                    .presentationDetents([.large])
+            }
+        })
     }
     
     var loginView: some View {
         VStack(spacing: 8) {
             CustomTextField(title: "이메일", placeholder: "이메일을 입력해주세요.", text: $store.email)
                 .focused($focusedField, equals: .email)
+                .foregroundStyle(store.invalidFieldTitles.contains("이메일") ? .red : .black)
             
             CustomTextField(title: "비밀번호", placeholder: "비밀번호를 입력해주세요.", text: $store.password)
                 .focused($focusedField, equals: .password)
+                .foregroundStyle(store.invalidFieldTitles.contains("비밀번호") ? .red : .black)
         }
     }
 }
