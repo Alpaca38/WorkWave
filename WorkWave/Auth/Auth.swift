@@ -63,7 +63,7 @@ struct Auth {
             SignUp(jwtKeyChain: JWTKeyChain(), deviceTokenKeyChain: DeviceTokenKeyChain())
         }
         .ifLet(\.optionalLogin, action: \.optionalLogin) {
-            Login()
+            Login(jwtKeyChain: JWTKeyChain(), deviceTokenKeyChain: DeviceTokenKeyChain())
         }
     }
     

@@ -107,7 +107,6 @@ struct SignUp {
                     return .none
                 } else {
                     let request = SignupRequest(email: state.email, password: state.password, nickname: state.nickname, phone: state.phone, deviceToken: deviceTokenKeyChain.deviceToken ?? "")
-                    print(request)
                     return .run { send in
                         do {
                             await send(.signupResponse(.success(try     await userClient.signup(request))))
@@ -157,7 +156,6 @@ struct SignUp {
                 state.toast = ToastState(toastMessage: "이메일 형식이 올바르지 않습니다.", isToastPresented: true)
                 return .none
             case let .signupResponse(.success(success)):
-                print("**", success)
                 return .run { send in
                     UserDefaultsManager.user = User(nickname: success.nickname, email: success.email, phoneNumber: success.phone)
                     jwtKeyChain.handleLoginSuccess(accessToken: success.token.accessToken, refreshToken: success.token.refreshToken)
@@ -188,13 +186,6 @@ struct SignUp {
         .ifLet(\.optionalWorkInit, action: \.optionalWorkInit) {
             WorkspaceInitial()
         }
-    }
-}
-
-extension SignUp {
-    struct ToastState: Equatable {
-        var toastMessage: String
-        var isToastPresented: Bool
     }
 }
 

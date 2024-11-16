@@ -51,3 +51,8 @@ extension View {
         modifier(Toast(message: message, isPresented: isPresented, duration: duration))
     }
 }
+
+struct ToastState: Equatable {
+    var toastMessage: String
+    var isToastPresented: Bool = false
+}
