@@ -10,9 +10,6 @@ import ComposableArchitecture
 
 @Reducer
 struct Login {
-    let jwtKeyChain: JWTKeyChainProtocol
-    let deviceTokenKeyChain: DeviceTokenKeyChainProtocol
-    
     @ObservableState
     struct State: Equatable {
         var email = ""
@@ -45,6 +42,8 @@ struct Login {
     }
     
     @Dependency(\.userClient) var userClient
+    @Dependency(\.jwtKeyChain) var jwtKeyChain
+    @Dependency(\.deviceKeyChain) var deviceTokenKeyChain
     
     var body: some ReducerOf<Self> {
         BindingReducer()

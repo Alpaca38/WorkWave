@@ -7,6 +7,7 @@
 
 import Foundation
 import KeychainAccess
+import ComposableArchitecture
 
 final class JWTKeyChain: JWTKeyChainProtocol {
     private let keychain = Keychain(service: "Jo.WorkWave")
@@ -33,5 +34,16 @@ final class JWTKeyChain: JWTKeyChainProtocol {
         } catch let error {
             print("토큰 삭제 중 오류 발생: \(error)")
         }
+    }
+}
+
+struct JWTKeyChainClient: DependencyKey {
+    static let liveValue: JWTKeyChainProtocol = JWTKeyChain()
+}
+
+extension DependencyValues {
+    var jwtKeyChain: JWTKeyChainProtocol {
+        get { self[JWTKeyChainClient.self] }
+        set { self[JWTKeyChainClient.self] = newValue }
     }
 }

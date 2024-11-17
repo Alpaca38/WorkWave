@@ -7,6 +7,7 @@
 
 import Foundation
 import KeychainAccess
+import ComposableArchitecture
 
 final class DeviceTokenKeyChain: DeviceTokenKeyChainProtocol {
     private let keychain = Keychain(service: "Jo.WorkWave")
@@ -22,5 +23,16 @@ final class DeviceTokenKeyChain: DeviceTokenKeyChainProtocol {
         } catch let error {
             print("토큰 삭제 중 오류 발생: \(error)")
         }
+    }
+}
+
+struct DeviceTokenKeyChainClient: DependencyKey {
+    static let liveValue: DeviceTokenKeyChainProtocol = DeviceTokenKeyChain()
+}
+
+extension DependencyValues {
+    var deviceKeyChain: DeviceTokenKeyChainProtocol {
+        get { self[DeviceTokenKeyChainClient.self] }
+        set { self[DeviceTokenKeyChainClient.self] = newValue }
     }
 }
