@@ -62,6 +62,12 @@
 		D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */; };
 		D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116E92CE4F56D000C1BC3 /* LoginView.swift */; };
 		D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116EC2CE4F5C2000C1BC3 /* Login.swift */; };
+		D1E116F12CED7621000C1BC3 /* WWTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116F02CED7621000C1BC3 /* WWTab.swift */; };
+		D1E116F42CED7994000C1BC3 /* WorkspaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116F32CED7994000C1BC3 /* WorkspaceRouter.swift */; };
+		D1E116F72CED7BA4000C1BC3 /* WorkspaceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */; };
+		D1E116F92CED7F7D000C1BC3 /* WorkspaceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */; };
+		D1E116FB2CED858C000C1BC3 /* HomeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */; };
+		D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +124,12 @@
 		D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		D1E116E92CE4F56D000C1BC3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D1E116EC2CE4F5C2000C1BC3 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		D1E116F02CED7621000C1BC3 /* WWTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWTab.swift; sourceTree = "<group>"; };
+		D1E116F32CED7994000C1BC3 /* WorkspaceRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceRouter.swift; sourceTree = "<group>"; };
+		D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceDTO.swift; sourceTree = "<group>"; };
+		D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceClient.swift; sourceTree = "<group>"; };
+		D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
+		D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
+				D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */,
+				D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -260,9 +274,11 @@
 		D1E1167F2CD684F6000C1BC3 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116F52CED7B73000C1BC3 /* ResponseModel */,
 				D1E116802CD68512000C1BC3 /* WWTabView.swift */,
-				D1E116612CD3A495000C1BC3 /* Home */,
+				D1E116F02CED7621000C1BC3 /* WWTab.swift */,
 				D1E1166A2CD3AE90000C1BC3 /* DM */,
+				D1E116612CD3A495000C1BC3 /* Home */,
 				D1E1166D2CD3AF67000C1BC3 /* Search */,
 				D1E1166E2CD3AF78000C1BC3 /* Setting */,
 			);
@@ -291,9 +307,10 @@
 			isa = PBXGroup;
 			children = (
 				D1E116CF2CE25151000C1BC3 /* UserDefaults */,
-				D1E116A12CD9DBB7000C1BC3 /* User */,
 				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
+				D1E116A12CD9DBB7000C1BC3 /* User */,
+				D1E116F22CED7931000C1BC3 /* Workspace */,
 			);
 			path = Dependency;
 			sourceTree = "<group>";
@@ -403,6 +420,23 @@
 			path = RequestModel;
 			sourceTree = "<group>";
 		};
+		D1E116F22CED7931000C1BC3 /* Workspace */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116F32CED7994000C1BC3 /* WorkspaceRouter.swift */,
+				D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */,
+			);
+			path = Workspace;
+			sourceTree = "<group>";
+		};
+		D1E116F52CED7B73000C1BC3 /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -489,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
+				D1E116FB2CED858C000C1BC3 /* HomeEmptyView.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */,
 				D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */,
@@ -504,14 +539,18 @@
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
+				D1E116F42CED7994000C1BC3 /* WorkspaceRouter.swift in Sources */,
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
 				D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */,
+				D1E116F72CED7BA4000C1BC3 /* WorkspaceDTO.swift in Sources */,
 				D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E116D52CE251AE000C1BC3 /* User.swift in Sources */,
+				D1E116F12CED7621000C1BC3 /* WWTab.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
+				D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */,
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
@@ -523,6 +562,7 @@
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
+				D1E116F92CED7F7D000C1BC3 /* WorkspaceClient.swift in Sources */,
 				D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,

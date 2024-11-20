@@ -6,40 +6,52 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct WWTabView: View {
+    let store: StoreOf<WWTab>
+    
     var body: some View {
         NavigationStack {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Image(.homeActive)
-                            .renderingMode(.template)
-                        Text("홈")
-                    }
-                
-                DMView()
-                    .tabItem {
-                        Image(.messageActive)
-                            .renderingMode(.template)
-                        Text("DM")
-                    }
-                
-                SearchView()
-                    .tabItem {
-                        Image(.profileActive)
-                            .renderingMode(.template)
-                        Text("검색")
-                    }
-                
-                SettingView()
-                    .tabItem {
-                        Image(.settingActive)
-                            .renderingMode(.template)
-                        Text("설정")
-                    }
+            if store.workSpaceExist {
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Image(.homeActive)
+                                .renderingMode(.template)
+                            Text("홈")
+                        }
+                    
+                    DMView()
+                        .tabItem {
+                            Image(.messageActive)
+                                .renderingMode(.template)
+                            Text("DM")
+                        }
+                    
+                    SearchView()
+                        .tabItem {
+                            Image(.profileActive)
+                                .renderingMode(.template)
+                            Text("검색")
+                        }
+                    
+                    SettingView()
+                        .tabItem {
+                            Image(.settingActive)
+                                .renderingMode(.template)
+                            Text("설정")
+                        }
+                }
+                .tint(.black)
+            } else {
+                HomeEmptyView(store: Store(initialState: WorkspaceInitial.State()) {
+                    WorkspaceInitial()
+                })
             }
-            .tint(.black)
+        }
+        .task {
+            store.send(.checkWorkspaceExist)
         }
     }
 }

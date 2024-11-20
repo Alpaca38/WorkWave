@@ -11,7 +11,9 @@ import ComposableArchitecture
 struct ContentView: View {
     var body: some View {      
         if UserDefaultsManager.isSignedUp {
-            WWTabView()
+            WWTabView(store: Store(initialState: WWTab.State()) {
+                WWTab()
+            })
         } else {
             OnboardingView(store: Store(initialState: Onboarding.State()) {
                 Onboarding()
