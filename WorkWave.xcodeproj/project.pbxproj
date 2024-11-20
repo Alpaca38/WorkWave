@@ -68,6 +68,9 @@
 		D1E116F92CED7F7D000C1BC3 /* WorkspaceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */; };
 		D1E116FB2CED858C000C1BC3 /* HomeEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */; };
 		D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */; };
+		D1E117002CED9A8C000C1BC3 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */; };
+		D1E117022CED9A94000C1BC3 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117012CED9A94000C1BC3 /* AuthClient.swift */; };
+		D1E117042CEDA489000C1BC3 /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117032CEDA489000C1BC3 /* Refresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +133,9 @@
 		D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceClient.swift; sourceTree = "<group>"; };
 		D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyView.swift; sourceTree = "<group>"; };
 		D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		D1E117012CED9A94000C1BC3 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
+		D1E117032CEDA489000C1BC3 /* Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +315,7 @@
 				D1E116CF2CE25151000C1BC3 /* UserDefaults */,
 				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
+				D1E116FE2CED9A78000C1BC3 /* Auth */,
 				D1E116A12CD9DBB7000C1BC3 /* User */,
 				D1E116F22CED7931000C1BC3 /* Workspace */,
 			);
@@ -435,6 +442,16 @@
 				D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D1E116FE2CED9A78000C1BC3 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */,
+				D1E117012CED9A94000C1BC3 /* AuthClient.swift */,
+				D1E117032CEDA489000C1BC3 /* Refresh.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,9 +581,12 @@
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116F92CED7F7D000C1BC3 /* WorkspaceClient.swift in Sources */,
 				D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */,
+				D1E117002CED9A8C000C1BC3 /* AuthRouter.swift in Sources */,
 				D1E116722CD3AF9D000C1BC3 /* SettingView.swift in Sources */,
 				D1E116852CD686F4000C1BC3 /* ButtonWrapper.swift in Sources */,
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
+				D1E117022CED9A94000C1BC3 /* AuthClient.swift in Sources */,
+				D1E117042CEDA489000C1BC3 /* Refresh.swift in Sources */,
 				D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
 				D1E116C82CDCF566000C1BC3 /* DeviceTokenKeyChainProtocol.swift in Sources */,

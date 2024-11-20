@@ -23,7 +23,6 @@ extension WorkspaceClient: DependencyKey {
             } catch let error as ErrorResponse {
                 throw error
             }
-            
         })
 }
 

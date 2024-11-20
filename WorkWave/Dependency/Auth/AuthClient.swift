@@ -1,0 +1,27 @@
+//
+//  AuthClient.swift
+//  WorkWave
+//
+//  Created by 조규연 on 11/20/24.
+//
+
+import Foundation
+import ComposableArchitecture
+
+@DependencyClient
+struct AuthClient {
+    var networkManager: NetworkManager
+    var refresh: @Sendable () async throws -> Refresh
+}
+
+extension AuthClient: DependencyKey {
+    static let liveValue = Self(
+        networkManager: DefaultNetworkManager.shared,
+        refresh: { [networkManager = DefaultNetworkManager.shared] in
+            do {
+                return try await networkManager.fetch(api: AuthRouter.refresh, responseType: Refresh.self)
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        })
+}
