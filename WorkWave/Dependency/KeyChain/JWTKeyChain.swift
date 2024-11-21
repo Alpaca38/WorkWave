@@ -22,6 +22,10 @@ final class JWTKeyChain: JWTKeyChainProtocol {
         set { try? keychain.set(newValue ?? "", key: "refreshToken") }
     }
     
+    func updateAccessToken(accessToken: String) {
+        self.accessToken = accessToken
+    }
+    
     func handleLoginSuccess(accessToken: String, refreshToken: String) {
         self.accessToken = accessToken
         self.refreshToken = refreshToken

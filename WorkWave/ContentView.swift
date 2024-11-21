@@ -9,8 +9,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ContentView: View {
-    var body: some View {      
-        if UserDefaultsManager.isSignedUp {
+    @AppStorage("isSignedUp") private var isSignedUp: Bool = false
+    
+    var body: some View {
+        if isSignedUp {
             WWTabView(store: Store(initialState: WWTab.State()) {
                 WWTab()
             })

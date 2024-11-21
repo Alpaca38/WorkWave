@@ -10,10 +10,15 @@ import Alamofire
 
 final class DefaultNetworkManager: NetworkManager {
     static let shared = DefaultNetworkManager()
-    private init() {}
+    private let session: Session
+    
+    private init() {
+        let interceptor = AuthInterceptor()
+        session = Session(interceptor: interceptor)
+    }
     
     func fetch<Router, T>(api: Router, responseType: T.Type) async throws -> T where Router : TargetType, T : Decodable {
-        guard let request = try? AF.request(api.asURLRequest()) else {
+        guard let request = try? session.request(api.asURLRequest()) else {
             throw NetworkError.invalidRequest
         }
         
@@ -42,7 +47,7 @@ final class DefaultNetworkManager: NetworkManager {
     }
     
     func fetchVoid<Router>(api: Router) async throws where Router : TargetType {
-        guard let request = try? AF.request(api.asURLRequest()) else {
+        guard let request = try? session.request(api.asURLRequest()) else {
             throw NetworkError.invalidRequest
         }
         

@@ -71,6 +71,7 @@
 		D1E117002CED9A8C000C1BC3 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */; };
 		D1E117022CED9A94000C1BC3 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117012CED9A94000C1BC3 /* AuthClient.swift */; };
 		D1E117042CEDA489000C1BC3 /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117032CEDA489000C1BC3 /* Refresh.swift */; };
+		D1E117062CEDADC1000C1BC3 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		D1E117012CED9A94000C1BC3 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		D1E117032CEDA489000C1BC3 /* Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
+		D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +452,7 @@
 				D1E116FF2CED9A8B000C1BC3 /* AuthRouter.swift */,
 				D1E117012CED9A94000C1BC3 /* AuthClient.swift */,
 				D1E117032CEDA489000C1BC3 /* Refresh.swift */,
+				D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E116652CD3A91E000C1BC3 /* WWFont.swift in Sources */,
+				D1E117062CEDADC1000C1BC3 /* AuthInterceptor.swift in Sources */,
 				D1E116FB2CED858C000C1BC3 /* HomeEmptyView.swift in Sources */,
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */,
