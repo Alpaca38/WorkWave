@@ -40,6 +40,7 @@ struct HomeEmptyView: View {
             WorkspaceAddView(store: Store(initialState: WorkspaceAdd.State()) {
                 WorkspaceAdd()
             })
+            .presentationDragIndicator(.visible)
         }
     }
 }
