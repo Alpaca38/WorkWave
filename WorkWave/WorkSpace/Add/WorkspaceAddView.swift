@@ -56,6 +56,9 @@ struct WorkspaceAddView: View {
             }
             .frame(width: 70, height: 70)
             .padding()
+            .asButton {
+                store.send(.imageTapped)
+            }
             
             CustomTextField(title: "워크스페이스 이름", placeholder: "워크스페이스 이름을 입력하세요 (필수)", text: $store.workspaceName)
             

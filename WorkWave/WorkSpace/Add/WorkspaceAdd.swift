@@ -20,6 +20,7 @@ struct WorkspaceAdd {
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case exitButtonTapped
+        case imageTapped
         case completeButtonTapped
     }
     
@@ -30,6 +31,8 @@ struct WorkspaceAdd {
             case .binding:
                 return .none
             case .exitButtonTapped:
+                return .none
+            case .imageTapped:
                 return .none
             case .completeButtonTapped:
                 return .none
