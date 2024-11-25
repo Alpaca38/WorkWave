@@ -28,6 +28,7 @@ struct WorkspaceAddView: View {
             .disabled(!store.completeButtonValid)
         }
         .background(.primaryBackground)
+        .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
     }
     
     var workspaceInfoView: some View {

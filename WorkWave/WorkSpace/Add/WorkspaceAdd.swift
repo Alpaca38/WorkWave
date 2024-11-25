@@ -15,6 +15,7 @@ struct WorkspaceAdd {
         var workspaceName = ""
         var workspaceDescription = ""
         var completeButtonValid = false
+        var toast: ToastState = ToastState(toastMessage: "", isToastPresented: false)
     }
     
     enum Action: BindableAction {
@@ -29,12 +30,16 @@ struct WorkspaceAdd {
         Reduce { state, action in
             switch action {
             case .binding:
+                state.completeButtonValid = !state.workspaceName.isEmpty
                 return .none
             case .exitButtonTapped:
                 return .none
             case .imageTapped:
                 return .none
             case .completeButtonTapped:
+                if state.workspaceName.count > 30 {
+                    state.toast = ToastState(toastMessage: "워크스페이스 이름은 1~30자로 설정해주세요.", isToastPresented: true)
+                }
                 return .none
             }
         }

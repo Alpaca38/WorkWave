@@ -35,7 +35,6 @@ final class DefaultNetworkManager: NetworkManager {
                             let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
                             continuation.resume(throwing: errorResponse)
                         } catch {
-                            print(response.response?.statusCode)
                             continuation.resume(throwing: error)
                         }
                     } else {
