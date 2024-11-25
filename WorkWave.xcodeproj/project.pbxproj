@@ -72,6 +72,8 @@
 		D1E117022CED9A94000C1BC3 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117012CED9A94000C1BC3 /* AuthClient.swift */; };
 		D1E117042CEDA489000C1BC3 /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117032CEDA489000C1BC3 /* Refresh.swift */; };
 		D1E117062CEDADC1000C1BC3 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */; };
+		D1E117092CF8AF5B000C1BC3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117082CF8AF5B000C1BC3 /* ImagePickerView.swift */; };
+		D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1170A2CF8B394000C1BC3 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +140,8 @@
 		D1E117012CED9A94000C1BC3 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		D1E117032CEDA489000C1BC3 /* Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
 		D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
+		D1E117082CF8AF5B000C1BC3 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		D1E1170A2CF8B394000C1BC3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 				D1E116752CD3B424000C1BC3 /* CustomComponents */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
 				D1E116912CD9C28A000C1BC3 /* Dependency */,
+				D1E117072CF8AF44000C1BC3 /* ImagePicker */,
 				D1E116862CD68E22000C1BC3 /* Onboarding */,
 				D1E1168B2CD84FD7000C1BC3 /* Auth */,
 				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
@@ -457,6 +462,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		D1E117072CF8AF44000C1BC3 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D1E117082CF8AF5B000C1BC3 /* ImagePickerView.swift */,
+				D1E1170A2CF8B394000C1BC3 /* ImagePicker.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -559,6 +573,7 @@
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
+				D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116F42CED7994000C1BC3 /* WorkspaceRouter.swift in Sources */,
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
@@ -579,6 +594,7 @@
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
+				D1E117092CF8AF5B000C1BC3 /* ImagePickerView.swift in Sources */,
 				D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */,
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */,

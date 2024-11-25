@@ -29,6 +29,7 @@ struct WorkspaceAddView: View {
         }
         .background(.primaryBackground)
         .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
+      
     }
     
     var workspaceInfoView: some View {
@@ -37,11 +38,19 @@ struct WorkspaceAddView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(.brandGreen)
                 
-                Image(.workspace)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 48, height: 60)
-                    .offset(y: 3)
+                if let imageData = store.imageData,
+                   let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                } else {
+                    Image(.workspace)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 48, height: 60)
+                        .offset(y: 3)
+                }
                 
                 VStack {
                     Spacer()
@@ -58,7 +67,14 @@ struct WorkspaceAddView: View {
             .frame(width: 70, height: 70)
             .padding()
             .asButton {
-                store.send(.imageTapped)
+                store.send(.imageTapped(isPresented: true))
+            }
+            .sheet(isPresented: $store.isImagePickerPresented) {
+                if let store = store.scope(state: \.imagePickerState, action: \.imagePicker) {
+                    ImagePickerView(store: store)
+                } else {
+                    ProgressView()
+                }
             }
             
             CustomTextField(title: "워크스페이스 이름", placeholder: "워크스페이스 이름을 입력하세요 (필수)", text: $store.workspaceName)
