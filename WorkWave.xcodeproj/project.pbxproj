@@ -74,6 +74,11 @@
 		D1E117062CEDADC1000C1BC3 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */; };
 		D1E117092CF8AF5B000C1BC3 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117082CF8AF5B000C1BC3 /* ImagePickerView.swift */; };
 		D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1170A2CF8B394000C1BC3 /* ImagePicker.swift */; };
+		D1E1170D2CFAA5FC000C1BC3 /* SLPResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1170C2CFAA5FC000C1BC3 /* SLPResponseSerializer.swift */; };
+		D1E1170F2CFAA629000C1BC3 /* ResponseErrorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1170E2CFAA629000C1BC3 /* ResponseErrorMapper.swift */; };
+		D1E117112CFAA675000C1BC3 /* SLPCommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117102CFAA675000C1BC3 /* SLPCommonError.swift */; };
+		D1E117132CFAAAD4000C1BC3 /* SeSACSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117122CFAAAD4000C1BC3 /* SeSACSession.swift */; };
+		D1E117152CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +147,11 @@
 		D1E117052CEDADC1000C1BC3 /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
 		D1E117082CF8AF5B000C1BC3 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		D1E1170A2CF8B394000C1BC3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D1E1170C2CFAA5FC000C1BC3 /* SLPResponseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPResponseSerializer.swift; sourceTree = "<group>"; };
+		D1E1170E2CFAA629000C1BC3 /* ResponseErrorMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseErrorMapper.swift; sourceTree = "<group>"; };
+		D1E117102CFAA675000C1BC3 /* SLPCommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPCommonError.swift; sourceTree = "<group>"; };
+		D1E117122CFAAAD4000C1BC3 /* SeSACSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACSession.swift; sourceTree = "<group>"; };
+		D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseAdaptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +356,11 @@
 				D1E116A42CD9DE3E000C1BC3 /* NetworkManager.swift */,
 				D1E116A62CDB140E000C1BC3 /* DefaultNetworkManager.swift */,
 				D1E116A82CDB60F1000C1BC3 /* ErrorResponse.swift */,
+				D1E1170C2CFAA5FC000C1BC3 /* SLPResponseSerializer.swift */,
+				D1E117102CFAA675000C1BC3 /* SLPCommonError.swift */,
+				D1E1170E2CFAA629000C1BC3 /* ResponseErrorMapper.swift */,
+				D1E117122CFAAAD4000C1BC3 /* SeSACSession.swift */,
+				D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -570,6 +585,7 @@
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
 				D1E116A72CDB140E000C1BC3 /* DefaultNetworkManager.swift in Sources */,
+				D1E117132CFAAAD4000C1BC3 /* SeSACSession.swift in Sources */,
 				D1E116742CD3B312000C1BC3 /* OnboardingView.swift in Sources */,
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
@@ -586,11 +602,14 @@
 				D1E116F12CED7621000C1BC3 /* WWTab.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
+				D1E117112CFAA675000C1BC3 /* SLPCommonError.swift in Sources */,
+				D1E1170F2CFAA629000C1BC3 /* ResponseErrorMapper.swift in Sources */,
 				D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */,
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
 				D1E116DB2CE35424000C1BC3 /* WorkspaceAddView.swift in Sources */,
+				D1E117152CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
@@ -598,6 +617,7 @@
 				D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */,
 				D1E116702CD3AF87000C1BC3 /* SearchView.swift in Sources */,
 				D1E116962CD9C314000C1BC3 /* ValidationEmailRequest.swift in Sources */,
+				D1E1170D2CFAA5FC000C1BC3 /* SLPResponseSerializer.swift in Sources */,
 				D1E116682CD3AB04000C1BC3 /* FontModifier.swift in Sources */,
 				D1E116F92CED7F7D000C1BC3 /* WorkspaceClient.swift in Sources */,
 				D1E116AC2CDB9FB8000C1BC3 /* Toast.swift in Sources */,

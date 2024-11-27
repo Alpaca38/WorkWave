@@ -72,9 +72,10 @@ final class DefaultNetworkManager: NetworkManager {
             }
         }
     }
-    
-    enum NetworkError: Error {
-        case invalidRequest
-        case noResponse
-    }
+}
+
+enum NetworkError: Error {
+    case invalidRequest
+    case noResponse
+    case unknown
 }
