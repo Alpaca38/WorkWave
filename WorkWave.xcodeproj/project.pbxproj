@@ -79,6 +79,8 @@
 		D1E117112CFAA675000C1BC3 /* SLPCommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117102CFAA675000C1BC3 /* SLPCommonError.swift */; };
 		D1E117132CFAAAD4000C1BC3 /* SeSACSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117122CFAAAD4000C1BC3 /* SeSACSession.swift */; };
 		D1E117152CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */; };
+		D1E1171A2CFE9AE7000C1BC3 /* WorkspaceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */; };
+		D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +154,8 @@
 		D1E117102CFAA675000C1BC3 /* SLPCommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPCommonError.swift; sourceTree = "<group>"; };
 		D1E117122CFAAAD4000C1BC3 /* SeSACSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACSession.swift; sourceTree = "<group>"; };
 		D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseAdaptor.swift; sourceTree = "<group>"; };
+		D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceList.swift; sourceTree = "<group>"; };
+		D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +301,7 @@
 		D1E1167F2CD684F6000C1BC3 /* TabView */ = {
 			isa = PBXGroup;
 			children = (
+				D1E117182CFE9AE0000C1BC3 /* List */,
 				D1E116F52CED7B73000C1BC3 /* ResponseModel */,
 				D1E116802CD68512000C1BC3 /* WWTabView.swift */,
 				D1E116F02CED7621000C1BC3 /* WWTab.swift */,
@@ -486,6 +491,15 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
+		D1E117182CFE9AE0000C1BC3 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */,
+				D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -612,6 +626,7 @@
 				D1E117152CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
+				D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
 				D1E117092CF8AF5B000C1BC3 /* ImagePickerView.swift in Sources */,
 				D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */,
@@ -633,6 +648,7 @@
 				D1E116A32CD9DBCA000C1BC3 /* UserRouter.swift in Sources */,
 				D1E116CE2CDE58AD000C1BC3 /* WorkspaceInitial.swift in Sources */,
 				D1E116A92CDB60F1000C1BC3 /* ErrorResponse.swift in Sources */,
+				D1E1171A2CFE9AE7000C1BC3 /* WorkspaceList.swift in Sources */,
 				D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

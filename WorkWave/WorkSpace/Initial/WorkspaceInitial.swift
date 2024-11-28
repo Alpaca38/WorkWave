@@ -14,16 +14,22 @@ struct WorkspaceInitial {
     struct State: Equatable {
         var isSheetPresented = false
         var isHomePresented = false
+        var isListPresented = false
     }
     
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
         case exitButtonTapped(isPresented: Bool)
         case setSheet(isPresented: Bool)
+        case workspaceListTapped
     }
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
         Reduce { state, action in
             switch action { 
+            case .binding:
+                return .none
             case .exitButtonTapped(isPresented: true):
                 UserDefaultsManager.isSignedUp = true
                 state.isHomePresented = true
@@ -36,6 +42,9 @@ struct WorkspaceInitial {
                 return .none
             case .setSheet(isPresented: false):
                 state.isSheetPresented = false
+                return .none
+            case .workspaceListTapped:
+                state.isListPresented = true
                 return .none
             }
         }

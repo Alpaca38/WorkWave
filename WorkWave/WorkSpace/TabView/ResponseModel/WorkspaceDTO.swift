@@ -12,9 +12,11 @@ struct WorkspaceDTO: Decodable {
 }
 
 extension WorkspaceDTO {
-    struct ResponseElement: Decodable {
+    struct ResponseElement: Decodable, Equatable, Identifiable {
         let workspaceID, name, description, coverImage: String
         let ownerID, createdAt: String
+        
+        var id = UUID()
 
         enum CodingKeys: String, CodingKey {
             case workspaceID = "workspace_id"
