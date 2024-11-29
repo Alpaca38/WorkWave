@@ -81,6 +81,7 @@
 		D1E117152CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */; };
 		D1E1171A2CFE9AE7000C1BC3 /* WorkspaceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */; };
 		D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */; };
+		D1E1171E2CFEAE23000C1BC3 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +157,7 @@
 		D1E117142CFAAB29000C1BC3 /* NetworkBaseAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseAdaptor.swift; sourceTree = "<group>"; };
 		D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceList.swift; sourceTree = "<group>"; };
 		D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListView.swift; sourceTree = "<group>"; };
+		D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 			children = (
 				D1E116672CD3AB04000C1BC3 /* FontModifier.swift */,
 				D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */,
+				D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
 				D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */,
+				D1E1171E2CFEAE23000C1BC3 /* RoundedCorner.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
 				D1E117092CF8AF5B000C1BC3 /* ImagePickerView.swift in Sources */,
 				D1E1169F2CD9DA92000C1BC3 /* Header.swift in Sources */,

@@ -17,7 +17,7 @@ struct WorkspaceListView: View {
                 Text("워크스페이스")
                     .applyFont(font: .title1)
                     .padding(.horizontal)
-                    .padding(.top, 24)
+                    .padding(.top, 60)
                     .padding(.bottom, 8)
                 
                 Spacer()

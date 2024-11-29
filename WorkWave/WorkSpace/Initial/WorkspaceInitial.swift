@@ -22,6 +22,7 @@ struct WorkspaceInitial {
         case exitButtonTapped(isPresented: Bool)
         case setSheet(isPresented: Bool)
         case workspaceListTapped
+        case closeWorkspaceList
     }
     
     var body: some ReducerOf<Self> {
@@ -45,6 +46,9 @@ struct WorkspaceInitial {
                 return .none
             case .workspaceListTapped:
                 state.isListPresented = true
+                return .none
+            case .closeWorkspaceList:
+                state.isListPresented = false
                 return .none
             }
         }
