@@ -54,9 +54,10 @@ struct WorkspaceListView: View {
             }
         }
         .sheet(isPresented: $store.isAddWorkspacePresented) {
-            WorkspaceAddView(store: Store(initialState: WorkspaceAdd.State()) {
-                WorkspaceAdd()
-            })
+            if let store = store.scope(state: \.workspaceAdd, action: \.workspaceAdd) {
+                WorkspaceAddView(store: store)
+                    .presentationDragIndicator(.visible)
+            }
         }
         .onAppear {
             store.send(.fetchWorkspaces)

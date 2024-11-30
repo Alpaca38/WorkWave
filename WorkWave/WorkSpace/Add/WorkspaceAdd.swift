@@ -23,7 +23,7 @@ struct WorkspaceAdd {
         var isImagePickerPresented = false
     }
     
-    enum Action: BindableAction {
+    enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
         case exitButtonTapped
         case imageTapped(isPresented: Bool)

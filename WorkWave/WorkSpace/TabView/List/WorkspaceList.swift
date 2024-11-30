@@ -12,6 +12,8 @@ import ComposableArchitecture
 struct WorkspaceList {
     @ObservableState
     struct State: Equatable {
+        var workspaceAdd: WorkspaceAdd.State?
+        
         var workspaces: IdentifiedArrayOf<WorkspaceDTO.ResponseElement> = []
         
         var isAddWorkspacePresented: Bool = false
@@ -21,6 +23,8 @@ struct WorkspaceList {
         case binding(BindingAction<State>)
         case addWorkspaceTapped
         case fetchWorkspaces
+        
+        case workspaceAdd(WorkspaceAdd.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -34,12 +38,24 @@ struct WorkspaceList {
                 return .none
                 
             case .addWorkspaceTapped:
+                state.workspaceAdd = WorkspaceAdd.State()
                 state.isAddWorkspacePresented = true
                 return .none
                 
             case .binding:
                 return .none
+                
+            case .workspaceAdd(.exitButtonTapped):
+                state.workspaceAdd = nil
+                state.isAddWorkspacePresented = false
+                return .none
+                
+            case .workspaceAdd:
+                return .none
             }
+        }
+        .ifLet(\.workspaceAdd, action: \.workspaceAdd) {
+            WorkspaceAdd()
         }
     }
 }
