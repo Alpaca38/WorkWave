@@ -41,11 +41,11 @@ struct HomeEmptyView: View {
                     }
                     .padding()
                 }
-                .sheet(isPresented: $store.isSheetPresented.sending(\.setSheet)) {
-                    WorkspaceAddView(store: Store(initialState: WorkspaceAdd.State()) {
-                        WorkspaceAdd()
-                    })
-                    .presentationDragIndicator(.visible)
+                .sheet(isPresented: $store.isSheetPresented) {
+                    if let store = store.scope(state: \.workspaceAdd, action: \.workspaceAdd) {
+                        WorkspaceAddView(store: store)
+                            .presentationDragIndicator(.visible)
+                    }
                 }
             }
             .gesture(

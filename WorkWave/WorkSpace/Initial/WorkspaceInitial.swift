@@ -12,6 +12,8 @@ import ComposableArchitecture
 struct WorkspaceInitial {
     @ObservableState
     struct State: Equatable {
+        var workspaceAdd: WorkspaceAdd.State?
+        
         var isSheetPresented = false
         var isHomePresented = false
         var isListPresented = false
@@ -23,6 +25,8 @@ struct WorkspaceInitial {
         case setSheet(isPresented: Bool)
         case workspaceListTapped
         case closeWorkspaceList
+        
+        case workspaceAdd(WorkspaceAdd.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -39,9 +43,11 @@ struct WorkspaceInitial {
                 state.isHomePresented = false
                 return .none
             case .setSheet(isPresented: true):
+                state.workspaceAdd = WorkspaceAdd.State()
                 state.isSheetPresented = true
                 return .none
             case .setSheet(isPresented: false):
+                state.workspaceAdd = nil
                 state.isSheetPresented = false
                 return .none
             case .workspaceListTapped:
@@ -50,7 +56,16 @@ struct WorkspaceInitial {
             case .closeWorkspaceList:
                 state.isListPresented = false
                 return .none
+            case .workspaceAdd(.exitButtonTapped):
+                state.workspaceAdd = nil
+                state.isSheetPresented = false
+                return .none
+            case .workspaceAdd:
+                return .none
             }
+        }
+        .ifLet(\.workspaceAdd, action: \.workspaceAdd) {
+            WorkspaceAdd()
         }
     }
 }
