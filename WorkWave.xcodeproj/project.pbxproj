@@ -82,6 +82,7 @@
 		D1E1171A2CFE9AE7000C1BC3 /* WorkspaceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */; };
 		D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */; };
 		D1E1171E2CFEAE23000C1BC3 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */; };
+		D1E117212D03029C000C1BC3 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117202D03029C000C1BC3 /* DateManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +159,7 @@
 		D1E117192CFE9AE7000C1BC3 /* WorkspaceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceList.swift; sourceTree = "<group>"; };
 		D1E1171B2CFE9BC3000C1BC3 /* WorkspaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListView.swift; sourceTree = "<group>"; };
 		D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		D1E117202D03029C000C1BC3 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D1E1171F2D030293000C1BC3 /* Manager */,
 				D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */,
 				D1E116AA2CDB8E7B000C1BC3 /* Info.plist */,
 				D1E116902CD85B75000C1BC3 /* WorkWave.entitlements */,
@@ -503,6 +506,14 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		D1E1171F2D030293000C1BC3 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D1E117202D03029C000C1BC3 /* DateManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -612,6 +623,7 @@
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
 				D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */,
 				D1E116F72CED7BA4000C1BC3 /* WorkspaceDTO.swift in Sources */,
+				D1E117212D03029C000C1BC3 /* DateManager.swift in Sources */,
 				D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,

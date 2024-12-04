@@ -17,6 +17,9 @@ extension WorkspaceDTO {
         let ownerID, createdAt: String
         
         var id = UUID()
+        var formattedCreatedAt: String {
+            return DateManager.shared.format(createdAt: createdAt)
+        }
 
         enum CodingKeys: String, CodingKey {
             case workspaceID = "workspace_id"

@@ -69,10 +69,33 @@ struct WorkspaceListView: View {
     }
     
     var listView: some View {
-        List(store.workspaces, id: \.id) { workspace in
-            Text(workspace.name)
-                .applyFont(font: .bodyBold)
-                .padding(.vertical, 8)
+        ScrollView {
+            LazyVStack(spacing: 8) {
+                ForEach(store.workspaces, id: \.id) { workspace in
+                    HStack {
+                        Image(.noPhotoA) // dummy
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(workspace.name)
+                                .applyFont(font: .bodyBold)
+                            
+                            Text(workspace.formattedCreatedAt)
+                                .applyFont(font: .bodyRegular)
+                                .foregroundStyle(.secondaryText)
+                        }
+                        
+                        Spacer()
+                        
+                        Image(.threeDots)
+                            .renderingMode(.template)
+                            .foregroundStyle(.black)
+                    }
+                    .padding()
+                }
+            }
         }
     }
 }
