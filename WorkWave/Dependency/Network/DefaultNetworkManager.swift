@@ -72,6 +72,41 @@ final class DefaultNetworkManager: NetworkManager {
             }
         }
     }
+    
+    func upload<Router, T>(api: Router, responseType: T.Type, request: AddWorkspaceRequest) async throws -> T where Router : TargetType, T : Decodable {
+        
+        guard let request = try? session.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(request.name.data(using: .utf8)!, withName: "name")
+            if let description = request.description {
+                multipartFormData.append(description.data(using: .utf8)!, withName: "description")
+            }
+            multipartFormData.append(request.image, withName: "files", fileName: "photo.png", mimeType: "image/png")
+        }, with: api.asURLRequest()) else {
+            throw NetworkError.invalidRequest
+        }
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            request
+                .validate(statusCode: 200...200)
+                .responseDecodable(of: responseType) { response in
+                switch response.result {
+                case .success(let data):
+                    continuation.resume(returning: data)
+                case .failure:
+                    if let data = response.data {
+                        do {
+                            let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                            continuation.resume(throwing: errorResponse)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
+                    } else {
+                        continuation.resume(throwing: NetworkError.noResponse)
+                    }
+                }
+            }
+        }
+    }
 }
 
 enum NetworkError: Error {

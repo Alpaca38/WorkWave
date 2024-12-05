@@ -13,6 +13,7 @@ enum WorkspaceRouter {
     @Dependency(\.jwtKeyChain) static var jwtKeyChain
     
     case checkWorkspaces
+    case createWorkspace
     
 }
 
@@ -25,12 +26,14 @@ extension WorkspaceRouter: TargetType {
         switch self {
         case .checkWorkspaces:
                 .get
+        case .createWorkspace:
+                .post
         }
     }
     
     var path: String {
         switch self {
-        case .checkWorkspaces:
+        case .checkWorkspaces, .createWorkspace:
             "/v1/workspaces"
         }
     }
@@ -40,6 +43,12 @@ extension WorkspaceRouter: TargetType {
         case .checkWorkspaces:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
+                Header.authorization.rawValue : WorkspaceRouter.jwtKeyChain.accessToken ?? "",
+                Header.sesacKey.rawValue : APIKey.sesacKey
+            ]
+        case .createWorkspace:
+            [
+                Header.contentType.rawValue : Header.multipart.rawValue,
                 Header.authorization.rawValue : WorkspaceRouter.jwtKeyChain.accessToken ?? "",
                 Header.sesacKey.rawValue : APIKey.sesacKey
             ]
@@ -57,6 +66,5 @@ extension WorkspaceRouter: TargetType {
     var body: Data? {
         nil
     }
-    
     
 }
