@@ -10,5 +10,5 @@ import Foundation
 struct AddWorkspaceRequest: Encodable {
     var name: String
     var description: String?
-    var image: Data
+    var image: Data?
 }

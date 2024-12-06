@@ -19,7 +19,7 @@ struct WorkspaceInitial {
         var isListPresented = false
     }
     
-    enum Action: BindableAction {
+    enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
         case exitButtonTapped(isPresented: Bool)
         case setSheet(isPresented: Bool)
