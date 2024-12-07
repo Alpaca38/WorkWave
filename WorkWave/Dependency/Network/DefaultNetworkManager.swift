@@ -80,7 +80,10 @@ final class DefaultNetworkManager: NetworkManager {
             if let description = request.description {
                 multipartFormData.append(description.data(using: .utf8)!, withName: "description")
             }
-            multipartFormData.append(request.image, withName: "files", fileName: "photo.png", mimeType: "image/png")
+            
+            if let image = request.image {
+                multipartFormData.append(image, withName: "files", fileName: "photo.png", mimeType: "image/png")
+            }
         }, with: api.asURLRequest()) else {
             throw NetworkError.invalidRequest
         }
