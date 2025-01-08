@@ -81,6 +81,7 @@ struct WorkspaceAdd {
                 }
             case let .addworkspaceResponse(.success(workspace)):
                 // 생성 성공, 홈 디폴트 화면으로 전환
+                print(workspace)
                 return .none
             case let .addworkspaceResponse(.failure(error)):
                 print("워크스페이스 생성 실패", error)

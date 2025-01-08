@@ -15,7 +15,9 @@ struct WWTabView: View {
         NavigationStack {
             if store.workSpaceExist {
                 TabView {
-                    HomeView()
+                    HomeView(store: Store(initialState: Home.State()) {
+                        Home()
+                    })
                         .tabItem {
                             Image(.homeActive)
                                 .renderingMode(.template)
