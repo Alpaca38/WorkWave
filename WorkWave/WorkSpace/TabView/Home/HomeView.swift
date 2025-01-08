@@ -12,15 +12,23 @@ struct HomeView: View {
     @Bindable var store: StoreOf<Home>
     
     var body: some View {
-        defaultView
-            .gesture(
-            DragGesture()
-                .onEnded({ value in
-                    if value.translation.width > 100 {
-                        // workspaceList
-                    }
-                })
-            )
+        ZStack {
+            defaultView
+                .gesture(
+                DragGesture()
+                    .onEnded({ value in
+                        if value.translation.width > 100 {
+                            store.send(.workspaceListTapped, animation: .easeInOut)
+                        }
+                    })
+                )
+            
+            if store.isListPresented {
+                SideView {
+                    store.send(.closeWorkspaceList, animation: .easeInOut)
+                }
+            }
+        }
     }
     
     var defaultView: some View {
@@ -28,7 +36,7 @@ struct HomeView: View {
             HomeHeaderView(coverImage: Image(.rectangle4044), title: "iOS Developers Study", profileImage: Image(.noPhotoA))
                 .padding(.horizontal)
                 .onTapGesture {
-                    // workspaceList
+                    store.send(.workspaceListTapped, animation: .easeInOut)
                 }
             
             Divider()

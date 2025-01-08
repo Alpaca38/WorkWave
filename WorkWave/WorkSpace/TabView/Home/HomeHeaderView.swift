@@ -18,7 +18,7 @@ struct HomeHeaderView: View {
                 .resizable()
                 .frame(width: 32, height: 32)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-            Text("No Workspace")
+            Text(title)
                 .applyFont(font: .title1)
             
             Spacer()

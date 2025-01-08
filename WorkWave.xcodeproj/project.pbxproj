@@ -11,6 +11,7 @@
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
 		D16E74752D2E5CD8005956EC /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74742D2E5CD8005956EC /* UserDTO.swift */; };
+		D16E74772D2E6992005956EC /* SideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74762D2E6992005956EC /* SideView.swift */; };
 		D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */; };
 		D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116502CD39B04000C1BC3 /* ContentView.swift */; };
 		D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116522CD39B05000C1BC3 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
 		D16E74742D2E5CD8005956EC /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		D16E74762D2E6992005956EC /* SideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideView.swift; sourceTree = "<group>"; };
 		D1E1164B2CD39B04000C1BC3 /* WorkWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWaveApp.swift; sourceTree = "<group>"; };
 		D1E116502CD39B04000C1BC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				D16E746D2D2E1936005956EC /* Home.swift */,
 				D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */,
 				D1E116FC2CED941F000C1BC3 /* HomeHeaderView.swift */,
+				D16E74762D2E6992005956EC /* SideView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
 				D1E117112CFAA675000C1BC3 /* SLPCommonError.swift in Sources */,
+				D16E74772D2E6992005956EC /* SideView.swift in Sources */,
 				D1E117242D0335E3000C1BC3 /* AddWorkspaceRequest.swift in Sources */,
 				D1E1170F2CFAA629000C1BC3 /* ResponseErrorMapper.swift in Sources */,
 				D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */,

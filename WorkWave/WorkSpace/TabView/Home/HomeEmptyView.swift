@@ -24,7 +24,9 @@ struct HomeEmptyView: View {
                 )
             
             if store.isListPresented {
-                sideView
+                SideView {
+                    store.send(.closeWorkspaceList, animation: .easeInOut)
+                }
             }
         }
     }
@@ -66,26 +68,4 @@ struct HomeEmptyView: View {
             }
         }
     }
-    
-    var sideView: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Color.black.opacity(0.4)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        store.send(.closeWorkspaceList, animation: .easeInOut)
-                    }
-                
-                WorkspaceListView(store: Store(initialState: WorkspaceList.State()) {
-                    WorkspaceList()
-                })
-                .frame(width: geometry.size.width * 0.8, height: geometry.size.height)
-                .background(Color.white)
-                .cornerRadius(25, corners: [.topRight, .bottomRight])
-            }
-        }
-        .ignoresSafeArea()
-        .transition(.move(edge: .leading))
-    }
 }
-
