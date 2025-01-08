@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct DMRoom: Identifiable {
-    var id = UUID()
-    
+struct DMRoom: Identifiable, Hashable {
+    let id = UUID()
     let room_id: String
     let createdAt: String
     let user: UserDTO
 }
+
+typealias DMRooms = [DMRoom]

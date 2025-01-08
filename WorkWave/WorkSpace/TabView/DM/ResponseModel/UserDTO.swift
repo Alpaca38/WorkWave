@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserDTO {
+struct UserDTO: Hashable {
     let user_id: String
     let email: String
     let nickname: String

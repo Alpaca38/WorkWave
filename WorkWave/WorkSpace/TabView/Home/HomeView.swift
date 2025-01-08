@@ -45,8 +45,20 @@ struct HomeView: View {
             Divider()
             
             CustomFoldingGroup(label: "다이렉트 메세지", isExpanded: $store.isDMExpanded) {
-                
+                DMListView
+                makeAddButton(text: "새 메세지 추가") {
+                    // addDM
+                }
             }
+            .foregroundStyle(.black)
+            .padding()
+            
+            Divider()
+            
+            makeAddButton(text: "팀원 추가") {
+                // addTeammates
+            }
+            .padding()
             
             Spacer()
             
@@ -77,13 +89,24 @@ private extension HomeView {
         }
     }
     
-//    struct DMListView: View {
-//        let DMs: [String] = ["캠퍼스지킴이", "스유 뽀개기", "앱스토어 홍보"] // dummy
-//        
-//        var body: some View {
-//            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
-//        }
-//    }
+    var DMListView: some View {
+        LazyVStack(spacing: 10) {
+            ForEach(store.DMRooms, id: \.id) { room in
+                HStack {
+                    Image(.profile2) // dummy
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                    
+                    Text(room.user.nickname)
+                        .applyFont(font: .bodyRegular)
+                    
+                    Spacer()
+                }
+                .padding(.vertical, 5)
+            }
+        }
+    }
     
     func makeAddButton(text: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
@@ -100,8 +123,8 @@ private extension HomeView {
     }
 }
 
-//#Preview {
-//    HomeView(store: Store(initialState: Home.State()) {
-//        Home()
-//    })
-//}
+#Preview {
+    HomeView(store: Store(initialState: Home.State()) {
+        Home()
+    })
+}
