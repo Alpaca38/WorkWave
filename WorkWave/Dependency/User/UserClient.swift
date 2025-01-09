@@ -14,6 +14,7 @@ struct UserClient {
     var checkEmailValid: @Sendable (ValidationEmailRequest) async throws -> Void
     var signup: @Sendable (SignupRequest) async throws -> SignupDTO
     var login: @Sendable (LoginRequest) async throws -> SignupDTO
+    var fetchMyProfile: @Sendable () async throws -> MyProfileResponse
 }
 
 extension UserClient: DependencyKey {
@@ -36,6 +37,13 @@ extension UserClient: DependencyKey {
         login: { [networkManager = DefaultNetworkManager.shared] request in
             do {
                 return try await networkManager.fetch(api: UserRouter.login(query: request), responseType: SignupDTO.self)
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        },
+        fetchMyProfile: { [networkManager = DefaultNetworkManager.shared] in
+            do {
+                return try await networkManager.fetch(api: UserRouter.fetchMyProfile, responseType: MyProfileResponse.self)
             } catch let error as ErrorResponse {
                 throw error
             }

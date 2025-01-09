@@ -12,6 +12,9 @@
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
 		D16E74752D2E5CD8005956EC /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74742D2E5CD8005956EC /* UserDTO.swift */; };
 		D16E74772D2E6992005956EC /* SideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74762D2E6992005956EC /* SideView.swift */; };
+		D16E747A2D2F63E1005956EC /* MyProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74792D2F63E1005956EC /* MyProfileResponse.swift */; };
+		D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E747C2D2F6B30005956EC /* ImageRouter.swift */; };
+		D16E747F2D2F6CBC005956EC /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E747E2D2F6CBC005956EC /* ImageClient.swift */; };
 		D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */; };
 		D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116502CD39B04000C1BC3 /* ContentView.swift */; };
 		D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116522CD39B05000C1BC3 /* Assets.xcassets */; };
@@ -97,6 +100,9 @@
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
 		D16E74742D2E5CD8005956EC /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		D16E74762D2E6992005956EC /* SideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideView.swift; sourceTree = "<group>"; };
+		D16E74792D2F63E1005956EC /* MyProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileResponse.swift; sourceTree = "<group>"; };
+		D16E747C2D2F6B30005956EC /* ImageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRouter.swift; sourceTree = "<group>"; };
+		D16E747E2D2F6CBC005956EC /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
 		D1E1164B2CD39B04000C1BC3 /* WorkWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWaveApp.swift; sourceTree = "<group>"; };
 		D1E116502CD39B04000C1BC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -199,6 +205,23 @@
 			path = ResponseModel;
 			sourceTree = "<group>";
 		};
+		D16E74782D2F63D6005956EC /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				D16E74792D2F63E1005956EC /* MyProfileResponse.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D16E747B2D2F6B24005956EC /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D16E747C2D2F6B30005956EC /* ImageRouter.swift */,
+				D16E747E2D2F6CBC005956EC /* ImageClient.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		D1E116422CD39B04000C1BC3 = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +276,7 @@
 		D1E116612CD3A495000C1BC3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D16E74782D2F63D6005956EC /* ResponseModel */,
 				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
 				D16E746D2D2E1936005956EC /* Home.swift */,
 				D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */,
@@ -365,6 +389,7 @@
 		D1E116912CD9C28A000C1BC3 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				D16E747B2D2F6B24005956EC /* Image */,
 				D1E116CF2CE25151000C1BC3 /* UserDefaults */,
 				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
 				D1E116A02CD9DAB0000C1BC3 /* Network */,
@@ -653,6 +678,9 @@
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */,
+				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,
+				D16E747A2D2F63E1005956EC /* MyProfileResponse.swift in Sources */,
+				D16E747F2D2F6CBC005956EC /* ImageClient.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116F42CED7994000C1BC3 /* WorkspaceRouter.swift in Sources */,
 				D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */,

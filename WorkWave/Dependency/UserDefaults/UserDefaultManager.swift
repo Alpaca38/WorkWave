@@ -13,4 +13,11 @@ enum UserDefaultsManager {
     
     @UserDefault(key: .isSignedUp, defaultValue: false, isCustomObject: false)
     static var isSignedUp: Bool
+    
+    @UserDefault(key: .workspaceID, defaultValue: "", isCustomObject: false)
+    static var workspaceID: String
+    
+    static func saveWorkspaceID(_ workspaceID: String) {
+        UserDefaultsManager.workspaceID = workspaceID
+    }
 }

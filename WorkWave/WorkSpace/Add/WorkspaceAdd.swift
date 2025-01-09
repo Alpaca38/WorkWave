@@ -33,6 +33,7 @@ struct WorkspaceAdd {
     }
     
     @Dependency(\.workspaceClient) var workspaceClient
+    @Dependency(\.dismiss) var dismiss
     
     var body: some ReducerOf<Self> {
         BindingReducer()
@@ -82,7 +83,9 @@ struct WorkspaceAdd {
             case let .addworkspaceResponse(.success(workspace)):
                 // 생성 성공, 홈 디폴트 화면으로 전환
                 print(workspace)
-                return .none
+                return .run { send in
+                    await dismiss()
+                }
             case let .addworkspaceResponse(.failure(error)):
                 print("워크스페이스 생성 실패", error)
                 return .none

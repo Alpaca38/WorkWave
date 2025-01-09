@@ -131,8 +131,8 @@ private extension HomeView {
     }
 }
 
-#Preview {
-    HomeView(store: Store(initialState: Home.State()) {
-        Home()
-    })
-}
+//#Preview {
+//    HomeView(store: Store(initialState: Home.State()) {
+//        Home()
+//    })
+//}

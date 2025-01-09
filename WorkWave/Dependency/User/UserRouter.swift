@@ -7,11 +7,15 @@
 
 import Foundation
 import Alamofire
+import ComposableArchitecture
 
 enum UserRouter {
+    @Dependency(\.jwtKeyChain) static var jwtKeyChain
+    
     case checkEmailValid(query: ValidationEmailRequest)
     case signup(query: SignupRequest)
     case login(query: LoginRequest)
+    case fetchMyProfile
 }
 
 extension UserRouter: TargetType {
@@ -27,6 +31,8 @@ extension UserRouter: TargetType {
                 .post
         case .login:
                 .post
+        case .fetchMyProfile:
+                .get
         }
     }
     
@@ -38,6 +44,8 @@ extension UserRouter: TargetType {
             "/v1/users/join"
         case .login:
             "/v1/users/login"
+        case .fetchMyProfile:
+            "/v1/users/me"
         }
     }
     
@@ -48,6 +56,12 @@ extension UserRouter: TargetType {
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey
             ]
+        case .fetchMyProfile:
+            [
+                Header.contentType.rawValue : Header.json.rawValue,
+                Header.sesacKey.rawValue : APIKey.sesacKey,
+                Header.authorization.rawValue : UserRouter.jwtKeyChain.accessToken ?? ""
+            ]
         }
     }
     
@@ -57,7 +71,7 @@ extension UserRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .checkEmailValid, .signup, .login:
+        case .checkEmailValid, .signup, .login, .fetchMyProfile:
             nil
         }
     }
@@ -71,6 +85,8 @@ extension UserRouter: TargetType {
             return try? encoder.encode(query)
         case .login(let query):
             return try? encoder.encode(query)
+        case .fetchMyProfile:
+            return nil
         }
     }
 }
