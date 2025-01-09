@@ -11,6 +11,8 @@ import ComposableArchitecture
 struct HomeView: View {
     @Bindable var store: StoreOf<Home>
     
+    @Dependency(\.imageClient) var imageClient
+    
     var body: some View {
         ZStack {
             defaultView
@@ -28,6 +30,9 @@ struct HomeView: View {
                     store.send(.closeWorkspaceList, animation: .easeInOut)
                 }
             }
+        }
+        .task {
+            store.send(.task)
         }
     }
     

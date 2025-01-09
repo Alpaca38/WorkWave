@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 import ComposableArchitecture
 
 @DependencyClient
 struct ImageClient {
     var networkManager: NetworkManager
-    var fetchImage: @Sendable (String) async throws -> Data
+    var fetchImage: @Sendable (String) async throws -> UIImage
 }
 
 extension ImageClient: DependencyKey {
@@ -19,7 +20,11 @@ extension ImageClient: DependencyKey {
         networkManager: DefaultNetworkManager.shared,
         fetchImage: { [networkManager = DefaultNetworkManager.shared] path in
             do {
-                return try await networkManager.fetch(api: ImageRouter.fetchImage(path: path), responseType: Data.self)
+                guard let data = try await networkManager.fetch(api: ImageRouter.fetchImage(path: path), responseType: Data?.self),
+                      let uiImage = UIImage(data: data) else {
+                    throw NetworkError.unknown
+                }
+                return uiImage
             } catch let error as ErrorResponse {
                 throw error
             }
