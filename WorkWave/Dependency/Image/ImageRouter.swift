@@ -35,7 +35,7 @@ extension ImageRouter: TargetType {
     var path: String {
         switch self {
         case .fetchImage(let path):
-            return path
+            return "/v1\(path)"
         }
     }
     

@@ -11,7 +11,7 @@ import ComposableArchitecture
 @DependencyClient
 struct ImageClient {
     var networkManager: NetworkManager
-    var fetchImage: @Sendable (String) async throws -> MyProfileResponse
+    var fetchImage: @Sendable (String) async throws -> Data
 }
 
 extension ImageClient: DependencyKey {
@@ -19,7 +19,7 @@ extension ImageClient: DependencyKey {
         networkManager: DefaultNetworkManager.shared,
         fetchImage: { [networkManager = DefaultNetworkManager.shared] path in
             do {
-                return try await networkManager.fetch(api: ImageRouter.fetchImage(path: path), responseType: MyProfileResponse.self)
+                return try await networkManager.fetch(api: ImageRouter.fetchImage(path: path), responseType: Data.self)
             } catch let error as ErrorResponse {
                 throw error
             }
