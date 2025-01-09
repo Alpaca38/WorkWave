@@ -38,7 +38,7 @@ struct HomeView: View {
     
     var defaultView: some View {
         VStack {
-            HomeHeaderView(coverImage: Image(.rectangle4044), title: "iOS Developers Study", profileImage: Image(.noPhotoA))
+            HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", profileImage: store.myProfile?.profileImage ?? "", size: 32, title: store.currentWorkspace?.name ?? "")
                 .padding(.horizontal)
                 .onTapGesture {
                     store.send(.workspaceListTapped, animation: .easeInOut)

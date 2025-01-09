@@ -8,25 +8,21 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
-    let coverImage: Image
+    let coverImage: String
+    let profileImage: String
+    let size: CGFloat
     let title: String
-    let profileImage: Image
     
     var body: some View {
         HStack {
-            coverImage
-                .resizable()
-                .frame(width: 32, height: 32)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+            LoadedImage(urlString: coverImage, size: size, isCoverImage: true)
+            
             Text(title)
                 .applyFont(font: .title1)
             
             Spacer()
             
-            profileImage
-                .resizable()
-                .frame(width: 32, height: 32)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+            LoadedImage(urlString: profileImage, size: size)
         }
     }
 }
