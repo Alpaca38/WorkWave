@@ -97,12 +97,13 @@ final class DefaultNetworkManager: NetworkManager {
     
     private func handleTokenRefresh(errorData: ErrorResponse) async throws -> Error {
         do {
-            let result: Token = try await request(api: AuthRouter.refresh)
+            let result: Refresh = try await request(api: AuthRouter.refresh)
             jwtKeyChain.updateAccessToken(accessToken: result.accessToken)
             return errorData
         } catch {
             print("토큰 갱신 에러")
             jwtKeyChain.clearTokens()
+            // 온보딩 화면으로 전환
             return error
         }
     }
