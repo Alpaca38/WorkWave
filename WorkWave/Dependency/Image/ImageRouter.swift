@@ -39,7 +39,7 @@ extension ImageRouter: TargetType {
         }
     }
     
-    var header: [String : String] {
+    var header: HTTPHeaders {
         switch self {
         case .fetchImage:
             return [

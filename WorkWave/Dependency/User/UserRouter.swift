@@ -49,7 +49,7 @@ extension UserRouter: TargetType {
         }
     }
     
-    var header: [String : String] {
+    var header: HTTPHeaders {
         switch self {
         case .checkEmailValid, .signup, .login:
             [

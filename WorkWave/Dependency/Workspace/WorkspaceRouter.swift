@@ -38,7 +38,7 @@ extension WorkspaceRouter: TargetType {
         }
     }
     
-    var header: [String : String] {
+    var header: HTTPHeaders {
         switch self {
         case .checkWorkspaces:
             [

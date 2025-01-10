@@ -28,11 +28,12 @@ extension AuthRouter: TargetType {
         "/v1/auth/refresh"
     }
     
-    var header: [String : String] {
+    var header: HTTPHeaders {
         [
             Header.contentType.rawValue : Header.json.rawValue,
             Header.authorization.rawValue : WorkspaceRouter.jwtKeyChain.accessToken ?? "",
-            Header.sesacKey.rawValue : APIKey.sesacKey
+            Header.sesacKey.rawValue : APIKey.sesacKey,
+            "RefreshToken": WorkspaceRouter.jwtKeyChain.refreshToken ?? ""
         ]
     }
     
@@ -41,9 +42,7 @@ extension AuthRouter: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
-        [
-            URLQueryItem(name: "RefreshToken", value: WorkspaceRouter.jwtKeyChain.refreshToken ?? "")
-        ]
+        nil
     }
     
     var body: Data? {
