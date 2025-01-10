@@ -20,10 +20,7 @@ struct Home {
         var currentWorkspace: WorkspaceDTO.ResponseElement?
         var myProfile: MyProfileResponse?
         
-        var DMRooms: IdentifiedArrayOf<DMRoom> = [
-            DMRoom(room_id: "1", createdAt: "1", user: UserDTO(user_id: "1", email: "", nickname: "캠퍼스지킴이", profileImage: "/static/profiles/1701706651161.jpeg")),
-            DMRoom(room_id: "2", createdAt: "2", user: UserDTO(user_id: "2", email: "", nickname: "Hue", profileImage: "/static/profiles/1701706651161.jpeg"))
-        ] // dummy
+        var DMRooms: DMRooms = []
     }
     
     enum Action: BindableAction {

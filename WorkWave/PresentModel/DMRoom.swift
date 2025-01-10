@@ -8,10 +8,9 @@
 import Foundation
 
 struct DMRoom: Identifiable, Hashable {
-    let id = UUID()
-    let room_id: String
+    let id: String
     let createdAt: String
-    let user: UserDTO
+    let user: Member
 }
 
 typealias DMRooms = [DMRoom]
