@@ -14,7 +14,6 @@ struct WorkspaceList {
     struct State: Equatable {
         var workspaceAdd: WorkspaceAdd.State?
         
-//        var workspaces: IdentifiedArrayOf<WorkspaceDTO.ResponseElement> = []
         var workspaces: WorkspaceDTO.Response = []
         
         var isAddWorkspacePresented: Bool = false
@@ -39,9 +38,6 @@ struct WorkspaceList {
             switch action {
             case .fetchWorkspaces:
                 // 서버에서 워크스페이스 목록 불러오기
-//                state.workspaces = [
-//                    WorkspaceDTO.ResponseElement(workspaceID: "1", name: "영등포 새싹이들 모임", description: "", coverImage: "", ownerID: "", createdAt: "2023-12-21T22:47:30.236Z")
-//                ]
                 return .run { send in
                     do {
                         await send(.workspaceResponse(try await workspaceClient.getWorkspaceList()))

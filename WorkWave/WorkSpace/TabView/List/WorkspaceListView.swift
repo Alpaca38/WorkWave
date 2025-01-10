@@ -73,10 +73,7 @@ struct WorkspaceListView: View {
             LazyVStack(spacing: 8) {
                 ForEach(store.workspaces, id: \.id) { workspace in
                     HStack {
-                        Image(.noPhotoA) // dummy
-                            .resizable()
-                            .frame(width: 44, height: 44)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                        LoadedImage(urlString: workspace.coverImage, size: 44, isCoverImage: true)
                         
                         VStack(alignment: .leading, spacing: 4) {
                             Text(workspace.name)
