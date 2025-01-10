@@ -58,16 +58,16 @@ struct Home {
                         let (workspaceResult, profileResult) = try await fetchInitialData()
                         await send(.myProfileResponse(profileResult))
                         
-                        if let filtered = workspaceResult.response.filter({ $0.workspaceID == UserDefaultsManager.workspaceID
+                        if let filtered = workspaceResult.filter({ $0.workspaceID == UserDefaultsManager.workspaceID
                         }).first {
                             await send(.myWorkspaceResponse(filtered))
                         } else {
-                            guard let workspaceID = workspaceResult.response.first?.workspaceID else {
+                            guard let workspaceID = workspaceResult.first?.workspaceID else {
                                 print("현재 워크 스페이스 없음")
                                 return
                             }
                             UserDefaultsManager.saveWorkspaceID(workspaceID)
-                            await send(.myWorkspaceResponse(workspaceResult.response.first))
+                            await send(.myWorkspaceResponse(workspaceResult.first))
                         }
                     } catch {
                         print(error)
@@ -86,7 +86,7 @@ struct Home {
 
 private extension Home {
     func fetchInitialData() async throws -> (
-        workspaceList: WorkspaceDTO,
+        workspaceList: WorkspaceDTO.Response,
         profile: MyProfileResponse
     ) {
         // 내가 속한 워크스페이스 리스트 조회

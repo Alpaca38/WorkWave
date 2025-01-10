@@ -19,7 +19,7 @@ extension AuthClient: DependencyKey {
         networkManager: DefaultNetworkManager.shared,
         refresh: { [networkManager = DefaultNetworkManager.shared] in
             do {
-                return try await networkManager.fetch(api: AuthRouter.refresh, responseType: Refresh.self)
+                return try await networkManager.request(api: AuthRouter.refresh)
             } catch let error as ErrorResponse {
                 throw error
             }

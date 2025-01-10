@@ -11,7 +11,7 @@ import ComposableArchitecture
 @DependencyClient
 struct WorkspaceClient {
     var networkManager: NetworkManager
-    var getWorkspaceList: @Sendable () async throws -> WorkspaceDTO
+    var getWorkspaceList: @Sendable () async throws -> WorkspaceDTO.Response
     var addWorkspace: @Sendable (AddWorkspaceRequest) async throws -> WorkspaceDTO.ResponseElement
 }
 
@@ -20,14 +20,14 @@ extension WorkspaceClient: DependencyKey {
         networkManager: DefaultNetworkManager.shared,
         getWorkspaceList: { [networkManager = DefaultNetworkManager.shared] in
             do {
-                return try await networkManager.fetch(api: WorkspaceRouter.checkWorkspaces, responseType: WorkspaceDTO.self)
+                return try await networkManager.request(api: WorkspaceRouter.checkWorkspaces)
             } catch let error as ErrorResponse {
                 throw error
             }
         },
         addWorkspace: { [networkManager = DefaultNetworkManager.shared] request in
             do {
-                return try await networkManager.upload(api: WorkspaceRouter.createWorkspace, responseType: WorkspaceDTO.ResponseElement.self, request: request)
+                return try await networkManager.request(api: WorkspaceRouter.createWorkspace(request))
             } catch let error as ErrorResponse {
                 throw error
             }

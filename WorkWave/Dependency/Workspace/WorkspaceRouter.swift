@@ -13,7 +13,7 @@ enum WorkspaceRouter {
     @Dependency(\.jwtKeyChain) static var jwtKeyChain
     
     case checkWorkspaces
-    case createWorkspace
+    case createWorkspace(AddWorkspaceRequest)
     
 }
 
@@ -55,7 +55,7 @@ extension WorkspaceRouter: TargetType {
         }
     }
     
-    var parameters: String? {
+    var parameters: Parameters? {
         nil
     }
     
@@ -65,6 +65,29 @@ extension WorkspaceRouter: TargetType {
     
     var body: Data? {
         nil
+    }
+    
+    var multipartData: [MultipartData]? {
+        switch self {
+        case .createWorkspace(let body):
+            [
+                MultipartData(
+                    data: body.name.data(using: .utf8) ?? Data(),
+                    name: "name"
+                ),
+                MultipartData(
+                    data: body.description?.data(using: .utf8) ?? Data(),
+                    name: "description"
+                ),
+                MultipartData(
+                    data: body.image,
+                    name: "image",
+                    fileName: "image.jpg"
+                )
+            ]
+        default:
+            nil
+        }
     }
     
 }

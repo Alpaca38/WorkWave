@@ -65,7 +65,7 @@ extension UserRouter: TargetType {
         }
     }
     
-    var parameters: String? {
+    var parameters: Parameters? {
         nil
     }
     

@@ -50,7 +50,7 @@ extension ImageRouter: TargetType {
         }
     }
     
-    var parameters: String? {
+    var parameters: Parameters? {
         switch self {
         case .fetchImage:
             return nil

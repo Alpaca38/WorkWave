@@ -69,7 +69,7 @@ struct WorkspaceAdd {
                     state.toast = ToastState(toastMessage: "워크스페이스 이미지를 등록해주세요.", isToastPresented: true)
                     return .none
                 } else {
-                    let request = AddWorkspaceRequest(name: state.workspaceName, description: state.workspaceDescription, image: state.imageData)
+                    let request = AddWorkspaceRequest(name: state.workspaceName, description: state.workspaceDescription, image: state.imageData!)
                     return .run { send in
                         do {
                             await send(.addworkspaceResponse(.success(try await workspaceClient.addWorkspace(request))))

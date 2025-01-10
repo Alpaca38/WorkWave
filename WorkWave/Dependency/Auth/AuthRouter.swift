@@ -15,6 +15,7 @@ enum AuthRouter {
 }
 
 extension AuthRouter: TargetType {
+    
     var baseURL: String {
         APIKey.baseURL
     }
@@ -35,7 +36,7 @@ extension AuthRouter: TargetType {
         ]
     }
     
-    var parameters: String? {
+    var parameters: Parameters? {
         nil
     }
     

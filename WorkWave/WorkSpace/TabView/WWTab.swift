@@ -17,7 +17,7 @@ struct WWTab {
     
     enum Action {
         case checkWorkspaceExist
-        case workspaceResponse(Result<WorkspaceDTO, ErrorResponse>)
+        case workspaceResponse(Result<WorkspaceDTO.Response, ErrorResponse>)
     }
     
     @Dependency(\.workspaceClient) var workspaceClient
@@ -36,10 +36,10 @@ struct WWTab {
                         print(error)
                     }
                 }
-            case let .workspaceResponse(.success(success)):
-                state.workSpaceExist = !success.response.isEmpty
+            case .workspaceResponse(.success(let success)):
+                state.workSpaceExist = !success.isEmpty
                 return .none
-            case let .workspaceResponse(.failure(error)):
+            case .workspaceResponse(.failure(let error)):
                 print(error.errorCode)
                 return .none
             }

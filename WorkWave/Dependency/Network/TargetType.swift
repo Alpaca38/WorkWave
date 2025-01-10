@@ -13,9 +13,10 @@ protocol TargetType: URLRequestConvertible {
     var method: HTTPMethod { get }
     var path: String { get }
     var header: [String: String] { get }
-    var parameters: String? { get }
+    var parameters: Parameters? { get }
     var queryItems: [URLQueryItem]? { get }
     var body: Data? { get }
+    var multipartData: [MultipartData]? { get }
 }
 
 extension TargetType {
@@ -30,5 +31,9 @@ extension TargetType {
         }
         
         return request
+    }
+    
+    var multipartData: [MultipartData]? {
+        return nil
     }
 }
