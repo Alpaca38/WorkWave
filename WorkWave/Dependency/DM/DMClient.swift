@@ -26,3 +26,10 @@ extension DMClient: DependencyKey {
         }
     )
 }
+
+extension DependencyValues {
+    var dmClient: DMClient {
+        get { self[DMClient.self] }
+        set { self[DMClient.self] = newValue }
+    }
+}
