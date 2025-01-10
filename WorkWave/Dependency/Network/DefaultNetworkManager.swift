@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import Alamofire
 import ComposableArchitecture
 
@@ -34,6 +35,20 @@ final class DefaultNetworkManager: NetworkManager {
     /// 응답 데이터가 필요 없는 요청
     func requestWithoutResponse<Router: TargetType>(api: Router) async throws {
         _ = try await performRequest(api: api)
+    }
+    
+    func requestImage(_ api: ImageRouter) async throws -> UIImage {
+        let request = try api.asURLRequest()
+        
+        guard let url = request.url else {
+            throw NetworkError.unknown
+        }
+        
+        guard let data = try await performRequest(api: api),
+              let uiImage = UIImage(data: data) else {
+            throw NetworkError.unknown
+        }
+        return uiImage
     }
     
     private func requestWithMultipart<Router: TargetType, ModelType: Decodable>(

@@ -20,11 +20,12 @@ extension ImageClient: DependencyKey {
         networkManager: DefaultNetworkManager.shared,
         fetchImage: { [networkManager = DefaultNetworkManager.shared] path in
             do {
-                guard let data: Data = try await networkManager.request(api: ImageRouter.fetchImage(path: path)),
-                      let uiImage = UIImage(data: data) else {
-                    throw NetworkError.unknown
-                }
-                return uiImage
+//                guard let data: Data = try await networkManager.request(api: ImageRouter.fetchImage(path: path)),
+//                      let uiImage = UIImage(data: data) else {
+//                    throw NetworkError.unknown
+//                }
+//                return uiImage
+                return try await networkManager.requestImage(ImageRouter.fetchImage(path: path))
             } catch let error as ErrorResponse {
                 throw error
             }
