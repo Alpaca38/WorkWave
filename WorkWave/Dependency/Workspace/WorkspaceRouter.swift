@@ -14,7 +14,7 @@ enum WorkspaceRouter {
     
     case checkWorkspaces
     case createWorkspace(AddWorkspaceRequest)
-    
+    case fetchMembers(workspaceID: String)
 }
 
 extension WorkspaceRouter: TargetType {
@@ -24,7 +24,7 @@ extension WorkspaceRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .checkWorkspaces:
+        case .checkWorkspaces, .fetchMembers:
                 .get
         case .createWorkspace:
                 .post
@@ -35,12 +35,14 @@ extension WorkspaceRouter: TargetType {
         switch self {
         case .checkWorkspaces, .createWorkspace:
             "/v1/workspaces"
+        case .fetchMembers(let workspaceID):
+            "/v1/workspaces/\(workspaceID)/members"
         }
     }
     
     var header: HTTPHeaders {
         switch self {
-        case .checkWorkspaces:
+        case .checkWorkspaces, .fetchMembers:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.authorization.rawValue : WorkspaceRouter.jwtKeyChain.accessToken ?? "",
