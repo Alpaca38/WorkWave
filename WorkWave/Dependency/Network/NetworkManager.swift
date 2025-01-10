@@ -8,14 +8,6 @@
 import Foundation
 
 protocol NetworkManager {
-//    func fetch<Router: TargetType, T: Decodable>(
-//        api: Router,
-//        responseType: T.Type
-//    ) async throws -> T
-//    
-//    func fetchVoid<Router: TargetType>(
-//        api: Router
-    //    ) async throws
     func request<Router: TargetType, ModelType: Decodable>(
         api: Router
     ) async throws -> ModelType

@@ -12,12 +12,6 @@ import ComposableArchitecture
 
 final class DefaultNetworkManager: NetworkManager {
     static let shared = DefaultNetworkManager()
-    private let session: Session
-    
-    private init() {
-        let interceptor = AuthInterceptor()
-        session = Session(interceptor: interceptor)
-    }
     
     @Dependency(\.authClient) var authClient
     @Dependency(\.jwtKeyChain) var jwtKeyChain
