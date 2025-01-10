@@ -24,7 +24,9 @@ struct WWTabView: View {
                             Text("홈")
                         }
                     
-                    DMView()
+                    DMView(store: Store(initialState: DM.State()) {
+                        DM()
+                    })
                         .tabItem {
                             Image(.messageActive)
                                 .renderingMode(.template)

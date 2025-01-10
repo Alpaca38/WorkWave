@@ -17,6 +17,7 @@
 		D16E747F2D2F6CBC005956EC /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E747E2D2F6CBC005956EC /* ImageClient.swift */; };
 		D16E74812D2FA4FF005956EC /* LoadedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74802D2FA4FF005956EC /* LoadedImage.swift */; };
 		D16E74832D30BD91005956EC /* MultipartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74822D30BD91005956EC /* MultipartData.swift */; };
+		D16E74852D30E313005956EC /* DM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74842D30E313005956EC /* DM.swift */; };
 		D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */; };
 		D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116502CD39B04000C1BC3 /* ContentView.swift */; };
 		D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116522CD39B05000C1BC3 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		D16E747E2D2F6CBC005956EC /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
 		D16E74802D2FA4FF005956EC /* LoadedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedImage.swift; sourceTree = "<group>"; };
 		D16E74822D30BD91005956EC /* MultipartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartData.swift; sourceTree = "<group>"; };
+		D16E74842D30E313005956EC /* DM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DM.swift; sourceTree = "<group>"; };
 		D1E1164B2CD39B04000C1BC3 /* WorkWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWaveApp.swift; sourceTree = "<group>"; };
 		D1E116502CD39B04000C1BC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				D16E746F2D2E5149005956EC /* ResponseModel */,
 				D1E1166B2CD3AEA4000C1BC3 /* DMView.swift */,
+				D16E74842D30E313005956EC /* DM.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */,
+				D16E74852D30E313005956EC /* DM.swift in Sources */,
 				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,
 				D16E747A2D2F63E1005956EC /* MyProfileResponse.swift in Sources */,
 				D16E747F2D2F6CBC005956EC /* ImageClient.swift in Sources */,

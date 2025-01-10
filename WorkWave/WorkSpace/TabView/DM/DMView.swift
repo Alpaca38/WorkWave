@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct DMView: View {
+    @Bindable var store: StoreOf<DM>
+    
     var body: some View {
         Text("DM")
     }
