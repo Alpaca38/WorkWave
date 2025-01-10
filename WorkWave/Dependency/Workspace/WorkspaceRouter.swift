@@ -15,6 +15,7 @@ enum WorkspaceRouter {
     case checkWorkspaces
     case createWorkspace(AddWorkspaceRequest)
     case fetchMembers(workspaceID: String)
+    case inviteMember(workspaceID: String, body: InviteMemberRequest)
 }
 
 extension WorkspaceRouter: TargetType {
@@ -26,7 +27,7 @@ extension WorkspaceRouter: TargetType {
         switch self {
         case .checkWorkspaces, .fetchMembers:
                 .get
-        case .createWorkspace:
+        case .createWorkspace, .inviteMember:
                 .post
         }
     }
@@ -37,12 +38,14 @@ extension WorkspaceRouter: TargetType {
             "/v1/workspaces"
         case .fetchMembers(let workspaceID):
             "/v1/workspaces/\(workspaceID)/members"
+        case .inviteMember(let workspaceID, _):
+            "/v1/workspaces/\(workspaceID)/members"
         }
     }
     
     var header: HTTPHeaders {
         switch self {
-        case .checkWorkspaces, .fetchMembers:
+        case .checkWorkspaces, .fetchMembers, .inviteMember:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.authorization.rawValue : WorkspaceRouter.jwtKeyChain.accessToken ?? "",
@@ -66,7 +69,13 @@ extension WorkspaceRouter: TargetType {
     }
     
     var body: Data? {
-        nil
+        let encoder = JSONEncoder()
+        switch self {
+        case .inviteMember(_, let body):
+            return try? encoder.encode(body)
+        default:
+            return nil
+        }
     }
     
     var multipartData: [MultipartData]? {

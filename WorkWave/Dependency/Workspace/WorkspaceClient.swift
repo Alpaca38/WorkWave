@@ -14,6 +14,7 @@ struct WorkspaceClient {
     var getWorkspaceList: @Sendable () async throws -> WorkspaceDTO.Response
     var addWorkspace: @Sendable (AddWorkspaceRequest) async throws -> WorkspaceDTO.ResponseElement
     var fetchMembers: @Sendable (String) async throws -> [MemberResponse]
+    var inviteMember: @Sendable (String, InviteMemberRequest) async throws -> MemberResponse
 }
 
 extension WorkspaceClient: DependencyKey {
@@ -36,6 +37,13 @@ extension WorkspaceClient: DependencyKey {
         fetchMembers: { [networkManager = DefaultNetworkManager.shared] workspaceID in
             do {
                 return try await networkManager.request(api: WorkspaceRouter.fetchMembers(workspaceID: workspaceID))
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        }
+        ,inviteMember: { [networkManager = DefaultNetworkManager.shared] workspaceID, inviteRequest in
+            do {
+                return try await networkManager.request(api: WorkspaceRouter.inviteMember(workspaceID: workspaceID, body: inviteRequest))
             } catch let error as ErrorResponse {
                 throw error
             }
