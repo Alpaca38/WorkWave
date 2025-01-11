@@ -23,6 +23,7 @@
 		D16E748F2D30F71D005956EC /* DMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E748E2D30F71D005956EC /* DMClient.swift */; };
 		D16E74912D30F7B2005956EC /* DMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74902D30F7B2005956EC /* DMResponse.swift */; };
 		D16E74942D30FBAB005956EC /* InviteMemberRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74932D30FBAB005956EC /* InviteMemberRequest.swift */; };
+		D16E749A2D30FE18005956EC /* CreateDMRoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74992D30FE18005956EC /* CreateDMRoomRequest.swift */; };
 		D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */; };
 		D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E116502CD39B04000C1BC3 /* ContentView.swift */; };
 		D1E116532CD39B05000C1BC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E116522CD39B05000C1BC3 /* Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		D16E748E2D30F71D005956EC /* DMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMClient.swift; sourceTree = "<group>"; };
 		D16E74902D30F7B2005956EC /* DMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMResponse.swift; sourceTree = "<group>"; };
 		D16E74932D30FBAB005956EC /* InviteMemberRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberRequest.swift; sourceTree = "<group>"; };
+		D16E74992D30FE18005956EC /* CreateDMRoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDMRoomRequest.swift; sourceTree = "<group>"; };
 		D1E1164B2CD39B04000C1BC3 /* WorkWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWaveApp.swift; sourceTree = "<group>"; };
 		D1E116502CD39B04000C1BC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -229,9 +231,10 @@
 		D16E748B2D30F57D005956EC /* DM */ = {
 			isa = PBXGroup;
 			children = (
+				D16E74982D30FDFD005956EC /* RequestModel */,
+				D16E74972D30FDF3005956EC /* ResponseModel */,
 				D16E748C2D30F586005956EC /* DMRouter.swift */,
 				D16E748E2D30F71D005956EC /* DMClient.swift */,
-				D16E74902D30F7B2005956EC /* DMResponse.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -250,6 +253,22 @@
 				D16E74862D30EB47005956EC /* MemberResponse.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D16E74972D30FDF3005956EC /* ResponseModel */ = {
+			isa = PBXGroup;
+			children = (
+				D16E74902D30F7B2005956EC /* DMResponse.swift */,
+			);
+			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D16E74982D30FDFD005956EC /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				D16E74992D30FE18005956EC /* CreateDMRoomRequest.swift */,
+			);
+			path = RequestModel;
 			sourceTree = "<group>";
 		};
 		D1E116422CD39B04000C1BC3 = {
@@ -707,6 +726,7 @@
 				D1E1168F2CD84FFA000C1BC3 /* Auth.swift in Sources */,
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */,
+				D16E749A2D30FE18005956EC /* CreateDMRoomRequest.swift in Sources */,
 				D16E748D2D30F586005956EC /* DMRouter.swift in Sources */,
 				D16E74852D30E313005956EC /* DM.swift in Sources */,
 				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,

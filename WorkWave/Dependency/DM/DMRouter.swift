@@ -13,6 +13,7 @@ enum DMRouter {
     @Dependency(\.jwtKeyChain) static var jwtKeyChain
     
     case fetchDMRooms(workspaceID: String)
+    case createDMRoom(workspaceID: String, body: CreateDMRoomRequest)
 }
 
 extension DMRouter: TargetType {
@@ -22,14 +23,18 @@ extension DMRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .fetchDMRooms(let workspaceID):
+        case .fetchDMRooms:
                 .get
+        case .createDMRoom:
+                .post
         }
     }
     
     var path: String {
         switch self {
         case .fetchDMRooms(let workspaceID):
+            "/v1/workspaces/\(workspaceID)/dms"
+        case .createDMRoom(let workspaceID, _):
             "/v1/workspaces/\(workspaceID)/dms"
         }
     }
@@ -51,7 +56,13 @@ extension DMRouter: TargetType {
     }
     
     var body: Data? {
-        nil
+        let encoder = JSONEncoder()
+        switch self {
+        case .createDMRoom(_, let body):
+            return try? encoder.encode(body)
+        default:
+            return nil
+        }
     }
     
     
