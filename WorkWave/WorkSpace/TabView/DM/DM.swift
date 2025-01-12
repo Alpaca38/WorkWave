@@ -21,6 +21,9 @@ struct DM {
         var workspaceMembers: [Member] = []
         var dmRooms: DMRooms = []
         
+        var dmLastChattings = [DMRoom: Chatting]()
+        var dmUnreads = [DMRoom: UnreadDMsResponse]()
+        
         var isInviteSheetPresented = false
         var email = ""
     }
@@ -33,6 +36,7 @@ struct DM {
         case inviteMemberButtonTapped
         case inviteExitButtonTapped
         case userCellTapped(Member)
+        case dmCellTapped(DMRoom)
         
         case myProfileResponse(MyProfileResponse)
         case myWorkspaceResponse(WorkspaceDTO.ResponseElement?)
@@ -112,6 +116,9 @@ struct DM {
                 return .none
             case .userCellTapped(let member):
                 // DM 채팅 생성 및 화면 전환
+                return .none
+            case .dmCellTapped(let dmRoom):
+                // 채팅 화면으로 전환
                 return .none
             case .myWorkspaceResponse(let workspace):
                 state.currentWorkspace = workspace

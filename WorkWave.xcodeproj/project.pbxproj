@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D15E39002D34065000A79944 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E38FF2D34065000A79944 /* Chatting.swift */; };
+		D15E39022D3406BA00A79944 /* UnreadDMsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39012D3406BA00A79944 /* UnreadDMsResponse.swift */; };
+		D15E39052D340B2000A79944 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39042D340B2000A79944 /* Date+Extension.swift */; };
+		D15E39072D340D4D00A79944 /* BadgeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39062D340D4D00A79944 /* BadgeModifier.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -98,6 +102,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D15E38FF2D34065000A79944 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		D15E39012D3406BA00A79944 /* UnreadDMsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadDMsResponse.swift; sourceTree = "<group>"; };
+		D15E39042D340B2000A79944 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		D15E39062D340D4D00A79944 /* BadgeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeModifier.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -202,6 +210,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D15E39032D340B0D00A79944 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D15E39042D340B2000A79944 /* Date+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D16E74782D2F63D6005956EC /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +240,7 @@
 			children = (
 				D16E74892D30EC95005956EC /* Member.swift */,
 				D16E74702D2E5166005956EC /* DMRoom.swift */,
+				D15E38FF2D34065000A79944 /* Chatting.swift */,
 			);
 			path = PresentModel;
 			sourceTree = "<group>";
@@ -259,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				D16E74902D30F7B2005956EC /* DMResponse.swift */,
+				D15E39012D3406BA00A79944 /* UnreadDMsResponse.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -291,6 +309,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D15E39032D340B0D00A79944 /* Extension */,
 				D16E74882D30EC8C005956EC /* PresentModel */,
 				D1E1171F2D030293000C1BC3 /* Manager */,
 				D1E116B42CDCA329000C1BC3 /* GoogleService-Info.plist */,
@@ -342,6 +361,7 @@
 				D1E116672CD3AB04000C1BC3 /* FontModifier.swift */,
 				D1E116842CD686F4000C1BC3 /* ButtonWrapper.swift */,
 				D1E1171D2CFEAE23000C1BC3 /* RoundedCorner.swift */,
+				D15E39062D340D4D00A79944 /* BadgeModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -712,12 +732,14 @@
 				D1E1166C2CD3AEA4000C1BC3 /* DMView.swift in Sources */,
 				D16E748A2D30EC95005956EC /* Member.swift in Sources */,
 				D1E116D12CE2515F000C1BC3 /* UserDefault.swift in Sources */,
+				D15E39022D3406BA00A79944 /* UnreadDMsResponse.swift in Sources */,
 				D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
 				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
 				D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */,
 				D16E748F2D30F71D005956EC /* DMClient.swift in Sources */,
 				D1E116C02CDCED3E000C1BC3 /* JWTKeyChainProtocol.swift in Sources */,
+				D15E39002D34065000A79944 /* Chatting.swift in Sources */,
 				D1E116C22CDCEEA3000C1BC3 /* JWTKeyChain.swift in Sources */,
 				D1E1168A2CD6AE57000C1BC3 /* SheetHeaderView.swift in Sources */,
 				D1E116632CD3A579000C1BC3 /* HomeView.swift in Sources */,
@@ -758,6 +780,7 @@
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,
 				D1E116932CD9C2A5000C1BC3 /* UserClient.swift in Sources */,
 				D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */,
+				D15E39052D340B2000A79944 /* Date+Extension.swift in Sources */,
 				D1E1171E2CFEAE23000C1BC3 /* RoundedCorner.swift in Sources */,
 				D16E74832D30BD91005956EC /* MultipartData.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
@@ -775,6 +798,7 @@
 				D1E116512CD39B04000C1BC3 /* ContentView.swift in Sources */,
 				D1E117022CED9A94000C1BC3 /* AuthClient.swift in Sources */,
 				D1E117042CEDA489000C1BC3 /* Refresh.swift in Sources */,
+				D15E39072D340D4D00A79944 /* BadgeModifier.swift in Sources */,
 				D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */,
 				D16E746E2D2E1936005956EC /* Home.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,

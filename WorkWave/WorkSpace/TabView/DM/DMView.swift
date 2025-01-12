@@ -28,9 +28,7 @@ struct DMView: View {
                 
                 Divider()
                 
-                ScrollView {
-                    
-                }
+                chatListView()
                 
                 Spacer()
             }
@@ -109,6 +107,64 @@ private extension DMView {
         }
         .asButton {
             store.send(.userCellTapped(user))
+        }
+        .buttonStyle(.plain)
+    }
+    
+    func chatListView() -> some View {
+        ScrollView {
+            LazyVStack(spacing: 20) {
+                ForEach(store.dmRooms, id: \.id) { dmRoom in
+                    let lastChatting = store.dmLastChattings[dmRoom]
+                    let unreadResponse = store.dmUnreads[dmRoom]
+                    dmCell(
+                        dm: dmRoom,
+                        lastChatting: lastChatting,
+                        unreadCount: unreadResponse
+                    )
+                }
+            }
+        }
+    }
+    
+    func dmCell(
+        dm: DMRoom,
+        lastChatting: Chatting?,
+        unreadCount: UnreadDMsResponse?
+    ) -> some View {
+        HStack(alignment: .top, spacing: 4) {
+            LoadedImage(urlString: dm.user.profileImage ?? "", size: 34)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(dm.user.nickname)
+                    .applyFont(font: .bodyRegular)
+                
+                Text(lastChatting?.text ?? "대화를 시작해보세요")
+                    .applyFont(font: .bodyRegular)
+                    .foregroundStyle(.secondaryText)
+                    .lineLimit(2)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 4) {
+                if let date = DateManager.shared.toDate(createdAt: lastChatting?.date ?? "") {
+                    let dateString = date.isToday ? date.toString(.todayChat) :
+                    date.toString(.pastChat)
+                    
+                    Text(dateString)
+                        .applyFont(font: .bodyRegular)
+                        .foregroundStyle(.secondaryText)
+                    
+                    Text("\(unreadCount?.count ?? 0)")
+                        .badge()
+                        .opacity(unreadCount?.count ?? 0 <= 0 ? 0 : 1)
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .asButton {
+            store.send(.dmCellTapped(dm))
         }
         .buttonStyle(.plain)
     }

@@ -30,4 +30,8 @@ final class DateManager {
         }
         return displayDateFormatter.string(from: date)
     }
+    
+    func toDate(createdAt: String) -> Date? {
+        return isoDateFormatter.date(from: createdAt)
+    }
 }
