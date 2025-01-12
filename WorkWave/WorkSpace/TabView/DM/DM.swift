@@ -45,6 +45,9 @@ struct DM {
         case dmRoomsResponse(DMRooms)
         case inviteMemberResponse(Member)
         
+        case dmChatResponse(DMRoom, Chatting)
+        case unreadCountResponse(DMRoom, UnreadDMsResponse)
+        
         case loadingComplete
     }
     
@@ -133,10 +136,33 @@ struct DM {
                 return .none
             case .dmRoomsResponse(let dmRooms):
                 state.dmRooms = dmRooms
-                return .none
+                return .merge(dmRooms.map { dmRoom in
+                    return .run { send in
+                        do {
+                            let (dmChats, unreadCount) = try await fetchDMRoomDetails(
+                                workspaceID: UserDefaultsManager.workspaceID,
+                                roomID: dmRoom.id,
+                                lastCreatedAt: ""
+                            )
+                            
+                            if let lastChat = dmChats.last?.toPresentModel() {
+                                await send(.dmChatResponse(dmRoom, lastChat))
+                            }
+                            await send(.unreadCountResponse(dmRoom, unreadCount))
+                        } catch {
+                            print("DM 채팅 조회 실패:", error)
+                        }
+                    }
+                })
             case .inviteMemberResponse(let inviteMember):
                 state.workspaceMembers.append(inviteMember)
                 state.isInviteSheetPresented = false
+                return .none
+            case .dmChatResponse(let room, let lastChat):
+                state.dmLastChattings[room] = lastChat
+                return .none
+            case .unreadCountResponse(let room, let unreadResponse):
+                state.dmUnreads[room] = unreadResponse
                 return .none
             case .loadingComplete:
                 state.isLoading = false
@@ -146,18 +172,38 @@ struct DM {
     }
 }
 
-extension DM {
-    private func fetchInitialData() async throws -> (WorkspaceDTO.Response, MyProfileResponse) {
+private extension DM {
+    func fetchInitialData() async throws -> (WorkspaceDTO.Response, MyProfileResponse) {
         async let workspaces = workspaceClient.getWorkspaceList()
         async let profile = userClient.fetchMyProfile()
         return try await (workspaces, profile)
     }
     
-    private func fetchWorkspaceDetails(
+    func fetchWorkspaceDetails(
         workspaceID: String
     ) async throws -> ([Member], [DMRoom]) {
         async let members = workspaceClient.fetchMembers(workspaceID)
         async let dmRooms = dmClient.fetchDMRooms(workspaceID)
         return try await (members.map { $0.toPresentModel() }, dmRooms.map { $0.toPresentModel() })
+    }
+    
+    func fetchDMRoomDetails(
+        workspaceID: String,
+        roomID: String,
+        lastCreatedAt: String
+    ) async throws -> ([DMResponse], UnreadDMsResponse) {
+        // DM 채팅 내역 리스트 조회 API
+        async let fetchChattings = dmClient.fetchDMHistory(
+            workspaceID,
+            roomID,
+            lastCreatedAt
+        )
+        // unreadCount 조회 API
+        async let fetchUnreadCount = dmClient.fetchUnreadDMCount(
+            workspaceID,
+            roomID,
+            lastCreatedAt
+        )
+        return try await (fetchChattings, fetchUnreadCount)
     }
 }
