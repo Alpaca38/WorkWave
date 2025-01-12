@@ -34,6 +34,11 @@ struct HomeView: View {
         .task {
             store.send(.task)
         }
+        .sheet(isPresented: $store.isInviteSheetPresented) {
+            inviteMemberView()
+                .presentationDragIndicator(.visible)
+        }
+        .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
     }
     
     var defaultView: some View {
@@ -69,7 +74,7 @@ struct HomeView: View {
             Divider()
             
             makeAddButton(text: "팀원 추가") {
-                // addTeammates
+                store.send(.inviteMemberSheetButtonTapped)
             }
             .padding()
             
@@ -133,6 +138,26 @@ private extension HomeView {
             }
             .foregroundStyle(.secondaryText)
         }
+    }
+    
+    func inviteMemberView() -> some View {
+        VStack {
+            SheetHeaderView(text: "팀원 초대") {
+                store.send(.inviteExitButtonTapped)
+            }
+            ScrollView {
+                CustomTextField(title: "이메일", placeholder: "초대하려는 팀원의 이메일을 입력하세요.", text: $store.email)
+                    .padding()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            CustomButton(title: "초대 보내기", font: .title2, titleColor: .white, tintColor: store.inviteButtonValid ? .brandGreen : .inactive) {
+                store.send(.inviteMemberButtonTapped)
+            }
+            .padding()
+            .disabled(!store.inviteButtonValid)
+        }
+        .background(.primaryBackground)
     }
 }
 

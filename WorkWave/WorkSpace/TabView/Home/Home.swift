@@ -17,20 +17,31 @@ struct Home {
         
         var isListPresented = false
         
+        var isInviteSheetPresented = false
+        
         var currentWorkspace: WorkspaceDTO.ResponseElement?
         var myProfile: MyProfileResponse?
         
         var DMRooms: DMRooms = []
+        var email: String = ""
+        var toast = ToastState(toastMessage: "")
+        
+        var inviteButtonValid = false
     }
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         case workspaceListTapped
         case closeWorkspaceList
+        case inviteMemberSheetButtonTapped
+        case inviteMemberButtonTapped
+        case inviteExitButtonTapped
+        
         case task
         
         case myWorkspaceResponse(WorkspaceDTO.ResponseElement?)
         case myProfileResponse(MyProfileResponse)
+        case inviteMemberResponse(Member)
     }
     
     @Dependency(\.workspaceClient) var workspaceClient
@@ -41,6 +52,9 @@ struct Home {
         
         Reduce { state, action in
             switch action {
+            case .binding(\.email):
+                state.inviteButtonValid = !state.email.isEmpty
+                return .none
             case .binding:
                 return .none
             case .workspaceListTapped:
@@ -48,6 +62,29 @@ struct Home {
                 return .none
             case .closeWorkspaceList:
                 state.isListPresented = false
+                return .none
+            case .inviteMemberSheetButtonTapped:
+                if state.currentWorkspace?.ownerID == state.myProfile?.userID {
+                    state.isInviteSheetPresented = true
+                } else {
+                    state.toast = ToastState(toastMessage: "초대 권한이 없습니다.", isToastPresented: true)
+                }
+                return .none
+            case .inviteMemberButtonTapped:
+                guard let workspaceID = state.currentWorkspace?.workspaceID else {
+                    print("현재 워크스페이스가 없습니다.")
+                    return .none
+                }
+                return .run { [email = state.email] send in
+                    do {
+                        let result = try await workspaceClient.inviteMember(workspaceID, InviteMemberRequest(email: email))
+                        await send(.inviteMemberResponse(result.toPresentModel()))
+                    } catch {
+                        print("초대에 실패했습니다.")
+                    }
+                }
+            case .inviteExitButtonTapped:
+                state.isInviteSheetPresented = false
                 return .none
             case .task:
                 return .run { send in
@@ -75,6 +112,10 @@ struct Home {
                 return .none
             case .myProfileResponse(let profile):
                 state.myProfile = profile
+                return .none
+            case .inviteMemberResponse(let member):
+                state.isInviteSheetPresented = false
+                state.toast = ToastState(toastMessage: "팀원 초대에 성공했습니다.", isToastPresented: true)
                 return .none
             }
         }
