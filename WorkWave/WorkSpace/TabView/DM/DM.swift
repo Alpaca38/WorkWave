@@ -32,6 +32,7 @@ struct DM {
         case inviteMemberSheetButtonTapped
         case inviteMemberButtonTapped
         case inviteExitButtonTapped
+        case userCellTapped(Member)
         
         case myProfileResponse(MyProfileResponse)
         case myWorkspaceResponse(WorkspaceDTO.ResponseElement?)
@@ -108,6 +109,9 @@ struct DM {
                 }
             case .inviteExitButtonTapped:
                 state.isInviteSheetPresented = false
+                return .none
+            case .userCellTapped(let member):
+                // DM 채팅 생성 및 화면 전환
                 return .none
             case .myWorkspaceResponse(let workspace):
                 state.currentWorkspace = workspace

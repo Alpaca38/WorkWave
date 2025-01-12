@@ -24,9 +24,7 @@ struct DMView: View {
                 
                 Divider()
                 
-                ScrollView(.horizontal) {
-                    
-                }
+                memberListView()
                 
                 Divider()
                 
@@ -87,5 +85,31 @@ private extension DMView {
             .disabled(!store.inviteButtonValid)
         }
         .background(.primaryBackground)
+    }
+    
+    func memberListView() -> some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 10) {
+                ForEach(store.workspaceMembers, id: \.id) { item in
+                    userCell(user: item)
+                }
+            }
+            .frame(height: 100)
+            .padding(.horizontal, 16)
+        }
+    }
+    
+    func userCell(user: Member) -> some View {
+        VStack(spacing: 4) {
+            LoadedImage(urlString: user.profileImage ?? "", size: 44)
+            Text(user.nickname)
+                .applyFont(font: .bodyRegular)
+                .frame(width: 44)
+                .lineLimit(1)
+        }
+        .asButton {
+            store.send(.userCellTapped(user))
+        }
+        .buttonStyle(.plain)
     }
 }
