@@ -82,7 +82,7 @@ struct Login {
                 }
             case let .loginResponse(.success(success)):
                 return .run { send in
-                    UserDefaultsManager.user = User(nickname: success.nickname, email: success.email, phoneNumber: success.phone)
+                    UserDefaultsManager.user = User(userID: success.userID, nickname: success.nickname, email: success.email, phoneNumber: success.phone)
                     jwtKeyChain.handleLoginSuccess(accessToken: success.token.accessToken, refreshToken: success.token.refreshToken)
                     await send(.setSheet(isPresented: true))
                 }

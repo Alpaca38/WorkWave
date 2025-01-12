@@ -8,7 +8,7 @@
 import Foundation
 
 enum UserDefaultsManager {
-    @UserDefault(key: .user, defaultValue: User(nickname: "Guest", email: "Guest@guest.com", phoneNumber: ""), isCustomObject: true)
+    @UserDefault(key: .user, defaultValue: User(userID: "GuestID", nickname: "Guest", email: "Guest@guest.com", phoneNumber: ""), isCustomObject: true)
     static var user: User
     
     @UserDefault(key: .isSignedUp, defaultValue: false, isCustomObject: false)
