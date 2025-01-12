@@ -15,6 +15,7 @@ protocol TargetType: URLRequestConvertible {
     var header: HTTPHeaders { get }
     var parameters: Parameters? { get }
     var queryItems: [URLQueryItem]? { get }
+    var encoding: ParameterEncoding { get }
     var body: Data? { get }
     var multipartData: [MultipartData]? { get }
 }
@@ -30,7 +31,16 @@ extension TargetType {
             request.url?.append(queryItems: queryItems)
         }
         
-        return request
+        return try encoding.encode(request, with: parameters)
+    }
+    
+    var encoding: ParameterEncoding {
+        switch method {
+        case .get:
+            return URLEncoding.default
+        default:
+            return JSONEncoding.default
+        }
     }
     
     var multipartData: [MultipartData]? {

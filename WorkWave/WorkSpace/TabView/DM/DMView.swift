@@ -87,7 +87,7 @@ private extension DMView {
     
     func memberListView() -> some View {
         ScrollView(.horizontal) {
-            LazyHStack(spacing: 10) {
+            LazyHStack(spacing: 20) {
                 ForEach(store.workspaceMembers, id: \.id) { item in
                     userCell(user: item)
                 }

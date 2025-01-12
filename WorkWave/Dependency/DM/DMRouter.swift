@@ -14,6 +14,7 @@ enum DMRouter {
     
     case fetchDMRooms(workspaceID: String)
     case createDMRoom(workspaceID: String, body: CreateDMRoomRequest)
+    case fetchDMHistory(workspaceID: String, roomID: String, cursorDate: String)
 }
 
 extension DMRouter: TargetType {
@@ -23,7 +24,7 @@ extension DMRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .fetchDMRooms:
+        case .fetchDMRooms, .fetchDMHistory:
                 .get
         case .createDMRoom:
                 .post
@@ -36,6 +37,8 @@ extension DMRouter: TargetType {
             "/v1/workspaces/\(workspaceID)/dms"
         case .createDMRoom(let workspaceID, _):
             "/v1/workspaces/\(workspaceID)/dms"
+        case .fetchDMHistory(let workspaceID, let roomID, _):
+            "/v1/workspaces/\(workspaceID)/dms/\(roomID)/chats"
         }
     }
     
@@ -48,7 +51,12 @@ extension DMRouter: TargetType {
     }
     
     var parameters: Alamofire.Parameters? {
-        nil
+        switch self {
+        case .fetchDMHistory(_, _, let cursorDate):
+            return ["cursor_date": cursorDate]
+        default:
+            return nil
+        }
     }
     
     var queryItems: [URLQueryItem]? {
