@@ -15,6 +15,7 @@ enum DMRouter {
     case fetchDMRooms(workspaceID: String)
     case createDMRoom(workspaceID: String, body: CreateDMRoomRequest)
     case fetchDMHistory(workspaceID: String, roomID: String, cursorDate: String)
+    case fetchUnreadDMCount(workspaceID: String, roomID: String, after: String)
 }
 
 extension DMRouter: TargetType {
@@ -24,7 +25,7 @@ extension DMRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .fetchDMRooms, .fetchDMHistory:
+        case .fetchDMRooms, .fetchDMHistory, .fetchUnreadDMCount:
                 .get
         case .createDMRoom:
                 .post
@@ -39,6 +40,8 @@ extension DMRouter: TargetType {
             "/v1/workspaces/\(workspaceID)/dms"
         case .fetchDMHistory(let workspaceID, let roomID, _):
             "/v1/workspaces/\(workspaceID)/dms/\(roomID)/chats"
+        case .fetchUnreadDMCount(let workspaceID, let roomID, _):
+            "/v1/workspaces/\(workspaceID)/dms/\(roomID)/unreads"
         }
     }
     
@@ -54,6 +57,8 @@ extension DMRouter: TargetType {
         switch self {
         case .fetchDMHistory(_, _, let cursorDate):
             return ["cursor_date": cursorDate]
+        case .fetchUnreadDMCount(_, _, let after):
+            return ["after": after]
         default:
             return nil
         }

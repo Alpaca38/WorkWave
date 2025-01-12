@@ -14,6 +14,7 @@ struct DMClient {
     var fetchDMRooms: @Sendable (String) async throws -> [DMRoomResponse]
     var createDMRoom: @Sendable (String, CreateDMRoomRequest) async throws -> DMRoomResponse
     var fetchDMHistory: @Sendable (String, String, String) async throws -> [DMResponse]
+    var fetchUnreadDMCount: @Sendable (String, String, String) async throws -> UnreadDMsResponse
 }
 
 extension DMClient: DependencyKey {
@@ -36,6 +37,13 @@ extension DMClient: DependencyKey {
         fetchDMHistory: { [networkManager = DefaultNetworkManager.shared] workspaceID, roomID, cursorDate in
             do {
                 return try await networkManager.request(api: DMRouter.fetchDMHistory(workspaceID: workspaceID, roomID: roomID, cursorDate: cursorDate))
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        },
+        fetchUnreadDMCount: { [networkManager = DefaultNetworkManager.shared] workspaceID, roomID, after in
+            do {
+                return try await networkManager.request(api: DMRouter.fetchUnreadDMCount(workspaceID: workspaceID, roomID: roomID, after: after))
             } catch let error as ErrorResponse {
                 throw error
             }
