@@ -12,33 +12,40 @@ struct DMView: View {
     @Bindable var store: StoreOf<DM>
     
     var body: some View {
-        VStack {
-            if store.isLoading {
-                ProgressView()
-            } else if store.workspaceMembers.isEmpty {
-                emptyMemeberView()
-                    .padding()
-            } else {
-                HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", profileImage: store.myProfile?.profileImage ?? "", size: 32, title: "Direct Message")
-                    .padding()
-                
-                Divider()
-                
-                memberListView()
-                
-                Divider()
-                
-                chatListView()
-                
-                Spacer()
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+            VStack {
+                if store.isLoading {
+                    ProgressView()
+                } else if store.workspaceMembers.isEmpty {
+                    emptyMemeberView()
+                        .padding()
+                } else {
+                    HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", profileImage: store.myProfile?.profileImage ?? "", size: 32, title: "Direct Message")
+                        .padding()
+                    
+                    Divider()
+                    
+                    memberListView()
+                    
+                    Divider()
+                    
+                    chatListView()
+                    
+                    Spacer()
+                }
             }
-        }
-        .task {
-            store.send(.task)
-        }
-        .sheet(isPresented: $store.isInviteSheetPresented) {
-            inviteMemberView()
-                .presentationDragIndicator(.visible)
+            .task {
+                store.send(.task)
+            }
+            .sheet(isPresented: $store.isInviteSheetPresented) {
+                inviteMemberView()
+                    .presentationDragIndicator(.visible)
+            }
+        } destination: { store in
+            switch store.case {
+            case .dmChatting(let store):
+                DMChattingView(store: store)
+            }
         }
     }
 }
@@ -132,10 +139,10 @@ private extension DMView {
         lastChatting: Chatting?,
         unreadCount: UnreadDMsResponse?
     ) -> some View {
-        HStack(alignment: .top, spacing: 4) {
+        HStack(alignment: .center, spacing: 8) {
             LoadedImage(urlString: dm.user.profileImage ?? "", size: 34)
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(dm.user.nickname)
                     .applyFont(font: .bodyRegular)
                 

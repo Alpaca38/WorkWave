@@ -13,7 +13,7 @@ struct DMChatting {
     @ObservableState
     struct State {
         var dmRoom: DMRoom
-        var message: [Chatting]
+        var message: [Chatting] = []
         
         var messageText = ""
         var selectedImages: [UIImage]? = []
@@ -47,7 +47,9 @@ struct DMChatting {
             case .imageDeleteButtonTapped(let image):
                 return .none
             case .backButtonTapped:
-                return .none
+                return .run { send in
+                    await dismiss()
+                }
             }
         }
     }

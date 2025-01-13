@@ -10,8 +10,14 @@ import ComposableArchitecture
 
 @Reducer
 struct DM {
+    @Reducer
+    enum Path {
+        case dmChatting(DMChatting)
+    }
+    
     @ObservableState
     struct State {
+        var path = StackState<Path.State>()
         var isLoading = true
         var inviteButtonValid = false
         
@@ -29,6 +35,7 @@ struct DM {
     }
     
     enum Action: BindableAction {
+        case path(StackActionOf<Path>)
         case binding(BindingAction<State>)
         
         case task
@@ -119,9 +126,13 @@ struct DM {
                 return .none
             case .userCellTapped(let member):
                 // DM 채팅 생성 및 화면 전환
-                return .none
+                return .run { send in
+                    let result = try await dmClient.createDMRoom(UserDefaultsManager.workspaceID, CreateDMRoomRequest(opponent_id: member.id))
+                    await send(.dmCellTapped(result.toPresentModel()))
+                }
             case .dmCellTapped(let dmRoom):
                 // 채팅 화면으로 전환
+                state.path.append(.dmChatting(DMChatting.State(dmRoom: dmRoom)))
                 return .none
             case .myWorkspaceResponse(let workspace):
                 state.currentWorkspace = workspace
@@ -167,8 +178,11 @@ struct DM {
             case .loadingComplete:
                 state.isLoading = false
                 return .none
+            case .path:
+                return .none
             }
         }
+        .forEach(\.path, action: \.path)
     }
 }
 
