@@ -12,6 +12,14 @@
 		D15E39052D340B2000A79944 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39042D340B2000A79944 /* Date+Extension.swift */; };
 		D15E39072D340D4D00A79944 /* BadgeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39062D340D4D00A79944 /* BadgeModifier.swift */; };
 		D15E39092D341D0F00A79944 /* DMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39082D341D0F00A79944 /* DMResponse.swift */; };
+		D15E390C2D34AB4200A79944 /* DMChattingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E390B2D34AB4200A79944 /* DMChattingView.swift */; };
+		D15E390E2D34AB4800A79944 /* DMChatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E390D2D34AB4800A79944 /* DMChatting.swift */; };
+		D15E39102D34B8FB00A79944 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E390F2D34B8FB00A79944 /* View+Extension.swift */; };
+		D15E39122D34BC7F00A79944 /* ChattingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39112D34BC7F00A79944 /* ChattingImageView.swift */; };
+		D15E39142D34BD2200A79944 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39132D34BD2200A79944 /* CustomImageView.swift */; };
+		D15E39162D34BF9100A79944 /* ImageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39152D34BF9100A79944 /* ImageDetailView.swift */; };
+		D15E39182D34C14500A79944 /* CustomPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39172D34C14500A79944 /* CustomPhotoPicker.swift */; };
+		D15E391A2D34C80A00A79944 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39192D34C80A00A79944 /* CustomToolbar.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -108,6 +116,14 @@
 		D15E39042D340B2000A79944 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		D15E39062D340D4D00A79944 /* BadgeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeModifier.swift; sourceTree = "<group>"; };
 		D15E39082D341D0F00A79944 /* DMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMResponse.swift; sourceTree = "<group>"; };
+		D15E390B2D34AB4200A79944 /* DMChattingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingView.swift; sourceTree = "<group>"; };
+		D15E390D2D34AB4800A79944 /* DMChatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatting.swift; sourceTree = "<group>"; };
+		D15E390F2D34B8FB00A79944 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		D15E39112D34BC7F00A79944 /* ChattingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingImageView.swift; sourceTree = "<group>"; };
+		D15E39132D34BD2200A79944 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		D15E39152D34BF9100A79944 /* ImageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailView.swift; sourceTree = "<group>"; };
+		D15E39172D34C14500A79944 /* CustomPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhotoPicker.swift; sourceTree = "<group>"; };
+		D15E39192D34C80A00A79944 /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -216,8 +232,18 @@
 			isa = PBXGroup;
 			children = (
 				D15E39042D340B2000A79944 /* Date+Extension.swift */,
+				D15E390F2D34B8FB00A79944 /* View+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D15E390A2D34AB3B00A79944 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				D15E390B2D34AB4200A79944 /* DMChattingView.swift */,
+				D15E390D2D34AB4800A79944 /* DMChatting.swift */,
+			);
+			path = Chatting;
 			sourceTree = "<group>";
 		};
 		D16E74782D2F63D6005956EC /* ResponseModel */ = {
@@ -381,6 +407,7 @@
 		D1E1166A2CD3AE90000C1BC3 /* DM */ = {
 			isa = PBXGroup;
 			children = (
+				D15E390A2D34AB3B00A79944 /* Chatting */,
 				D1E1166B2CD3AEA4000C1BC3 /* DMView.swift */,
 				D16E74842D30E313005956EC /* DM.swift */,
 			);
@@ -412,6 +439,11 @@
 				D1E116892CD6AE57000C1BC3 /* SheetHeaderView.swift */,
 				D1E116AB2CDB9FB8000C1BC3 /* Toast.swift */,
 				D16E74802D2FA4FF005956EC /* LoadedImage.swift */,
+				D15E39112D34BC7F00A79944 /* ChattingImageView.swift */,
+				D15E39132D34BD2200A79944 /* CustomImageView.swift */,
+				D15E39152D34BF9100A79944 /* ImageDetailView.swift */,
+				D15E39172D34C14500A79944 /* CustomPhotoPicker.swift */,
+				D15E39192D34C80A00A79944 /* CustomToolbar.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -757,9 +789,11 @@
 				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,
 				D16E74912D30F7B2005956EC /* DMRoomResponse.swift in Sources */,
 				D16E747A2D2F63E1005956EC /* MyProfileResponse.swift in Sources */,
+				D15E39142D34BD2200A79944 /* CustomImageView.swift in Sources */,
 				D16E747F2D2F6CBC005956EC /* ImageClient.swift in Sources */,
 				D1E116982CD9C345000C1BC3 /* APIKey.swift in Sources */,
 				D1E116F42CED7994000C1BC3 /* WorkspaceRouter.swift in Sources */,
+				D15E390C2D34AB4200A79944 /* DMChattingView.swift in Sources */,
 				D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */,
 				D1E116B12CDC7FA4000C1BC3 /* SignupDTO.swift in Sources */,
 				D1E116ED2CE4F5C2000C1BC3 /* Login.swift in Sources */,
@@ -770,11 +804,15 @@
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,
 				D1E116D52CE251AE000C1BC3 /* User.swift in Sources */,
+				D15E39182D34C14500A79944 /* CustomPhotoPicker.swift in Sources */,
 				D1E116F12CED7621000C1BC3 /* WWTab.swift in Sources */,
+				D15E39122D34BC7F00A79944 /* ChattingImageView.swift in Sources */,
 				D1E1167E2CD67219000C1BC3 /* SignUpView.swift in Sources */,
+				D15E39102D34B8FB00A79944 /* View+Extension.swift in Sources */,
 				D1E1168D2CD84FDD000C1BC3 /* AuthView.swift in Sources */,
 				D16E74772D2E6992005956EC /* SideView.swift in Sources */,
 				D1E117242D0335E3000C1BC3 /* AddWorkspaceRequest.swift in Sources */,
+				D15E390E2D34AB4800A79944 /* DMChatting.swift in Sources */,
 				D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */,
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
@@ -804,6 +842,7 @@
 				D15E39092D341D0F00A79944 /* DMResponse.swift in Sources */,
 				D15E39072D340D4D00A79944 /* BadgeModifier.swift in Sources */,
 				D1E116D32CE25180000C1BC3 /* UserDefaultManager.swift in Sources */,
+				D15E391A2D34C80A00A79944 /* CustomToolbar.swift in Sources */,
 				D16E746E2D2E1936005956EC /* Home.swift in Sources */,
 				D1E1164F2CD39B04000C1BC3 /* WorkWaveApp.swift in Sources */,
 				D16E74942D30FBAB005956EC /* InviteMemberRequest.swift in Sources */,
@@ -814,6 +853,7 @@
 				D1E1171A2CFE9AE7000C1BC3 /* WorkspaceList.swift in Sources */,
 				D1E116E72CE4F197000C1BC3 /* LoginRequest.swift in Sources */,
 				D16E74872D30EB47005956EC /* MemberResponse.swift in Sources */,
+				D15E39162D34BF9100A79944 /* ImageDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
