@@ -67,6 +67,7 @@ struct ProfileView: View {
                                 .applyFont(font: .bodyBold)
                             Spacer()
                             Text(store.phoneNumber)
+                                .applyFont(font: .bodyRegular)
                                 .foregroundStyle(.secondaryText)
                             Image(.chevronRight)
                                 .resizable()

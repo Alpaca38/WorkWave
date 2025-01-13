@@ -17,7 +17,6 @@ struct Profile {
     
     @ObservableState
     struct State {
-        var showAlert = false
         let profileType: Profile.ProfileType
         var nickname: String
         var email: String
