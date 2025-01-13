@@ -75,6 +75,9 @@ struct ToolbarModifier: ViewModifier {
             if let icon = item.icon {
                 Image(icon)
                     .foregroundStyle(.black)
+            } else if let text = item.text {
+                Text(text)
+                    .foregroundStyle(.black)
             }
         }
     }

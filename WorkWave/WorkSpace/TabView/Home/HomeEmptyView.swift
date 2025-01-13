@@ -33,7 +33,7 @@ struct HomeEmptyView: View {
     
     var emptyView: some View {
         VStack {
-            HomeHeaderView(coverImage: "", profileImage: "", size: 32, title: "No Workspace")
+            HomeHeaderView(coverImage: "", myProfile: nil, size: 32, title: "No Workspace")
                 .padding(.horizontal)
                 .onTapGesture {
                     store.send(.workspaceListTapped, animation: .easeInOut)

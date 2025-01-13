@@ -20,7 +20,7 @@ struct DMView: View {
                     emptyMemeberView()
                         .padding()
                 } else {
-                    HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", profileImage: store.myProfile?.profileImage ?? "", size: 32, title: "Direct Message")
+                    HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", myProfile: store.myProfile, size: 32, title: "Direct Message")
                         .padding()
                     
                     Divider()
@@ -53,7 +53,7 @@ struct DMView: View {
 private extension DMView {
     func emptyMemeberView() -> some View {
         VStack(spacing: 8) {
-            HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", profileImage: store.myProfile?.profileImage ?? "", size: 32, title: "Direct Message")
+            HomeHeaderView(coverImage: store.currentWorkspace?.coverImage ?? "", myProfile: store.myProfile, size: 32, title: "Direct Message")
             
             Divider()
             

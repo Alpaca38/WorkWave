@@ -16,6 +16,7 @@ enum UserRouter {
     case signup(query: SignupRequest)
     case login(query: LoginRequest)
     case fetchMyProfile
+    case editMyProfileImage(body: EditMyProfileImageRequest)
 }
 
 extension UserRouter: TargetType {
@@ -25,14 +26,12 @@ extension UserRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .checkEmailValid:
-                .post
-        case .signup:
-                .post
-        case .login:
+        case .checkEmailValid, .signup, .login:
                 .post
         case .fetchMyProfile:
                 .get
+        case .editMyProfileImage:
+                .put
         }
     }
     
@@ -46,6 +45,8 @@ extension UserRouter: TargetType {
             "/v1/users/login"
         case .fetchMyProfile:
             "/v1/users/me"
+        case .editMyProfileImage:
+            "/v1/users/me/image"
         }
     }
     
@@ -62,6 +63,12 @@ extension UserRouter: TargetType {
                 Header.sesacKey.rawValue : APIKey.sesacKey,
                 Header.authorization.rawValue : UserRouter.jwtKeyChain.accessToken ?? ""
             ]
+        case .editMyProfileImage:
+            [
+                Header.contentType.rawValue : Header.multipart.rawValue,
+                Header.sesacKey.rawValue : APIKey.sesacKey,
+                Header.authorization.rawValue : UserRouter.jwtKeyChain.accessToken ?? ""
+            ]
         }
     }
     
@@ -70,10 +77,7 @@ extension UserRouter: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
-        switch self {
-        case .checkEmailValid, .signup, .login, .fetchMyProfile:
-            nil
-        }
+        nil
     }
     
     var body: Data? {
@@ -85,7 +89,22 @@ extension UserRouter: TargetType {
             return try? encoder.encode(query)
         case .login(let query):
             return try? encoder.encode(query)
-        case .fetchMyProfile:
+        default:
+            return nil
+        }
+    }
+    
+    var multipartData: [MultipartData]? {
+        switch self {
+        case .editMyProfileImage(let body):
+            return [
+                MultipartData(
+                    data: body.image,
+                    name: "image",
+                    fileName: "image.jpg"
+                )
+            ]
+        default:
             return nil
         }
     }

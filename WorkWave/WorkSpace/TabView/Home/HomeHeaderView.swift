@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct HomeHeaderView: View {
+    @State private var showProfile = false
     let coverImage: String
-    let profileImage: String
+    let myProfile: MyProfileResponse?
     let size: CGFloat
     let title: String
     
@@ -22,7 +24,29 @@ struct HomeHeaderView: View {
             
             Spacer()
             
-            LoadedImage(urlString: profileImage, size: size)
+            LoadedImage(urlString: myProfile?.profileImage ?? "", size: size)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(.black, lineWidth: 2))
+                .asButton {
+                    showProfile = true
+                }
+        }
+        .navigationDestination(isPresented: $showProfile) {
+            if let profile = myProfile {
+                ProfileView(
+                    store: Store(
+                        initialState: Profile.State(
+                            profileType: .me,
+                            nickname: profile.nickname,
+                            email: profile.email,
+                            profileImage: profile.profileImage ?? "",
+                            phoneNumber: profile.phone ?? "010-0000-0000"
+                        )
+                    ) {
+                        Profile()
+                    }
+                )
+            }
         }
     }
 }
