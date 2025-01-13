@@ -10,11 +10,22 @@ import ComposableArchitecture
 
 struct DMChattingView: View {
     @Bindable var store: StoreOf<DMChatting>
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         content
-            .task {
-                store.send(.task)
+            .task { store.send(.task) }
+            .onChange(of: scenePhase) { oldValue, newValue in
+                switch newValue {
+                case .active:
+                    store.send(.active)
+                case .background:
+                    store.send(.background)
+                case .inactive:
+                    break
+                @unknown default:
+                    break
+                }
             }
     }
 }
@@ -25,9 +36,6 @@ private extension DMChattingView {
             chattingListView()
             
             messageInputView()
-                .onTapGesture {
-                    hideKeyboard()
-                }
         }
         .navigationBarBackButtonHidden()
         .toolbar(.hidden, for: .tabBar)
@@ -37,6 +45,9 @@ private extension DMChattingView {
                 store.send(.backButtonTapped)
             })
         )
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     func chattingListView() -> some View {
@@ -127,7 +138,7 @@ private extension DMChattingView {
                                 .padding(9)
                                 .background(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .fill(.white)
+                                        .fill(.primaryBackground)
                                 )
                         }
                         if !message.imageNames.isEmpty {

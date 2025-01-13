@@ -68,7 +68,7 @@ struct ImageDetailView: View {
     private var closeButton: some View {
         VStack {
             HStack {
-                Image(.close)
+                Image(systemName: "xmark")
                     .foregroundColor(.white)
                     .padding()
                     .background(
