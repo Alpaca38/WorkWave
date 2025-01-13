@@ -14,31 +14,39 @@ struct HomeView: View {
     @Dependency(\.imageClient) var imageClient
     
     var body: some View {
-        ZStack {
-            defaultView
-                .gesture(
-                DragGesture()
-                    .onEnded({ value in
-                        if value.translation.width > 100 {
-                            store.send(.workspaceListTapped, animation: .easeInOut)
-                        }
-                    })
-                )
-            
-            if store.isListPresented {
-                SideView {
-                    store.send(.closeWorkspaceList, animation: .easeInOut)
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+            ZStack {
+                defaultView
+                    .gesture(
+                        DragGesture()
+                            .onEnded({ value in
+                                if value.translation.width > 100 {
+                                    store.send(.workspaceListTapped, animation: .easeInOut)
+                                }
+                            })
+                    )
+                
+                if store.isListPresented {
+                    SideView {
+                        store.send(.closeWorkspaceList, animation: .easeInOut)
+                    }
                 }
             }
+            .task {
+                store.send(.task)
+            }
+            .sheet(isPresented: $store.isInviteSheetPresented) {
+                inviteMemberView()
+                    .presentationDragIndicator(.visible)
+            }
+            .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
+        } destination: { store in
+            switch store.case {
+            case .dmChatting(let store):
+                DMChattingView(store: store)
+            }
         }
-        .task {
-            store.send(.task)
-        }
-        .sheet(isPresented: $store.isInviteSheetPresented) {
-            inviteMemberView()
-                .presentationDragIndicator(.visible)
-        }
-        .toast(message: store.toast.toastMessage, isPresented: $store.toast.isToastPresented)
+        
     }
     
     var defaultView: some View {
@@ -111,17 +119,23 @@ private extension HomeView {
         LazyVStack(spacing: 10) {
             ForEach(store.DMRooms, id: \.id) { room in
                 HStack {
-                    Image(.profile2) // dummy
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
+                    LoadedImage(urlString: room.user.profileImage ?? "", size: 24)
+                    
+                    let unreadCount = store.dmUnreads[room]?.count
                     
                     Text(room.user.nickname)
-                        .applyFont(font: .bodyRegular)
+                        .applyFont(font: unreadCount ?? 0 <= 0 ? .bodyRegular : .bodyBold)
                     
                     Spacer()
+                    
+                    Text("\(unreadCount ?? 0)")
+                        .badge()
+                        .opacity(unreadCount ?? 0 <= 0 ? 0 : 1)
                 }
                 .padding(.vertical, 5)
+                .asButton {
+                    store.send(.dmCellTapped(room))
+                }
             }
         }
     }

@@ -10,8 +10,14 @@ import ComposableArchitecture
 
 @Reducer
 struct Home {
+    @Reducer
+    enum Path {
+        case dmChatting(DMChatting)
+    }
+    
     @ObservableState
     struct State {
+        var path = StackState<Path.State>()
         var isChannelExpanded = true
         var isDMExpanded = true
         
@@ -26,32 +32,42 @@ struct Home {
         var email: String = ""
         var toast = ToastState(toastMessage: "")
         
+        var dmUnreads = [DMRoom: UnreadDMsResponse]()
+        
         var inviteButtonValid = false
     }
     
     enum Action: BindableAction {
+        case path(StackActionOf<Path>)
         case binding(BindingAction<State>)
+        
         case workspaceListTapped
         case closeWorkspaceList
         case inviteMemberSheetButtonTapped
         case inviteMemberButtonTapped
         case inviteExitButtonTapped
+        case dmCellTapped(DMRoom)
         
         case task
         
         case myWorkspaceResponse(WorkspaceDTO.ResponseElement?)
         case myProfileResponse(MyProfileResponse)
         case inviteMemberResponse(Member)
+        case dmRoomsResponse(DMRooms)
+        case unreadCountResponse(DMRoom, UnreadDMsResponse)
     }
     
     @Dependency(\.workspaceClient) var workspaceClient
     @Dependency(\.userClient) var userClient
+    @Dependency(\.dmClient) var dmClient
     
     var body: some ReducerOf<Self> {
         BindingReducer()
         
         Reduce { state, action in
             switch action {
+            case .path:
+                return .none
             case .binding(\.email):
                 state.inviteButtonValid = !state.email.isEmpty
                 return .none
@@ -86,6 +102,9 @@ struct Home {
             case .inviteExitButtonTapped:
                 state.isInviteSheetPresented = false
                 return .none
+            case .dmCellTapped(let dmRoom):
+                state.path.append(.dmChatting(DMChatting.State(dmRoom: dmRoom)))
+                return .none
             case .task:
                 return .run { send in
                     do {
@@ -103,6 +122,9 @@ struct Home {
                             UserDefaultsManager.saveWorkspaceID(workspaceID)
                             await send(.myWorkspaceResponse(workspaceResult.first))
                         }
+                        
+                        let dmRoomResult = try await fetchDMRooms(workspaceID: UserDefaultsManager.workspaceID)
+                        await send(.dmRoomsResponse(dmRoomResult))
                     } catch {
                         print(error)
                     }
@@ -117,8 +139,24 @@ struct Home {
                 state.isInviteSheetPresented = false
                 state.toast = ToastState(toastMessage: "팀원 초대에 성공했습니다.", isToastPresented: true)
                 return .none
+            case .dmRoomsResponse(let dmRooms):
+                state.DMRooms = dmRooms
+                return .merge(dmRooms.map { dmRoom in
+                    return .run { send in
+                        do {
+                            let unreadCount = try await fetchUnreadCount(workspaceID: UserDefaultsManager.workspaceID, roomID: dmRoom.id, lastCreatedAt: "")
+                            await send(.unreadCountResponse(dmRoom, unreadCount))
+                        } catch {
+                            print("Unread Count 조회 실패")
+                        }
+                    }
+                })
+            case .unreadCountResponse(let dmRoom, let unreadResponse):
+                state.dmUnreads[dmRoom] = unreadResponse
+                return .none
             }
         }
+        .forEach(\.path, action: \.path)
     }
 }
 
@@ -132,5 +170,15 @@ private extension Home {
         // 내 프로필 조회
         async let profile = userClient.fetchMyProfile()
         return try await (workspaces, profile)
+    }
+    
+    func fetchDMRooms(workspaceID: String) async throws -> DMRooms {
+        async let dmRooms = dmClient.fetchDMRooms(workspaceID)
+        return try await dmRooms.map { $0.toPresentModel() }
+    }
+    
+    func fetchUnreadCount(workspaceID: String, roomID: String, lastCreatedAt: String) async throws -> UnreadDMsResponse {
+        async let unreadCount = dmClient.fetchUnreadDMCount(workspaceID, roomID, lastCreatedAt)
+        return try await unreadCount
     }
 }
