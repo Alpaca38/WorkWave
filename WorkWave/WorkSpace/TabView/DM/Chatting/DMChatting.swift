@@ -20,8 +20,6 @@ struct DMChatting {
         var scrollViewID = UUID()
         
         var messageButtonValid = false
-        
-        var toast: ToastState = ToastState(toastMessage: "")
     }
     
     enum Action: BindableAction {
