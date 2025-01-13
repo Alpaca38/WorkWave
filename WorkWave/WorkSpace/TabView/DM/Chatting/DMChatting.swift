@@ -20,6 +20,8 @@ struct DMChatting {
         var scrollViewID = UUID()
         
         var messageButtonValid = false
+        
+        var toast: ToastState = ToastState(toastMessage: "")
     }
     
     enum Action: BindableAction {
@@ -28,6 +30,8 @@ struct DMChatting {
         case sendButtonTapped
         case imageDeleteButtonTapped(UIImage)
         case backButtonTapped
+        
+        case sendMessage
     }
     
     @Dependency(\.dmClient) var dmsClient
@@ -38,11 +42,42 @@ struct DMChatting {
         BindingReducer()
         Reduce { state, action in
             switch action {
+            case .binding(\.messageText):
+                state.messageButtonValid = !state.messageText.isEmpty
+                || !(state.selectedImages?.isEmpty ?? true)
+                return .none
+                
+            case .binding(\.selectedImages):
+                state.messageButtonValid = !(state.selectedImages?.isEmpty ?? true)
+                return .none
+                
             case .binding:
                 return .none
             case .task:
                 return .none
             case .sendButtonTapped:
+                return .run { [state = state] send in
+                    do {
+                        let dataList = state.selectedImages?.compactMap {
+                            $0.jpegData(compressionQuality: 0.5)
+                        }
+                        _ = try await dmsClient.sendMessage(
+                            UserDefaultsManager.workspaceID,
+                            state.dmRoom.id,
+                            DMRequest(
+                                content: state.messageText,
+                                files: dataList ?? []
+                            )
+                        )
+                        await send(.sendMessage)
+                    } catch {
+                        print("메세지 전송 실패")
+                    }
+                }
+            case .sendMessage:
+                state.messageText = ""
+                state.selectedImages = []
+                state.messageButtonValid = false
                 return .none
             case .imageDeleteButtonTapped(let image):
                 guard let index = state.selectedImages?.firstIndex(of: image) else {
