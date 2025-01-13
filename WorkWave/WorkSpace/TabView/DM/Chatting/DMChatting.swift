@@ -45,6 +45,10 @@ struct DMChatting {
             case .sendButtonTapped:
                 return .none
             case .imageDeleteButtonTapped(let image):
+                guard let index = state.selectedImages?.firstIndex(of: image) else {
+                    return .none
+                }
+                state.selectedImages?.remove(at: index)
                 return .none
             case .backButtonTapped:
                 return .run { send in
