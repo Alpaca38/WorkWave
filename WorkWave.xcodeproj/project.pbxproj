@@ -30,6 +30,7 @@
 		D15E392F2D361CC400A79944 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E392E2D361CC400A79944 /* CustomAlertView.swift */; };
 		D15E39322D362F9100A79944 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; };
 		D15E39352D362FB000A79944 /* DBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39342D362FB000A79944 /* DBClient.swift */; };
+		D15E39372D36391B00A79944 /* EditMyProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -142,6 +143,7 @@
 		D15E392C2D3589CC00A79944 /* EditMyProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileResponse.swift; sourceTree = "<group>"; };
 		D15E392E2D361CC400A79944 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		D15E39342D362FB000A79944 /* DBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBClient.swift; sourceTree = "<group>"; };
+		D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileRequest.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				D15E39292D3587F400A79944 /* EditMyProfileImageRequest.swift */,
+				D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				D15E39022D3406BA00A79944 /* UnreadDMsResponse.swift in Sources */,
 				D1E116EA2CE4F56D000C1BC3 /* LoginView.swift in Sources */,
 				D1E1169D2CD9D928000C1BC3 /* TargetType.swift in Sources */,
+				D15E39372D36391B00A79944 /* EditMyProfileRequest.swift in Sources */,
 				D1E116AE2CDC7D11000C1BC3 /* SignupRequest.swift in Sources */,
 				D1E116C62CDCF53C000C1BC3 /* DeviceTokenKeyChain.swift in Sources */,
 				D16E748F2D30F71D005956EC /* DMClient.swift in Sources */,

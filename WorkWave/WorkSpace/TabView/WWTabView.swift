@@ -51,6 +51,8 @@ struct WWTabView: View {
             } else {
                 HomeEmptyView(store: Store(initialState: WorkspaceInitial.State()) {
                     WorkspaceInitial()
+                }, homeStore: Store(initialState: Home.State()) {
+                    Home()
                 })
             }
         }

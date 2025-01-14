@@ -52,6 +52,13 @@ struct ProfileView: View {
                     Text(store.nickname)
                         .foregroundStyle(.secondaryText)
                         .applyFont(font: .bodyRegular)
+                    Image(.chevronRight)
+                        .resizable()
+                        .frame(width: 15, height: 15)
+                }
+                .foregroundStyle(.black)
+                .asButton {
+                    store.send(.nicknameTapped)
                 }
                 
                 if store.profileType == .me {
@@ -114,5 +121,35 @@ struct ProfileView: View {
             }, onCancel: {
                 store.send(.cancelLogout)
             })
+        .navigationDestination(isPresented: $store.isEditNicknamePresented) {
+            editNicknameView()
+        }
+    }
+}
+
+private extension ProfileView {
+    func editNicknameView() -> some View {
+        VStack {
+            ScrollView {
+                CustomTextField(title: "닉네임", placeholder: "닉네임을 입력하세요.", text: $store.nickname)
+                    .padding()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            CustomButton(title: "완료", font: .title2, titleColor: .white, tintColor: store.editNicknameButtonValid ? .brandGreen : .inactive) {
+                store.send(.editNicknameButtonTapped)
+                dismiss()
+            }
+            .padding()
+            .disabled(!store.editNicknameButtonValid)
+        }
+        .background(.primaryBackground)
+        .navigationBarBackButtonHidden()
+        .customToolbar(
+            title: "닉네임",
+            leftItem: .init(icon: .chevronLeft) {
+                store.send(.editNicknameBackButtonTapped)
+            }
+        )
     }
 }

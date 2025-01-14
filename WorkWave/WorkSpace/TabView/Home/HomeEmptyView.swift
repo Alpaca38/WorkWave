@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct HomeEmptyView: View {
     @Bindable var store: StoreOf<WorkspaceInitial>
+    @Bindable var homeStore: StoreOf<Home>
     
     var body: some View {
         ZStack {
@@ -29,11 +30,14 @@ struct HomeEmptyView: View {
                 }
             }
         }
+        .task {
+            homeStore.send(.task)
+        }
     }
     
     var emptyView: some View {
         VStack {
-            HomeHeaderView(coverImage: "", myProfile: nil, size: 32, title: "No Workspace")
+            HomeHeaderView(coverImage: "", myProfile: homeStore.myProfile, size: 32, title: "No Workspace")
                 .padding(.horizontal)
                 .onTapGesture {
                     store.send(.workspaceListTapped, animation: .easeInOut)

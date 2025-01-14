@@ -16,6 +16,7 @@ enum UserRouter {
     case signup(query: SignupRequest)
     case login(query: LoginRequest)
     case fetchMyProfile
+    case editMyProfile(body: EditMyProfileRequest)
     case editMyProfileImage(body: EditMyProfileImageRequest)
 }
 
@@ -30,7 +31,7 @@ extension UserRouter: TargetType {
                 .post
         case .fetchMyProfile:
                 .get
-        case .editMyProfileImage:
+        case .editMyProfile, .editMyProfileImage:
                 .put
         }
     }
@@ -43,7 +44,7 @@ extension UserRouter: TargetType {
             "/v1/users/join"
         case .login:
             "/v1/users/login"
-        case .fetchMyProfile:
+        case .fetchMyProfile, .editMyProfile:
             "/v1/users/me"
         case .editMyProfileImage:
             "/v1/users/me/image"
@@ -57,7 +58,7 @@ extension UserRouter: TargetType {
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey
             ]
-        case .fetchMyProfile:
+        case .fetchMyProfile, .editMyProfile:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey,
@@ -89,6 +90,8 @@ extension UserRouter: TargetType {
             return try? encoder.encode(query)
         case .login(let query):
             return try? encoder.encode(query)
+        case .editMyProfile(let body):
+            return try? encoder.encode(body)
         default:
             return nil
         }

@@ -23,12 +23,15 @@ struct Profile {
         var profileImage: String
         var phoneNumber: String
         
+        var editNicknameButtonValid = false
+        
         var isProfileChanged: Bool {
             return selectedImage != nil || profileImage.isEmpty
         }
         var selectedImage: [UIImage]? = []
         
         var isLogoutAlertPresented = false
+        var isEditNicknamePresented = false
     }
     
     enum Action: BindableAction {
@@ -40,6 +43,9 @@ struct Profile {
         case cancelLogout
         case confirmLogout
         case saveButtonTapped
+        case nicknameTapped
+        case editNicknameBackButtonTapped
+        case editNicknameButtonTapped
     }
     
     @Dependency(\.userClient) var userClient
@@ -49,6 +55,9 @@ struct Profile {
         BindingReducer()
         Reduce { state, action in
             switch action {
+            case .binding(\.nickname):
+                state.editNicknameButtonValid = !state.nickname.isEmpty
+                return .none
             case .binding:
                 return .none
             case .deleteProfileImage:
@@ -80,6 +89,23 @@ struct Profile {
                         _ = try await userClient.editMyProfileImage(
                             EditMyProfileImageRequest(image: data)
                         )
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .editNicknameBackButtonTapped:
+                state.isEditNicknamePresented = false
+                return .none
+            case .nicknameTapped:
+                state.isEditNicknamePresented = true
+                return .none
+            case .editNicknameButtonTapped:
+                return .run { [nickname = state.nickname] send in
+                    do {
+                        _ = try await userClient.editMyProfile(
+                            EditMyProfileRequest(nickname: nickname, phone: "")
+                        )
+                        await send(.editNicknameBackButtonTapped)
                     } catch {
                         print(error)
                     }
