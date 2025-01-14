@@ -98,7 +98,7 @@ final class DefaultNetworkManager: NetworkManager {
             print("토큰 갱신 에러")
             jwtKeyChain.clearTokens()
             // 온보딩 화면으로 전환
-            UserDefaultsManager.isSignedUp = false
+            UserDefaultsManager.clearUserDefaults()
             return error
         }
     }

@@ -27,6 +27,8 @@ struct Profile {
             return selectedImage != nil || profileImage.isEmpty
         }
         var selectedImage: [UIImage]? = []
+        
+        var isLogoutAlertPresented = false
     }
     
     enum Action: BindableAction {
@@ -35,10 +37,13 @@ struct Profile {
         case deleteProfileImage
         case phoneNumberTapped
         case logoutButtonTapped
+        case cancelLogout
+        case confirmLogout
         case saveButtonTapped
     }
     
     @Dependency(\.userClient) var userClient
+    @Dependency(\.jwtKeyChain) var jwtKeyChain
     
     var body: some ReducerOf<Self> {
         BindingReducer()
@@ -53,6 +58,15 @@ struct Profile {
             case .phoneNumberTapped:
                 return .none
             case .logoutButtonTapped:
+                state.isLogoutAlertPresented = true
+                return .none
+            case .cancelLogout:
+                state.isLogoutAlertPresented = false
+                return .none
+            case .confirmLogout:
+                state.isLogoutAlertPresented = false
+                UserDefaultsManager.clearUserDefaults()
+                jwtKeyChain.clearTokens()
                 return .none
             case .saveButtonTapped:
                 return .run { [state = state] send in

@@ -109,5 +109,14 @@ struct ProfileView: View {
                     dismiss()
                 } : nil
         )
+        .customAlert(
+            isPresented: $store.isLogoutAlertPresented,
+            title: "로그아웃",
+            message: "정말 로그아웃 할까요?",
+            onConfirm: {
+                store.send(.confirmLogout)
+            }, onCancel: {
+                store.send(.cancelLogout)
+            })
     }
 }

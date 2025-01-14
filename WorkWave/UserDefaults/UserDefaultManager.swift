@@ -20,4 +20,10 @@ enum UserDefaultsManager {
     static func saveWorkspaceID(_ workspaceID: String) {
         UserDefaultsManager.workspaceID = workspaceID
     }
+    
+    static func clearUserDefaults() {
+        UserDefaultsManager.user = User(userID: "GuestID", nickname: "Guest", email: "Guest@guest.com", phoneNumber: "")
+        UserDefaultsManager.isSignedUp = false
+        UserDefaultsManager.workspaceID = ""
+    }
 }
