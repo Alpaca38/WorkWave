@@ -28,6 +28,8 @@
 		D15E392A2D3587F400A79944 /* EditMyProfileImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39292D3587F400A79944 /* EditMyProfileImageRequest.swift */; };
 		D15E392D2D3589CC00A79944 /* EditMyProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E392C2D3589CC00A79944 /* EditMyProfileResponse.swift */; };
 		D15E392F2D361CC400A79944 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E392E2D361CC400A79944 /* CustomAlertView.swift */; };
+		D15E39322D362F9100A79944 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; };
+		D15E39352D362FB000A79944 /* DBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39342D362FB000A79944 /* DBClient.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -139,6 +141,7 @@
 		D15E39292D3587F400A79944 /* EditMyProfileImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileImageRequest.swift; sourceTree = "<group>"; };
 		D15E392C2D3589CC00A79944 /* EditMyProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileResponse.swift; sourceTree = "<group>"; };
 		D15E392E2D361CC400A79944 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		D15E39342D362FB000A79944 /* DBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBClient.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 			files = (
 				D1E116BA2CDCA59E000C1BC3 /* FirebaseMessaging in Frameworks */,
 				D1E116602CD39D62000C1BC3 /* ComposableArchitecture in Frameworks */,
+				D15E39322D362F9100A79944 /* RealmSwift in Frameworks */,
 				D1E116B82CDCA59E000C1BC3 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				D1E1169B2CD9D90A000C1BC3 /* Alamofire in Frameworks */,
 				D1E116BD2CDCEC9D000C1BC3 /* KeychainAccess in Frameworks */,
@@ -294,6 +298,14 @@
 				D15E392C2D3589CC00A79944 /* EditMyProfileResponse.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		D15E39332D362FA000A79944 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				D15E39342D362FB000A79944 /* DBClient.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		D16E74782D2F63D6005956EC /* ResponseModel */ = {
@@ -388,6 +400,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
+				D15E39332D362FA000A79944 /* DataBase */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
 				D15E39032D340B0D00A79944 /* Extension */,
 				D16E74882D30EC8C005956EC /* PresentModel */,
@@ -755,6 +768,7 @@
 				D1E116B92CDCA59E000C1BC3 /* FirebaseMessaging */,
 				D1E116BC2CDCEC9D000C1BC3 /* KeychainAccess */,
 				D15E391E2D35278F00A79944 /* SocketIO */,
+				D15E39312D362F9100A79944 /* RealmSwift */,
 			);
 			productName = WorkWave;
 			productReference = D1E1164B2CD39B04000C1BC3 /* WorkWave.app */;
@@ -790,6 +804,7 @@
 				D1E116B62CDCA59E000C1BC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D1E116BB2CDCEC9D000C1BC3 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				D15E391D2D35278F00A79944 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				D15E39302D362F9100A79944 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = D1E1164C2CD39B04000C1BC3 /* Products */;
 			projectDirPath = "";
@@ -885,6 +900,7 @@
 				D15E392D2D3589CC00A79944 /* EditMyProfileResponse.swift in Sources */,
 				D1E1171C2CFE9BC3000C1BC3 /* WorkspaceListView.swift in Sources */,
 				D15E39052D340B2000A79944 /* Date+Extension.swift in Sources */,
+				D15E39352D362FB000A79944 /* DBClient.swift in Sources */,
 				D1E1171E2CFEAE23000C1BC3 /* RoundedCorner.swift in Sources */,
 				D16E74832D30BD91005956EC /* MultipartData.swift in Sources */,
 				D1E116A52CD9DE3E000C1BC3 /* NetworkManager.swift in Sources */,
@@ -1147,6 +1163,14 @@
 				kind = branch;
 			};
 		};
+		D15E39302D362F9100A79944 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		D1E1165E2CD39D62000C1BC3 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
@@ -1186,6 +1210,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D15E391D2D35278F00A79944 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		D15E39312D362F9100A79944 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D15E39302D362F9100A79944 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		D1E1165F2CD39D62000C1BC3 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
