@@ -16,12 +16,8 @@ struct ProfileView: View {
         List {
             CustomPhotoPicker(selectedImages: $store.selectedImage, maxSelectedCount: 1) {
                 if let images = store.selectedImage, let image = images.last {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 250, height: 250, alignment: .center)
-                        .clipShape(RoundedRectangle(cornerRadius: 250 * 0.2))
-                        .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+                    LoadedImage(uiImage: image, urlString: "", size: 250)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 } else {
                     LoadedImage(urlString: store.profileImage, size: 250)
                         .frame(maxWidth: .infinity, alignment: .center)
