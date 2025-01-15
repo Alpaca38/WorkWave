@@ -29,4 +29,8 @@ extension DMResponse {
             profile: user.profileImage
         )
     }
+    
+    func toDBModel() -> DMChattingDBModel {
+        return DMChattingDBModel(dmID: self.dm_id, content: self.content, createdAt: self.createdAt, files: self.files, user: user.toDBModel())
+    }
 }

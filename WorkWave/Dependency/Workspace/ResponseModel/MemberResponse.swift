@@ -23,4 +23,8 @@ extension MemberResponse {
             profileImage: self.profileImage
         )
     }
+    
+    func toDBModel() -> MemberDBModel {
+        return MemberDBModel(userID: self.user_id, email: self.email, nickname: self.nickname, profileImage: self.profileImage)
+    }
 }

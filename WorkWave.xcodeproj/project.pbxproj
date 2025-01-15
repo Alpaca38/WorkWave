@@ -31,6 +31,9 @@
 		D15E39322D362F9100A79944 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; };
 		D15E39352D362FB000A79944 /* DBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39342D362FB000A79944 /* DBClient.swift */; };
 		D15E39372D36391B00A79944 /* EditMyProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */; };
+		D15E393A2D37647500A79944 /* DMChattingDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39392D37647500A79944 /* DMChattingDBModel.swift */; };
+		D15E393C2D37675A00A79944 /* MemeberDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E393B2D37675A00A79944 /* MemeberDBModel.swift */; };
+		D15E393E2D376A0000A79944 /* DMRoomDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -144,6 +147,9 @@
 		D15E392E2D361CC400A79944 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		D15E39342D362FB000A79944 /* DBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBClient.swift; sourceTree = "<group>"; };
 		D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyProfileRequest.swift; sourceTree = "<group>"; };
+		D15E39392D37647500A79944 /* DMChattingDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingDBModel.swift; sourceTree = "<group>"; };
+		D15E393B2D37675A00A79944 /* MemeberDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberDBModel.swift; sourceTree = "<group>"; };
+		D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoomDBModel.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -306,9 +312,20 @@
 		D15E39332D362FA000A79944 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				D15E39382D36427D00A79944 /* Model */,
 				D15E39342D362FB000A79944 /* DBClient.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		D15E39382D36427D00A79944 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D15E39392D37647500A79944 /* DMChattingDBModel.swift */,
+				D15E393B2D37675A00A79944 /* MemeberDBModel.swift */,
+				D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D16E74782D2F63D6005956EC /* ResponseModel */ = {
@@ -863,10 +880,12 @@
 				D1E116B32CDC8DBC000C1BC3 /* CustomAppDelegate.swift in Sources */,
 				D1E1170B2CF8B394000C1BC3 /* ImagePicker.swift in Sources */,
 				D16E749A2D30FE18005956EC /* CreateDMRoomRequest.swift in Sources */,
+				D15E393A2D37647500A79944 /* DMChattingDBModel.swift in Sources */,
 				D16E748D2D30F586005956EC /* DMRouter.swift in Sources */,
 				D15E39272D357BEB00A79944 /* Profile.swift in Sources */,
 				D16E74852D30E313005956EC /* DM.swift in Sources */,
 				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,
+				D15E393C2D37675A00A79944 /* MemeberDBModel.swift in Sources */,
 				D16E74912D30F7B2005956EC /* DMRoomResponse.swift in Sources */,
 				D16E747A2D2F63E1005956EC /* MyProfileResponse.swift in Sources */,
 				D15E39142D34BD2200A79944 /* CustomImageView.swift in Sources */,
@@ -894,6 +913,7 @@
 				D1E117242D0335E3000C1BC3 /* AddWorkspaceRequest.swift in Sources */,
 				D15E390E2D34AB4800A79944 /* DMChatting.swift in Sources */,
 				D1E116FD2CED941F000C1BC3 /* HomeHeaderView.swift in Sources */,
+				D15E393E2D376A0000A79944 /* DMRoomDBModel.swift in Sources */,
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D15E392F2D361CC400A79944 /* CustomAlertView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
