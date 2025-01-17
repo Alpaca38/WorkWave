@@ -10,7 +10,7 @@ import RealmSwift
 
 class DMRoomDBModel: Object {
     @Persisted(primaryKey: true) var roomID: String
-    @Persisted var user: MemberDBModel
+    @Persisted var user: MemberDBModel?
     @Persisted var chattings: List<DMChattingDBModel>
     
     convenience init(roomID: String, user: MemberDBModel, chattings: [DMChattingDBModel]) {

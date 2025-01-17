@@ -13,4 +13,10 @@ struct DMRoom: Identifiable, Hashable {
     let user: Member
 }
 
+extension DMRoom {
+    func toDBModel(user: MemberDBModel) -> DMRoomDBModel {
+        return DMRoomDBModel(roomID: self.id, user: user, chattings: [])
+    }
+}
+
 typealias DMRooms = [DMRoom]

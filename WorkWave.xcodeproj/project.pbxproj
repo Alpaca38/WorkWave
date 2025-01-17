@@ -34,6 +34,8 @@
 		D15E393A2D37647500A79944 /* DMChattingDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39392D37647500A79944 /* DMChattingDBModel.swift */; };
 		D15E393C2D37675A00A79944 /* MemeberDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E393B2D37675A00A79944 /* MemeberDBModel.swift */; };
 		D15E393E2D376A0000A79944 /* DMRoomDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */; };
+		D15E393F2D39FE4100A79944 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D15E39422D3A06E800A79944 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39412D3A06E800A79944 /* ImageFileManager.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -124,6 +126,20 @@
 		D1E117242D0335E3000C1BC3 /* AddWorkspaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E117232D0335E3000C1BC3 /* AddWorkspaceRequest.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D15E39402D39FE4100A79944 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D15E393F2D39FE4100A79944 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D15E38FF2D34065000A79944 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 		D15E39012D3406BA00A79944 /* UnreadDMsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadDMsResponse.swift; sourceTree = "<group>"; };
@@ -150,6 +166,7 @@
 		D15E39392D37647500A79944 /* DMChattingDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingDBModel.swift; sourceTree = "<group>"; };
 		D15E393B2D37675A00A79944 /* MemeberDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberDBModel.swift; sourceTree = "<group>"; };
 		D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoomDBModel.swift; sourceTree = "<group>"; };
+		D15E39412D3A06E800A79944 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -753,6 +770,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E117202D03029C000C1BC3 /* DateManager.swift */,
+				D15E39412D3A06E800A79944 /* ImageFileManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -775,6 +793,7 @@
 				D1E116472CD39B04000C1BC3 /* Sources */,
 				D1E116482CD39B04000C1BC3 /* Frameworks */,
 				D1E116492CD39B04000C1BC3 /* Resources */,
+				D15E39402D39FE4100A79944 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -899,6 +918,7 @@
 				D16E74712D2E5166005956EC /* DMRoom.swift in Sources */,
 				D1E116F72CED7BA4000C1BC3 /* WorkspaceDTO.swift in Sources */,
 				D1E117212D03029C000C1BC3 /* DateManager.swift in Sources */,
+				D15E39422D3A06E800A79944 /* ImageFileManager.swift in Sources */,
 				D1E116DD2CE35446000C1BC3 /* WorkspaceAdd.swift in Sources */,
 				D1E116882CD69C76000C1BC3 /* CustomTextField.swift in Sources */,
 				D1E116812CD68512000C1BC3 /* WWTabView.swift in Sources */,

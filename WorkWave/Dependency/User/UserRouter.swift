@@ -18,6 +18,7 @@ enum UserRouter {
     case fetchMyProfile
     case editMyProfile(body: EditMyProfileRequest)
     case editMyProfileImage(body: EditMyProfileImageRequest)
+    case fetchOthersProfile(userID: String)
 }
 
 extension UserRouter: TargetType {
@@ -29,7 +30,7 @@ extension UserRouter: TargetType {
         switch self {
         case .checkEmailValid, .signup, .login:
                 .post
-        case .fetchMyProfile:
+        case .fetchMyProfile, .fetchOthersProfile:
                 .get
         case .editMyProfile, .editMyProfileImage:
                 .put
@@ -48,6 +49,8 @@ extension UserRouter: TargetType {
             "/v1/users/me"
         case .editMyProfileImage:
             "/v1/users/me/image"
+        case .fetchOthersProfile(let userID):
+            "/v1/users/\(userID)"
         }
     }
     
@@ -58,7 +61,7 @@ extension UserRouter: TargetType {
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey
             ]
-        case .fetchMyProfile, .editMyProfile:
+        case .fetchMyProfile, .editMyProfile, .fetchOthersProfile:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey,

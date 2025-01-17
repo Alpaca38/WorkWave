@@ -8,7 +8,7 @@
 import Foundation
 import SocketIO
 
-enum SocketInfo<ModelType: Decodable>: String {
+enum SocketType<ModelType: Decodable>: String {
     case channel
     case dm
     
@@ -24,7 +24,7 @@ enum SocketInfo<ModelType: Decodable>: String {
 
 final class SocketIOManager<ModelType: Decodable>: AsyncSequence {
     private var id: String
-    private var socketInfo: SocketInfo<ModelType>
+    private var type: SocketType<ModelType>
     private var socketManager: SocketManager?
     private var socket: SocketIOClient?
     
@@ -34,9 +34,9 @@ final class SocketIOManager<ModelType: Decodable>: AsyncSequence {
     private var stream: AsyncStream<Element>
     private var continuation: AsyncStream<Element>.Continuation
     
-    init(id: String, socketInfo: SocketInfo<ModelType>) {
+    init(id: String, socketInfo: SocketType<ModelType>) {
         self.id = id
-        self.socketInfo = socketInfo
+        self.type = socketInfo
         
         var continuation: AsyncStream<Element>.Continuation!
         self.stream = AsyncStream<Element> { continuation = $0 }
@@ -67,7 +67,7 @@ final class SocketIOManager<ModelType: Decodable>: AsyncSequence {
             socketURL: baseURL,
             config: [.log(false), .compress]
         )
-        socket = socketManager?.socket(forNamespace: "\(socketInfo.namespace)-\(id)")
+        socket = socketManager?.socket(forNamespace: "\(type.namespace)-\(id)")
     }
     
     private func configureConnectionEvents() {
@@ -88,7 +88,7 @@ final class SocketIOManager<ModelType: Decodable>: AsyncSequence {
     
     private func configureSocketEvents() {
         guard let socket else { return }
-        socket.on(socketInfo.rawValue) { [weak self] dataArray, _ in
+        socket.on(type.rawValue) { [weak self] dataArray, _ in
             guard let self = self, let data = dataArray.first else {
                 print("소켓 데이터 없음")
                 return
@@ -119,7 +119,7 @@ final class SocketIOManager<ModelType: Decodable>: AsyncSequence {
         socket?.off(clientEvent: .connect)
         socket?.off(clientEvent: .disconnect)
         socket?.off(clientEvent: .reconnect)
-        socket?.off(socketInfo.rawValue)
+        socket?.off(type.rawValue)
         socket = nil
         socketManager = nil
     }

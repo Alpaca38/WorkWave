@@ -17,6 +17,7 @@ struct UserClient {
     var fetchMyProfile: @Sendable () async throws -> MyProfileResponse
     var editMyProfile: @Sendable (EditMyProfileRequest) async throws -> EditMyProfileResponse
     var editMyProfileImage: @Sendable (EditMyProfileImageRequest) async throws -> EditMyProfileResponse
+    var fetchOthersProfile: @Sendable (String) async throws -> MemberResponse
 }
 
 extension UserClient: DependencyKey {
@@ -60,6 +61,13 @@ extension UserClient: DependencyKey {
         editMyProfileImage: { [networkManager = DefaultNetworkManager.shared] request in
             do {
                 return try await networkManager.request(api: UserRouter.editMyProfileImage(body: request))
+            } catch let error as ErrorResponse {
+                throw error
+            }
+        },
+        fetchOthersProfile: { [networkManager = DefaultNetworkManager.shared] userID in
+            do {
+                return try await networkManager.request(api: UserRouter.fetchOthersProfile(userID: userID))
             } catch let error as ErrorResponse {
                 throw error
             }

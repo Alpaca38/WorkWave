@@ -15,7 +15,9 @@ struct DBClient {
     
     var createDMChatting: @Sendable (String, DMChattingDBModel) throws -> Void
     var fetchDMRoom: @Sendable (String) throws -> DMRoomDBModel?
+    var updateDMRoom: @Sendable (DMRoomDBModel, MemberDBModel) throws -> Void
     
+    var update: @Sendable (Object) throws -> Void
     var removeAll: @Sendable () throws -> Void
 }
 
@@ -32,6 +34,25 @@ extension DBClient: DependencyKey {
                 return
             }
             
+            // `object.user`가 중복되는지 확인하고 처리
+            if let user = object.user {
+                if let existingUser = realm.object(
+                    ofType: MemberDBModel.self,
+                    forPrimaryKey: user.userID
+                ) {
+                    // 이미 저장된 `MemberDBModel` 객체를 사용
+                    try realm.write {
+                        existingUser.nickname = user.nickname
+                    }
+                    object.user = existingUser
+                } else {
+                    // 새로운 유저를 저장
+                    try realm.write {
+                        realm.add(user)
+                    }
+                }
+            }
+            
             try realm.write {
                 dmRoom.chattings.append(object)
             }
@@ -40,6 +61,30 @@ extension DBClient: DependencyKey {
             let realm = try Realm()
             
             return realm.object(ofType: DMRoomDBModel.self, forPrimaryKey: roomID)
+        },
+        updateDMRoom: { dmRoom, user in
+            let realm = try Realm()
+            
+            try realm.write {
+                if let existingMember = realm.object(
+                    ofType: MemberDBModel.self,
+                    forPrimaryKey: user.userID
+                ) {
+                    // 이미 존재하면 필요한 필드만 업데이트
+                    existingMember.nickname = user.nickname
+                    existingMember.profileImage = user.profileImage
+                } else {
+                    // 존재하지 않으면 추가
+                    realm.add(user)
+                }
+            }
+        },
+        update: { object in
+            let realm = try Realm()
+            
+            try realm.write {
+                realm.add(object, update: .modified)
+            }
         },
         removeAll: {
             let realm = try Realm()

@@ -13,7 +13,7 @@ class DMChattingDBModel: Object {
     @Persisted var content: String?
     @Persisted var createdAt: String
     @Persisted var files: List<String>
-    @Persisted var user: MemberDBModel
+    @Persisted var user: MemberDBModel?
     
     convenience init(dmID: String, content: String?, createdAt: String, files: [String], user: MemberDBModel) {
         self.init()
@@ -27,6 +27,8 @@ class DMChattingDBModel: Object {
 
 extension DMChattingDBModel {
     func toPresentModel() -> Chatting {
-        return Chatting(id: self.dmID, user: self.user.toPresentModel(), name: self.user.nickname, text: self.content, imageNames: Array(self.files), date: self.createdAt, isMine: self.user.userID == UserDefaultsManager.user.userID, profile: self.user.profileImage)
+        let user = self.user?.toPresentModel() ?? Member(id: "", email: "", nickname: "", profileImage: "")
+        
+        return Chatting(id: self.dmID, user: user, name: self.user?.nickname ?? "", text: self.content, imageNames: Array(self.files), date: self.createdAt, isMine: self.user?.userID == UserDefaultsManager.user.userID, profile: self.user?.profileImage)
     }
 }

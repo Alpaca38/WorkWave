@@ -19,6 +19,6 @@ extension DMRoomResponse {
     }
     
     func toDBModel() -> DMRoomDBModel {
-        return DMRoomDBModel(roomID: self.room_id, user: self.user.toDBModel(), chattings: [])
+        return DMRoomDBModel(roomID: self.room_id, user: user.toDBModel(), chattings: [])
     }
 }

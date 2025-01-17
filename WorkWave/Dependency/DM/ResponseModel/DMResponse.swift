@@ -30,7 +30,7 @@ extension DMResponse {
         )
     }
     
-    func toDBModel() -> DMChattingDBModel {
-        return DMChattingDBModel(dmID: self.dm_id, content: self.content, createdAt: self.createdAt, files: self.files, user: user.toDBModel())
+    func toDBModel(_ user: MemberDBModel) -> DMChattingDBModel {
+        return DMChattingDBModel(dmID: self.dm_id, content: self.content, createdAt: self.createdAt, files: self.files, user: user)
     }
 }
