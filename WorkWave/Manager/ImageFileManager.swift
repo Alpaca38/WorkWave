@@ -13,10 +13,27 @@ final class ImageFileManager {
     
     private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     
+    func createDirectory() {
+        guard let documentDirectory else { return }
+        let staticDirectory = documentDirectory.appending(path: "static")
+        let dmChatsDirectory = staticDirectory.appending(path: "dmChats")
+        
+        if FileManager.default.fileExists(atPath: dmChatsDirectory.path) {
+            print("dmChats 폴더가 이미 존재합니다.")
+        } else {
+            do {
+                try FileManager.default.createDirectory(at: dmChatsDirectory, withIntermediateDirectories: true)
+                print("dmChats 폴더 생성")
+            } catch {
+                print("dmChats 폴더 생성 실패", error)
+            }
+        }
+    }
+    
     func saveImage(fileName: String) async {
         guard let documentDirectory else { return }
         
-        let fileURL = documentDirectory.appending(path: fileName)
+        let fileURL = documentDirectory.appending(path: fileName.dropFirst())
         
         do {
             let image = try await DefaultNetworkManager.shared.requestImage(ImageRouter.fetchImage(path: fileName))
@@ -26,7 +43,7 @@ final class ImageFileManager {
                 try data.write(to: fileURL)
                 print("이미지 저장 성공")
             } catch {
-                print("이미지 저장 실패")
+                print("이미지 저장 실패", error)
             }
         } catch {
             print("이미지 통신 실패")
@@ -36,11 +53,12 @@ final class ImageFileManager {
     func loadImage(fileName: String) -> UIImage? {
         guard let documentDirectory else { return nil }
         
-        let fileURL = documentDirectory.appending(path: fileName)
+        let fileURL = documentDirectory.appending(path: fileName.dropFirst())
         
         if FileManager.default.fileExists(atPath: fileURL.path) {
             return UIImage(contentsOfFile: fileURL.path)
         } else {
+            print("해당 경로에 이미지가 존재하지 않습니다.")
             return nil
         }
     }

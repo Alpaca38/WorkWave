@@ -12,6 +12,10 @@ import ComposableArchitecture
 struct WorkWaveApp: App {
     @UIApplicationDelegateAdaptor(CustomAppDelegate.self) private var appDelegate
     
+    init() {
+        ImageFileManager.shared.createDirectory()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

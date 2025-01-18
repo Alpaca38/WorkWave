@@ -19,23 +19,13 @@ struct CustomImageView: View {
         imageView()
             .onChange(of: urlString) { _, newValue in
                 Task {
-                    do {
-                        let result = try await DefaultNetworkManager.shared.requestImage(
-                            ImageRouter.fetchImage(path: newValue)
-                        )
-                        uiImage = result
-                    } catch {}
+                    uiImage = await fetchImage(path: newValue)
                 }
             }
             .task {
                 // 초기 로드
                 guard !urlString.isEmpty else { return }
-                do {
-                    let result = try await DefaultNetworkManager.shared.requestImage(
-                        ImageRouter.fetchImage(path: urlString)
-                    )
-                    uiImage = result
-                } catch {}
+                uiImage = await fetchImage(path: urlString)
             }
     }
     
@@ -53,6 +43,25 @@ struct CustomImageView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: width, height: height)
                 .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        }
+    }
+}
+
+extension CustomImageView {
+    func fetchImage(path: String) async -> UIImage? {
+        if let image = ImageFileManager.shared.loadImage(fileName: path) {
+            // 로컬 데이터 리턴
+            return image
+        } else {
+            do {
+                let result = try await DefaultNetworkManager.shared.requestImage(
+                    ImageRouter.fetchImage(path: path)
+                )
+                return result
+            } catch {
+                print("이미지 통신 실패")
+                return nil
+            }
         }
     }
 }
