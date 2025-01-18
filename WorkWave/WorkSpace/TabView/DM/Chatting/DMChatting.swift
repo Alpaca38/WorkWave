@@ -163,8 +163,8 @@ private extension DMChatting {
     
     func saveOrUpdateDMRoom(room: DMRoom) async {
         let member = await fetchMember(room: room)
+        
         do {
-            
             if let dbRoom = try dbClient.fetchDMRoom(room.id) {
                 do {
                     try dbClient.updateDMRoom(dbRoom, member)

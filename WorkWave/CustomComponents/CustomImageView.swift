@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct CustomImageView: View {
     var urlString: String
@@ -14,6 +15,8 @@ struct CustomImageView: View {
     var cornerRadius: CGFloat
     
     @State var uiImage: UIImage?
+    
+    @Dependency(\.imageClient) var imageClient
     
     var body: some View {
         imageView()
@@ -54,10 +57,7 @@ extension CustomImageView {
             return image
         } else {
             do {
-                let result = try await DefaultNetworkManager.shared.requestImage(
-                    ImageRouter.fetchImage(path: path)
-                )
-                return result
+                return try await imageClient.fetchImage(path)
             } catch {
                 print("이미지 통신 실패")
                 return nil

@@ -63,6 +63,23 @@ final class ImageFileManager {
         }
     }
     
+    func deleteImage(fileName: String) {
+        guard let documentDirectory else { return }
+        
+        let fileURL = documentDirectory.appending(path: fileName.dropFirst())
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                print("이미지 삭제 성공")
+            } catch {
+                print("이미지 삭제 실패", error)
+            }
+        } else {
+            print("해당 경로에 이미지 없음")
+        }
+    }
+    
     func removeAll() {
         guard let documentDirectory else { return }
         

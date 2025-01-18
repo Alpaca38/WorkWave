@@ -124,7 +124,7 @@ private extension DMChattingView {
     
     func othersMessageView(message: Chatting) -> some View {
         HStack(alignment: .top) {
-            LoadedImage(urlString: message.profile ?? "defaultProfile",
+            LoadedImage(urlString: message.profile ?? "",
                              size: 34)
             
             VStack(alignment: .leading) {
