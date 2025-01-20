@@ -34,22 +34,9 @@ extension DBClient: DependencyKey {
                 return
             }
             
-            // `object.user`가 중복되는지 확인하고 처리
             if let user = object.user {
-                if let existingUser = realm.object(
-                    ofType: MemberDBModel.self,
-                    forPrimaryKey: user.userID
-                ) {
-                    // 이미 저장된 `MemberDBModel` 객체를 사용
-                    try realm.write {
-                        existingUser.nickname = user.nickname
-                    }
-                    object.user = existingUser
-                } else {
-                    // 새로운 유저를 저장
-                    try realm.write {
-                        realm.add(user)
-                    }
+                try realm.write {
+                    realm.add(user, update: .modified) // 중복되면 업데이트
                 }
             }
             
