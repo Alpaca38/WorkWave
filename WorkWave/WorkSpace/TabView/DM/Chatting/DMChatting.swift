@@ -161,8 +161,42 @@ private extension DMChatting {
         }
     }
     
+    func updateMemberProfile(userID: String) async {
+        do {
+            let currentProfile = try await userClient.fetchOthersProfile(userID)
+            let dbProfile = try dbClient.fetchMember(userID)
+            
+            // db에 프로필 이미지가 없는 경우
+            guard let dbProfileImage = dbProfile?.profileImage else {
+                guard let currentProfileImage = currentProfile.profileImage else {
+                    return
+                }
+                
+                await ImageFileManager.shared.saveImage(fileName: currentProfileImage)
+                return
+            }
+            
+            // 현재 프로필과 db 프로필이 다른 경우
+            if dbProfileImage != currentProfile.profileImage {
+                ImageFileManager.shared.deleteImage(fileName: dbProfileImage)
+                guard let currentProfileImage = currentProfile.profileImage else {
+                    return
+                }
+                
+                await ImageFileManager.shared.saveImage(fileName: currentProfileImage)
+                
+                // 현재 프로필로 db 업데이트
+                try dbClient.update(currentProfile.toDBModel())
+            }
+        } catch {
+            print("프로필 불러오기 실패")
+        }
+    }
+    
     func saveOrUpdateDMRoom(room: DMRoom) async {
         let member = await fetchMember(room: room)
+        
+        await updateMemberProfile(userID: room.user.id)
         
         do {
             if let dbRoom = try dbClient.fetchDMRoom(room.id) {

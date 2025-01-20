@@ -17,6 +17,8 @@ struct DBClient {
     var fetchDMRoom: @Sendable (String) throws -> DMRoomDBModel?
     var updateDMRoom: @Sendable (DMRoomDBModel, MemberDBModel) throws -> Void
     
+    var fetchMember: @Sendable (String) throws -> MemberDBModel?
+    
     var update: @Sendable (Object) throws -> Void
     var removeAll: @Sendable () throws -> Void
 }
@@ -65,6 +67,11 @@ extension DBClient: DependencyKey {
                     realm.add(user)
                 }
             }
+        },
+        fetchMember: { userID in
+            let realm = try Realm()
+            
+            return realm.object(ofType: MemberDBModel.self, forPrimaryKey: userID)
         },
         update: { object in
             let realm = try Realm()

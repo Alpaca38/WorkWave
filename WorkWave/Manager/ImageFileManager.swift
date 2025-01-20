@@ -18,28 +18,33 @@ final class ImageFileManager {
         let staticDirectory = documentDirectory.appending(path: "static")
         let dmChatsDirectory = staticDirectory.appending(path: "dmChats")
         let profilesDirectory = staticDirectory.appending(path: "profiles")
+        let coverImageDirectory = staticDirectory.appending(path: "workspaceCoverImages")
         
         createDirectory(dmChatsDirectory)
         createDirectory(profilesDirectory)
+        createDirectory(coverImageDirectory)
     }
     
-    func saveImage(fileName: String) async {
+    func saveImage(fileName: String, imageData: Data? = nil) async {
         guard let documentDirectory else { return }
         
         let fileURL = documentDirectory.appending(path: fileName.dropFirst())
         
-        do {
-            let image = try await DefaultNetworkManager.shared.requestImage(ImageRouter.fetchImage(path: fileName))
-            guard let data = image.jpegData(compressionQuality: 0.5) else { return }
-            
+        // 해당 경로에 저장된 이미지가 없으면
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
             do {
-                try data.write(to: fileURL)
-                print("이미지 저장 성공")
+                let image = try await DefaultNetworkManager.shared.requestImage(ImageRouter.fetchImage(path: fileName))
+                guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+                
+                do {
+                    try imageData != nil ? imageData?.write(to: fileURL) : data.write(to: fileURL)
+                    print("이미지 저장 성공")
+                } catch {
+                    print("이미지 저장 실패", error)
+                }
             } catch {
-                print("이미지 저장 실패", error)
+                print("이미지 통신 실패")
             }
-        } catch {
-            print("이미지 통신 실패")
         }
     }
     
@@ -49,6 +54,7 @@ final class ImageFileManager {
         let fileURL = documentDirectory.appending(path: fileName.dropFirst())
         
         if FileManager.default.fileExists(atPath: fileURL.path) {
+            print("로컬 이미지 불러오기 성공")
             return UIImage(contentsOfFile: fileURL.path)
         } else {
             print("해당 경로에 이미지가 존재하지 않습니다.")

@@ -11,8 +11,6 @@ import ComposableArchitecture
 struct HomeView: View {
     @Bindable var store: StoreOf<Home>
     
-    @Dependency(\.imageClient) var imageClient
-    
     var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             ZStack {

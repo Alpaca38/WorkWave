@@ -144,6 +144,10 @@ struct Home {
                 state.DMRooms = dmRooms
                 return .merge(dmRooms.map { dmRoom in
                     return .run { send in
+                        if let profileImage = dmRoom.user.profileImage {
+                            await ImageFileManager.shared.saveImage(fileName: profileImage)
+                        }
+                        
                         do {
                             let dbDMRoom = try dbClient.fetchDMRoom(dmRoom.id)
                             let lastDate = dbDMRoom?.chattings.sorted {

@@ -86,9 +86,11 @@ struct Profile {
                             print("No SelectedImage")
                             return
                         }
-                        _ = try await userClient.editMyProfileImage(
+                        let result = try await userClient.editMyProfileImage(
                             EditMyProfileImageRequest(image: data)
                         )
+                        
+                        await ImageFileManager.shared.saveImage(fileName: result.profileImage ?? "", imageData: data)
                     } catch {
                         print(error)
                     }

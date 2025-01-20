@@ -84,6 +84,7 @@ struct WorkspaceAdd {
                 // 생성 성공, 홈 디폴트 화면으로 전환
                 print(workspace)
                 return .run { send in
+                    await ImageFileManager.shared.saveImage(fileName: workspace.coverImage)
                     await dismiss()
                 }
             case let .addworkspaceResponse(.failure(error)):
