@@ -119,7 +119,7 @@ struct DMChatting {
                     // 소켓 이벤트를 비동기적으로 처리
                     for try await result in socketManager {
                         switch result {
-                        case .success(let data):
+                        case .success(_):
                             // 업데이트된 채팅 저장 후 불러오기
                             let updatedChats = try await fetchAndSaveNewChats(room: state.dmRoom)
                             // 상태 업데이트 액션 전송

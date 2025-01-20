@@ -52,7 +52,7 @@ struct Home {
         
         case myWorkspaceResponse(WorkspaceDTO.ResponseElement?)
         case myProfileResponse(MyProfileResponse)
-        case inviteMemberResponse(Member)
+        case inviteMemberResponse
         case dmRoomsResponse(DMRooms)
         case unreadCountResponse(DMRoom, UnreadDMsResponse)
     }
@@ -60,6 +60,7 @@ struct Home {
     @Dependency(\.workspaceClient) var workspaceClient
     @Dependency(\.userClient) var userClient
     @Dependency(\.dmClient) var dmClient
+    @Dependency(\.dbClient) var dbClient
     
     var body: some ReducerOf<Self> {
         BindingReducer()
@@ -93,8 +94,8 @@ struct Home {
                 }
                 return .run { [email = state.email] send in
                     do {
-                        let result = try await workspaceClient.inviteMember(workspaceID, InviteMemberRequest(email: email))
-                        await send(.inviteMemberResponse(result.toPresentModel()))
+                        _ = try await workspaceClient.inviteMember(workspaceID, InviteMemberRequest(email: email))
+                        await send(.inviteMemberResponse)
                     } catch {
                         print("초대에 실패했습니다.")
                     }
@@ -135,7 +136,7 @@ struct Home {
             case .myProfileResponse(let profile):
                 state.myProfile = profile
                 return .none
-            case .inviteMemberResponse(let member):
+            case .inviteMemberResponse:
                 state.isInviteSheetPresented = false
                 state.toast = ToastState(toastMessage: "팀원 초대에 성공했습니다.", isToastPresented: true)
                 return .none
@@ -144,7 +145,13 @@ struct Home {
                 return .merge(dmRooms.map { dmRoom in
                     return .run { send in
                         do {
-                            let unreadCount = try await fetchUnreadCount(workspaceID: UserDefaultsManager.workspaceID, roomID: dmRoom.id, lastCreatedAt: "")
+                            let dbDMRoom = try dbClient.fetchDMRoom(dmRoom.id)
+                            let lastDate = dbDMRoom?.chattings.sorted {
+                                $0.createdAt < $1.createdAt
+                            }.last?.createdAt ?? ""
+                            
+                            
+                            let unreadCount = try await fetchUnreadCount(workspaceID: UserDefaultsManager.workspaceID, roomID: dmRoom.id, lastCreatedAt: lastDate)
                             await send(.unreadCountResponse(dmRoom, unreadCount))
                         } catch {
                             print("Unread Count 조회 실패")

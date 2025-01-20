@@ -17,17 +17,10 @@ final class ImageFileManager {
         guard let documentDirectory else { return }
         let staticDirectory = documentDirectory.appending(path: "static")
         let dmChatsDirectory = staticDirectory.appending(path: "dmChats")
+        let profilesDirectory = staticDirectory.appending(path: "profiles")
         
-        if FileManager.default.fileExists(atPath: dmChatsDirectory.path) {
-            print("dmChats 폴더가 이미 존재합니다.")
-        } else {
-            do {
-                try FileManager.default.createDirectory(at: dmChatsDirectory, withIntermediateDirectories: true)
-                print("dmChats 폴더 생성")
-            } catch {
-                print("dmChats 폴더 생성 실패", error)
-            }
-        }
+        createDirectory(dmChatsDirectory)
+        createDirectory(profilesDirectory)
     }
     
     func saveImage(fileName: String) async {
@@ -92,6 +85,21 @@ final class ImageFileManager {
             print("이미지 삭제 성공")
         } catch {
             print("이미지 삭제 실패")
+        }
+    }
+}
+
+private extension ImageFileManager {
+    func createDirectory(_ directory: URL) {
+        if FileManager.default.fileExists(atPath: directory.path) {
+            print("\(directory) 폴더가 이미 존재합니다.")
+        } else {
+            do {
+                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                print("\(directory) 폴더 생성")
+            } catch {
+                print("\(directory) 폴더 생성 실패", error)
+            }
         }
     }
 }
