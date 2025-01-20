@@ -61,6 +61,7 @@ struct DM {
     @Dependency(\.workspaceClient) var workspaceClient
     @Dependency(\.userClient) var userClient
     @Dependency(\.dmClient) var dmClient
+    @Dependency(\.dbClient) var dbClient
     
     var body: some ReducerOf<Self> {
         BindingReducer()
@@ -150,10 +151,15 @@ struct DM {
                 return .merge(dmRooms.map { dmRoom in
                     return .run { send in
                         do {
+                            let dbDMRoom = try dbClient.fetchDMRoom(dmRoom.id)
+                            let lastDate = dbDMRoom?.chattings.sorted {
+                                $0.createdAt < $1.createdAt
+                            }.last?.createdAt ?? ""
+                            
                             let (dmChats, unreadCount) = try await fetchDMRoomDetails(
                                 workspaceID: UserDefaultsManager.workspaceID,
                                 roomID: dmRoom.id,
-                                lastCreatedAt: ""
+                                lastCreatedAt: lastDate
                             )
                             
                             if let lastChat = dmChats.last?.toPresentModel() {
