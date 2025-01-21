@@ -37,6 +37,7 @@
 		D15E393F2D39FE4100A79944 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D15E39422D3A06E800A79944 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39412D3A06E800A79944 /* ImageFileManager.swift */; };
 		D15E39462D3F45FB00A79944 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39452D3F45FB00A79944 /* AddButton.swift */; };
+		D15E39492D3F5AB600A79944 /* AppleLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39482D3F5AB600A79944 /* AppleLoginRequest.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -169,6 +170,7 @@
 		D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoomDBModel.swift; sourceTree = "<group>"; };
 		D15E39412D3A06E800A79944 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		D15E39452D3F45FB00A79944 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		D15E39482D3F5AB600A79944 /* AppleLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginRequest.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -313,7 +315,9 @@
 		D15E39282D3587EA00A79944 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */,
 				D15E39292D3587F400A79944 /* EditMyProfileImageRequest.swift */,
+				D15E39482D3F5AB600A79944 /* AppleLoginRequest.swift */,
 				D15E39362D36391B00A79944 /* EditMyProfileRequest.swift */,
 			);
 			path = RequestModel;
@@ -347,11 +351,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D16E74782D2F63D6005956EC /* ResponseModel */ = {
+		D15E39472D3F59E500A79944 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				D1E116862CD68E22000C1BC3 /* Onboarding */,
+				D1E1168B2CD84FD7000C1BC3 /* Auth */,
+				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
+				D1E116E82CE4F553000C1BC3 /* Login */,
+				D15E39232D357B6400A79944 /* Profile */,
+				D1E116C92CDE5750000C1BC3 /* WorkSpace */,
 			);
-			path = ResponseModel;
+			path = Screen;
 			sourceTree = "<group>";
 		};
 		D16E747B2D2F6B24005956EC /* Image */ = {
@@ -387,6 +397,7 @@
 		D16E74952D30FBB6005956EC /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				D1E117232D0335E3000C1BC3 /* AddWorkspaceRequest.swift */,
 				D16E74932D30FBAB005956EC /* InviteMemberRequest.swift */,
 			);
 			path = RequestModel;
@@ -396,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				D16E74862D30EB47005956EC /* MemberResponse.swift */,
+				D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -439,7 +451,7 @@
 		D1E1164D2CD39B04000C1BC3 /* WorkWave */ = {
 			isa = PBXGroup;
 			children = (
-				D15E39332D362FA000A79944 /* DataBase */,
+				D15E39472D3F59E500A79944 /* Screen */,
 				D1E116692CD3ADE1000C1BC3 /* Resources */,
 				D15E39032D340B0D00A79944 /* Extension */,
 				D16E74882D30EC8C005956EC /* PresentModel */,
@@ -451,13 +463,6 @@
 				D1E116662CD3AAFD000C1BC3 /* Modifiers */,
 				D1E116CF2CE25151000C1BC3 /* UserDefaults */,
 				D1E116912CD9C28A000C1BC3 /* Dependency */,
-				D1E117072CF8AF44000C1BC3 /* ImagePicker */,
-				D1E116862CD68E22000C1BC3 /* Onboarding */,
-				D1E1168B2CD84FD7000C1BC3 /* Auth */,
-				D1E1167A2CD66D5F000C1BC3 /* SignUp */,
-				D1E116E82CE4F553000C1BC3 /* Login */,
-				D15E39232D357B6400A79944 /* Profile */,
-				D1E116C92CDE5750000C1BC3 /* WorkSpace */,
 				D1E1164E2CD39B04000C1BC3 /* WorkWaveApp.swift */,
 				D1E116502CD39B04000C1BC3 /* ContentView.swift */,
 				D1E116B22CDC8DBC000C1BC3 /* CustomAppDelegate.swift */,
@@ -478,7 +483,6 @@
 		D1E116612CD3A495000C1BC3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D16E74782D2F63D6005956EC /* ResponseModel */,
 				D1E116622CD3A579000C1BC3 /* HomeView.swift */,
 				D16E746D2D2E1936005956EC /* Home.swift */,
 				D1E116FA2CED858C000C1BC3 /* HomeEmptyView.swift */,
@@ -537,6 +541,7 @@
 		D1E116752CD3B424000C1BC3 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D1E117072CF8AF44000C1BC3 /* ImagePicker */,
 				D1E116782CD3BCD0000C1BC3 /* CustomButton.swift */,
 				D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */,
 				D1E116872CD69C76000C1BC3 /* CustomTextField.swift */,
@@ -569,7 +574,6 @@
 			isa = PBXGroup;
 			children = (
 				D1E117182CFE9AE0000C1BC3 /* List */,
-				D1E116F52CED7B73000C1BC3 /* ResponseModel */,
 				D1E116802CD68512000C1BC3 /* WWTabView.swift */,
 				D1E116F02CED7621000C1BC3 /* WWTab.swift */,
 				D1E1166A2CD3AE90000C1BC3 /* DM */,
@@ -601,6 +605,7 @@
 		D1E116912CD9C28A000C1BC3 /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				D15E39332D362FA000A79944 /* DataBase */,
 				D16E748B2D30F57D005956EC /* DM */,
 				D16E747B2D2F6B24005956EC /* Image */,
 				D1E116BE2CDCED2C000C1BC3 /* KeyChain */,
@@ -697,7 +702,6 @@
 		D1E116D92CE3540D000C1BC3 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				D1E117222D0335B2000C1BC3 /* RequestModel */,
 				D1E116DA2CE35424000C1BC3 /* WorkspaceAddView.swift */,
 				D1E116DC2CE35446000C1BC3 /* WorkspaceAdd.swift */,
 			);
@@ -707,19 +711,10 @@
 		D1E116E82CE4F553000C1BC3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				D1E116EB2CE4F571000C1BC3 /* RequestModel */,
 				D1E116E92CE4F56D000C1BC3 /* LoginView.swift */,
 				D1E116EC2CE4F5C2000C1BC3 /* Login.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		D1E116EB2CE4F571000C1BC3 /* RequestModel */ = {
-			isa = PBXGroup;
-			children = (
-				D1E116E62CE4F197000C1BC3 /* LoginRequest.swift */,
-			);
-			path = RequestModel;
 			sourceTree = "<group>";
 		};
 		D1E116F22CED7931000C1BC3 /* Workspace */ = {
@@ -731,14 +726,6 @@
 				D1E116F82CED7F7D000C1BC3 /* WorkspaceClient.swift */,
 			);
 			path = Workspace;
-			sourceTree = "<group>";
-		};
-		D1E116F52CED7B73000C1BC3 /* ResponseModel */ = {
-			isa = PBXGroup;
-			children = (
-				D1E116F62CED7BA4000C1BC3 /* WorkspaceDTO.swift */,
-			);
-			path = ResponseModel;
 			sourceTree = "<group>";
 		};
 		D1E116FE2CED9A78000C1BC3 /* Auth */ = {
@@ -776,14 +763,6 @@
 				D15E39412D3A06E800A79944 /* ImageFileManager.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		D1E117222D0335B2000C1BC3 /* RequestModel */ = {
-			isa = PBXGroup;
-			children = (
-				D1E117232D0335E3000C1BC3 /* AddWorkspaceRequest.swift */,
-			);
-			path = RequestModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -941,6 +920,7 @@
 				D1E116CB2CDE581E000C1BC3 /* WorkspaceInitialView.swift in Sources */,
 				D15E392F2D361CC400A79944 /* CustomAlertView.swift in Sources */,
 				D1E116792CD3BCD0000C1BC3 /* CustomButton.swift in Sources */,
+				D15E39492D3F5AB600A79944 /* AppleLoginRequest.swift in Sources */,
 				D1E116832CD685C2000C1BC3 /* SignUp.swift in Sources */,
 				D1E116DB2CE35424000C1BC3 /* WorkspaceAddView.swift in Sources */,
 				D1E1167C2CD66D86000C1BC3 /* Onboarding.swift in Sources */,

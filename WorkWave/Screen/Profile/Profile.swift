@@ -76,7 +76,9 @@ struct Profile {
                 state.isLogoutAlertPresented = false
                 UserDefaultsManager.clearUserDefaults()
                 jwtKeyChain.clearTokens()
-                return .none
+                return .run { send in
+                    _ = try await userClient.logout()
+                }
             case .saveButtonTapped:
                 return .run { [state = state] send in
                     do {

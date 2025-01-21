@@ -15,10 +15,12 @@ enum UserRouter {
     case checkEmailValid(query: ValidationEmailRequest)
     case signup(query: SignupRequest)
     case login(query: LoginRequest)
+    case appleLogin(body: AppleLoginRequest)
     case fetchMyProfile
     case editMyProfile(body: EditMyProfileRequest)
     case editMyProfileImage(body: EditMyProfileImageRequest)
     case fetchOthersProfile(userID: String)
+    case logout
 }
 
 extension UserRouter: TargetType {
@@ -28,9 +30,9 @@ extension UserRouter: TargetType {
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .checkEmailValid, .signup, .login:
+        case .checkEmailValid, .signup, .login, .appleLogin:
                 .post
-        case .fetchMyProfile, .fetchOthersProfile:
+        case .fetchMyProfile, .fetchOthersProfile, .logout:
                 .get
         case .editMyProfile, .editMyProfileImage:
                 .put
@@ -45,23 +47,27 @@ extension UserRouter: TargetType {
             "/v1/users/join"
         case .login:
             "/v1/users/login"
+        case .appleLogin:
+            "/v1/users/login/apple"
         case .fetchMyProfile, .editMyProfile:
             "/v1/users/me"
         case .editMyProfileImage:
             "/v1/users/me/image"
         case .fetchOthersProfile(let userID):
             "/v1/users/\(userID)"
+        case .logout:
+            "/v1/users/logout"
         }
     }
     
     var header: HTTPHeaders {
         switch self {
-        case .checkEmailValid, .signup, .login:
+        case .checkEmailValid, .signup, .login, .appleLogin:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey
             ]
-        case .fetchMyProfile, .editMyProfile, .fetchOthersProfile:
+        case .fetchMyProfile, .editMyProfile, .fetchOthersProfile, .logout:
             [
                 Header.contentType.rawValue : Header.json.rawValue,
                 Header.sesacKey.rawValue : APIKey.sesacKey,
@@ -93,6 +99,8 @@ extension UserRouter: TargetType {
             return try? encoder.encode(query)
         case .login(let query):
             return try? encoder.encode(query)
+        case .appleLogin(let body):
+            return try? encoder.encode(body)
         case .editMyProfile(let body):
             return try? encoder.encode(body)
         default:
