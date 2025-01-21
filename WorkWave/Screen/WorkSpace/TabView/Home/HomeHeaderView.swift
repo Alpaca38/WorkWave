@@ -40,7 +40,7 @@ struct HomeHeaderView: View {
                             nickname: profile.nickname,
                             email: profile.email,
                             profileImage: profile.profileImage ?? "",
-                            phoneNumber: profile.phone!.isEmpty ? "010-0000-0000" : profile.phone!
+                            phoneNumber: (profile.phone ?? "").isEmpty ? "010-0000-0000" : profile.phone!
                         )
                     ) {
                         Profile()

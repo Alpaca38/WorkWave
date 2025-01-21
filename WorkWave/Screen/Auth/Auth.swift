@@ -17,18 +17,31 @@ struct Auth {
         
         var optionalLogin: Login.State?
         var isLoginSheetPresented = false
+        
+        var appleLoginSuccess = false
     }
     
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
         case optionalSignup(SignUp.Action)
         case optionalLogin(Login.Action)
         case setSignUpSheet(isPresented: Bool)
         case setLoginSheet(isPresented: Bool)
+        
+        case appleLoginButtonTapped(AppleLoginRequest)
+        
+        case appleLoginSuccess
     }
     
+    @Dependency(\.userClient) var userClient
+    @Dependency(\.jwtKeyChain) var jwtKeyChain
+    
     var body: some ReducerOf<Self> {
+        BindingReducer()
         Reduce { state, action in
-            switch action { 
+            switch action {
+            case .binding:
+                return .none
             case .optionalSignup(.exitButtonTapped):
                 state.isSingUpSheetPresented = false
                 state.optionalSignup = nil
@@ -56,6 +69,20 @@ struct Auth {
             case .setLoginSheet(isPresented: false):
                 state.isLoginSheetPresented = false
                 state.optionalLogin = nil
+                return .none
+            case .appleLoginButtonTapped(let request):
+                return .run { send in
+                    do {
+                        let result = try await userClient.appleLogin(request)
+                        UserDefaultsManager.user = User(userID: result.userID, nickname: result.nickname, email: result.email, phoneNumber: result.phone)
+                        jwtKeyChain.handleLoginSuccess(accessToken: result.token.accessToken, refreshToken: result.token.refreshToken)
+                        await send(.appleLoginSuccess)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .appleLoginSuccess:
+                state.appleLoginSuccess = true
                 return .none
             }
         }
