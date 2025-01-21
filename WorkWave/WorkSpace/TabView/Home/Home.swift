@@ -107,7 +107,8 @@ struct Home {
                 state.path.append(.dmChatting(DMChatting.State(dmRoom: dmRoom)))
                 return .none
             case .task:
-                return .run { send in
+                return .run { [currentWorkspace = state.currentWorkspace] send in
+                    await ImageFileManager.shared.saveImage(fileName: currentWorkspace?.coverImage ?? "")
                     do {
                         let (workspaceResult, profileResult) = try await fetchInitialData()
                         await send(.myProfileResponse(profileResult))
