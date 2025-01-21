@@ -16,16 +16,19 @@ struct WorkspaceList {
         
         var workspaces: WorkspaceDTO.Response = []
         
+        var currentWorkspace: WorkspaceDTO.ResponseElement?
+        
         var isAddWorkspacePresented: Bool = false
     }
     
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
-        case addWorkspaceTapped
         case fetchWorkspaces
         
-        case workspaceResponse(WorkspaceDTO.Response)
+        case addWorkspaceTapped
+        case selectWorkspace(WorkspaceDTO.ResponseElement)
         
+        case workspaceResponse(WorkspaceDTO.Response)
         case workspaceAdd(WorkspaceAdd.Action)
     }
     
@@ -50,12 +53,21 @@ struct WorkspaceList {
                 state.isAddWorkspacePresented = true
                 return .none
                 
+            case .selectWorkspace(let workspace):
+                state.currentWorkspace = workspace
+                UserDefaultsManager.workspaceID = workspace.workspaceID
+                return .none
+                
             case .binding:
                 return .none
                 
             case .workspaceResponse(let workspaces):
                 state.workspaces = workspaces
-                return .none
+                return .merge(workspaces.map { workspace in
+                    return .run { send in
+                        await ImageFileManager.shared.saveImage(fileName: workspace.coverImage)
+                    }
+                })
                 
             case .workspaceAdd(.exitButtonTapped):
                 state.workspaceAdd = nil

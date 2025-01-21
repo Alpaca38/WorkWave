@@ -85,7 +85,6 @@ struct WorkspaceAdd {
                 print(workspace)
                 return .run { send in
                     await ImageFileManager.shared.saveImage(fileName: workspace.coverImage)
-                    await dismiss()
                 }
             case let .addworkspaceResponse(.failure(error)):
                 print("워크스페이스 생성 실패", error)

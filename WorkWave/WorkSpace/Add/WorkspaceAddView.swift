@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct WorkspaceAddView: View {
     @Bindable var store: StoreOf<WorkspaceAdd>
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -23,6 +24,7 @@ struct WorkspaceAddView: View {
             
             CustomButton(title: "완료", font: .title2, titleColor: .white, tintColor: store.completeButtonValid ? .brandGreen : .inactive) {
                 store.send(.completeButtonTapped)
+                dismiss()
             }
             .padding()
             .disabled(!store.completeButtonValid)

@@ -25,7 +25,7 @@ struct HomeView: View {
                     )
                 
                 if store.isListPresented {
-                    SideView {
+                    SideView(currentWorkspace: $store.currentWorkspace) {
                         store.send(.closeWorkspaceList, animation: .easeInOut)
                     }
                 }
@@ -59,7 +59,7 @@ struct HomeView: View {
             
             CustomFoldingGroup(label: "채널", isExpanded: $store.isChannelExpanded) {
                 ChannelListView()
-                makeAddButton(text: "채널 추가") {
+                AddButton(text: "채널 추가") {
                     // addChannel
                 }
             }
@@ -70,7 +70,8 @@ struct HomeView: View {
             
             CustomFoldingGroup(label: "다이렉트 메세지", isExpanded: $store.isDMExpanded) {
                 DMListView
-                makeAddButton(text: "새 메세지 추가") {
+                
+                AddButton(text: "새 메세지 추가") {
                     // addDM
                 }
             }
@@ -79,7 +80,7 @@ struct HomeView: View {
             
             Divider()
             
-            makeAddButton(text: "팀원 추가") {
+            AddButton(text: "팀원 추가") {
                 store.send(.inviteMemberSheetButtonTapped)
             }
             .padding()
@@ -135,20 +136,6 @@ private extension HomeView {
                     store.send(.dmCellTapped(room))
                 }
             }
-        }
-    }
-    
-    func makeAddButton(text: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack {
-                Image(.plus)
-                    .resizable()
-                    .frame(width: 16, height: 16)
-                Text(text)
-                    .applyFont(font: .bodyRegular)
-                Spacer()
-            }
-            .foregroundStyle(.secondaryText)
         }
     }
     

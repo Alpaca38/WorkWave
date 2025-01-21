@@ -36,6 +36,7 @@
 		D15E393E2D376A0000A79944 /* DMRoomDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */; };
 		D15E393F2D39FE4100A79944 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D15E39312D362F9100A79944 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D15E39422D3A06E800A79944 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39412D3A06E800A79944 /* ImageFileManager.swift */; };
+		D15E39462D3F45FB00A79944 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15E39452D3F45FB00A79944 /* AddButton.swift */; };
 		D16E746C2D2E18A2005956EC /* CustomFoldingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */; };
 		D16E746E2D2E1936005956EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E746D2D2E1936005956EC /* Home.swift */; };
 		D16E74712D2E5166005956EC /* DMRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16E74702D2E5166005956EC /* DMRoom.swift */; };
@@ -167,6 +168,7 @@
 		D15E393B2D37675A00A79944 /* MemeberDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeberDBModel.swift; sourceTree = "<group>"; };
 		D15E393D2D376A0000A79944 /* DMRoomDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoomDBModel.swift; sourceTree = "<group>"; };
 		D15E39412D3A06E800A79944 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		D15E39452D3F45FB00A79944 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		D16E746B2D2E18A2005956EC /* CustomFoldingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoldingGroup.swift; sourceTree = "<group>"; };
 		D16E746D2D2E1936005956EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D16E74702D2E5166005956EC /* DMRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRoom.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				D15E39172D34C14500A79944 /* CustomPhotoPicker.swift */,
 				D15E39192D34C80A00A79944 /* CustomToolbar.swift */,
 				D15E392E2D361CC400A79944 /* CustomAlertView.swift */,
+				D15E39452D3F45FB00A79944 /* AddButton.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				D15E393A2D37647500A79944 /* DMChattingDBModel.swift in Sources */,
 				D16E748D2D30F586005956EC /* DMRouter.swift in Sources */,
 				D15E39272D357BEB00A79944 /* Profile.swift in Sources */,
+				D15E39462D3F45FB00A79944 /* AddButton.swift in Sources */,
 				D16E74852D30E313005956EC /* DM.swift in Sources */,
 				D16E747D2D2F6B30005956EC /* ImageRouter.swift in Sources */,
 				D15E393C2D37675A00A79944 /* MemeberDBModel.swift in Sources */,

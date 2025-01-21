@@ -9,7 +9,13 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SideView: View {
+    @Binding var currentWorkspace: WorkspaceDTO.ResponseElement?
     let action: () -> Void
+    
+    init(currentWorkspace: Binding<WorkspaceDTO.ResponseElement?>, action: @escaping () -> Void) {
+        self._currentWorkspace = currentWorkspace
+        self.action = action
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,9 +26,9 @@ struct SideView: View {
                         action()
                     }
                 
-                WorkspaceListView(store: Store(initialState: WorkspaceList.State()) {
+                WorkspaceListView(currentWorkspace: $currentWorkspace, store: Store(initialState: WorkspaceList.State(currentWorkspace: currentWorkspace)) {
                     WorkspaceList()
-                })
+                }, close: action)
                 .frame(width: geometry.size.width * 0.8, height: geometry.size.height)
                 .background(Color.white)
                 .cornerRadius(25, corners: [.topRight, .bottomRight])

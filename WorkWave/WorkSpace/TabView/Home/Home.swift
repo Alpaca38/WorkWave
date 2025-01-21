@@ -69,6 +69,10 @@ struct Home {
             switch action {
             case .path:
                 return .none
+            case .binding(\.currentWorkspace):
+                return .run { send in
+                    await send(.task)
+                }
             case .binding(\.email):
                 state.inviteButtonValid = !state.email.isEmpty
                 return .none
@@ -107,8 +111,9 @@ struct Home {
                 state.path.append(.dmChatting(DMChatting.State(dmRoom: dmRoom)))
                 return .none
             case .task:
-                return .run { [currentWorkspace = state.currentWorkspace] send in
+                return .run { [currentWorkspace = state.currentWorkspace, myProfile = state.myProfile] send in
                     await ImageFileManager.shared.saveImage(fileName: currentWorkspace?.coverImage ?? "")
+                    await ImageFileManager.shared.saveImage(fileName: myProfile?.profileImage ?? "")
                     do {
                         let (workspaceResult, profileResult) = try await fetchInitialData()
                         await send(.myProfileResponse(profileResult))

@@ -25,7 +25,7 @@ struct HomeEmptyView: View {
                 )
             
             if store.isListPresented {
-                SideView {
+                SideView(currentWorkspace: $homeStore.currentWorkspace) {
                     store.send(.closeWorkspaceList, animation: .easeInOut)
                 }
             }

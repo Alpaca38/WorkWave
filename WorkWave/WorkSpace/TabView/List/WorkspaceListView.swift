@@ -9,7 +9,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct WorkspaceListView: View {
+    @Binding var currentWorkspace: WorkspaceDTO.ResponseElement?
     @Bindable var store: StoreOf<WorkspaceList>
+    
+    let close: () -> Void
 
     var body: some View {
         VStack {
@@ -70,7 +73,7 @@ struct WorkspaceListView: View {
     
     var listView: some View {
         ScrollView {
-            LazyVStack(spacing: 8) {
+            LazyVStack() {
                 ForEach(store.workspaces, id: \.id) { workspace in
                     HStack {
                         LoadedImage(urlString: workspace.coverImage, size: 44, isCoverImage: true)
@@ -91,7 +94,22 @@ struct WorkspaceListView: View {
                             .foregroundStyle(.black)
                     }
                     .padding()
+                    .background(workspace.name == store.currentWorkspace?.name ? .brandGray : .clear)
+                    .asButton {
+                        // 워크스페이스 교체
+                        store.send(.selectWorkspace(workspace))
+                        currentWorkspace = workspace
+                        close()
+                    }
+                    
                 }
+                
+                Spacer()
+                
+                AddButton(text: "워크스페이스 추가") {
+                    store.send(.addWorkspaceTapped)
+                }
+                .padding()
             }
         }
     }
