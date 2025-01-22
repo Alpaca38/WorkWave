@@ -13,6 +13,7 @@ struct DM {
     @Reducer
     enum Path {
         case dmChatting(DMChatting)
+        case profile(Profile)
     }
     
     @ObservableState
@@ -152,9 +153,12 @@ struct DM {
                     return .run { send in
                         do {
                             let dbDMRoom = try dbClient.fetchDMRoom(dmRoom.id)
-                            let lastDate = dbDMRoom?.chattings.sorted {
+                            let dbChattings = dbDMRoom?.chattings.sorted {
                                 $0.createdAt < $1.createdAt
-                            }.last?.createdAt ?? ""
+                            }.last
+                            // Realm 객체는 생성된 쓰레드에서만 사용해야하므로 다른 쓰레드에서 작업하려면 복사해야 함
+                            let dbLastChat = dbChattings?.toPresentModel()
+                            let lastDate = dbChattings?.createdAt ?? ""
                             
                             let (dmChats, unreadCount) = try await fetchDMRoomDetails(
                                 workspaceID: UserDefaultsManager.workspaceID,
@@ -164,7 +168,12 @@ struct DM {
                             
                             if let lastChat = dmChats.last?.toPresentModel() {
                                 await send(.dmChatResponse(dmRoom, lastChat))
+                            } else {
+                                if let lastChat = dbLastChat {
+                                    await send(.dmChatResponse(dmRoom, lastChat))
+                                }
                             }
+                            
                             await send(.unreadCountResponse(dmRoom, unreadCount))
                         } catch {
                             print("DM 채팅 조회 실패:", error)
@@ -183,6 +192,9 @@ struct DM {
                 return .none
             case .loadingComplete:
                 state.isLoading = false
+                return .none
+            case .path(.element(id: _, action: .dmChatting(.profileImageTapped(let user)))):
+                state.path.append(.profile(Profile.State(profileType: .otherUser, nickname: user.nickname, email: user.email, profileImage: user.profileImage ?? "", phoneNumber: "")))
                 return .none
             case .path:
                 return .none

@@ -26,6 +26,7 @@ struct DMChatting {
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
+        
         case task
         case active
         case background
@@ -33,6 +34,7 @@ struct DMChatting {
         case sendButtonTapped
         case imageDeleteButtonTapped(UIImage)
         case backButtonTapped
+        case profileImageTapped(Member)
         
         case sendMessage
         case connectSocket
@@ -85,6 +87,9 @@ struct DMChatting {
                 }
             case .background:
                 state.socketManager = nil
+                return .none
+                
+            case .profileImageTapped:
                 return .none
             case .sendButtonTapped:
                 return .run { [state = state] send in

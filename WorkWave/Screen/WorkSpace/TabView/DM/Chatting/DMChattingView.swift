@@ -126,6 +126,9 @@ private extension DMChattingView {
         HStack(alignment: .top) {
             LoadedImage(urlString: message.profile ?? "",
                              size: 34)
+            .asButton {
+                store.send(.profileImageTapped(message.user))
+            }
             
             VStack(alignment: .leading) {
                 Text(message.name)

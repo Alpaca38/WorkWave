@@ -52,14 +52,17 @@ struct ProfileView: View {
                     Text(store.nickname)
                         .foregroundStyle(.secondaryText)
                         .applyFont(font: .bodyRegular)
-                    Image(.chevronRight)
-                        .resizable()
-                        .frame(width: 15, height: 15)
+                    if store.profileType == .me {
+                        Image(.chevronRight)
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                    }
                 }
                 .foregroundStyle(.black)
                 .asButton {
                     store.send(.nicknameTapped)
                 }
+                .disabled(store.profileType == .otherUser)
                 
                 if store.profileType == .me {
                     Button {

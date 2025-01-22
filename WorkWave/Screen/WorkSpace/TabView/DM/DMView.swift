@@ -45,6 +45,8 @@ struct DMView: View {
             switch store.case {
             case .dmChatting(let store):
                 DMChattingView(store: store)
+            case .profile(let store):
+                ProfileView(store: store)
             }
         }
     }
