@@ -13,6 +13,7 @@ struct Home {
     @Reducer
     enum Path {
         case dmChatting(DMChatting)
+        case profile(Profile)
     }
     
     @ObservableState
@@ -67,6 +68,9 @@ struct Home {
         
         Reduce { state, action in
             switch action {
+            case .path(.element(id: _, action: .dmChatting(.profileImageTapped(let user)))):
+                state.path.append(.profile(Profile.State(profileType: .otherUser, nickname: user.nickname, email: user.email, profileImage: user.profileImage ?? "", phoneNumber: "")))
+                return .none
             case .path:
                 return .none
             case .binding(\.currentWorkspace):
