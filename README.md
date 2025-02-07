@@ -43,3 +43,51 @@
 - PhotosUI
 - Keychain
 - Alamofire
+
+### 주요 기술
+#### TCA
+<img alt="image" src="https://github.com/user-attachments/assets/5d853a22-02be-40cb-9023-f7ecacc9d0b1" />
+  - State를 Reducer에서만 변경할 수 있도록 단방향 아키텍처로 구성
+  - 상태 변화를 추적하기 쉽고 항상 예측이 가능한 형태로 구성됨
+  - 상태 변화가 아닌 비동기 부수효과(ex. API 요청)는 Effect에서 관리
+  - 각 요소들이 역할에 따라 분리되어 있어 확장 및 유지보수 용이
+
+#### 실시간 채팅
+- 트래픽을 줄이기 위해 과거 채팅내역 로컬 DB에 저장
+- 채팅 화면 진입 시 DB에 저장된 마지막 채팅의 Date를 기준으로 채팅 내역 조회 API 요청
+- 조회한 최신 채팅 데이터를 DB에 저장
+- 소켓을 연결해 실시간 데이터 수신 및 DB 저장
+- DB의 데이터로 뷰 업데이트
+
+#### Socket
+- 채팅 화면 진입 시 소켓 연결, 채팅화면 퇴장 시 소켓 연결 해제
+- scenePhase를 사용해 background 진입 시 소켓 연결 해제,
+active 상태 시 재연결
+- AsyncStream<Element>.Continuation을 사용해 채팅 Data 전달
+- Result 타입을 활용해 에러 핸들링
+
+#### Dependency
+- 네트워크 요청 로직을 DependencyKey를 채택하는 Client로 구성
+- @Dependency 를 사용해 의존성을 주입하여 Reducer와의 결합도 낮춤
+- Mocking을 활용해 테스트 용이성 증가
+
+#### 토큰 갱신
+- 토큰 갱신 성공 시 재귀함수를 통해 기존 요청 재호출
+- JSON 형식의 Error 응답을 Decoding 하여 핸들링
+- @AppStorage를 사용해 토큰 갱신 실패 시 온보딩 뷰로 전환
+
+#### 이미지 캐싱
+- FileManager로 디스크 캐싱
+- API 통신 시 저장
+
+#### 채팅 UI
+- ScrollViewReader를 사용해 채팅 뷰 진입 및 채팅 갱신 시 뷰를 맨 아래로
+이동
+- 라인 수에 따라 늘어나는 Dynamic TextField 구현
+
+#### DTO
+- API Response Model -> DB Model -> Present Model
+- 뷰에 사용할 Present Model을 구성해 네트워크 계층과의 결합도 낮춤
+
+#### KeyChain
+- AccessToken 및 RefreshToken을 UserDefaults가 아닌 Keychain 으로 저장해 보안성 높힘
